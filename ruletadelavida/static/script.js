@@ -37,6 +37,27 @@ document.getElementById("formulario").addEventListener("submit", function(event)
     });
 });
 
+document.getElementById("formulario").addEventListener("submit", function(event) {
+    event.preventDefault(); // Evita el envío del formulario normal
+
+    let nombre = document.getElementById("nombre").value.trim();
+    if (nombre === "") {
+        alert("Por favor, ingresa un nombre antes de continuar.");
+        return;
+    }
+
+    // Generar la URL del PDF
+    let pdfUrl = `/grafico/${encodeURIComponent(nombre)}`;
+
+    // Mostrar el botón de descargar PDF y asignar la URL
+    let btnDescargar = document.getElementById("btnDescargarPDF");
+    btnDescargar.style.display = "block";
+    btnDescargar.onclick = function () {
+        window.location.href = pdfUrl; // Redirige a la URL del PDF
+    };
+});
+
+
 document.getElementById("btnDescargarExcel").addEventListener("click", function() {
     window.location.href = "/descargar_excel";
 });
