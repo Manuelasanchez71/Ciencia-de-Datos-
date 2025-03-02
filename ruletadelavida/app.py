@@ -1,10 +1,13 @@
-from flask import Flask, render_template, request, jsonify, send_file
+from flask import Flask, render_template, request, jsonify, send_file, redirect, url_for, session, flash
 import sqlite3
 import pandas as pd
 import io
 import os
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
+app.secret_key = 'ruletadelavida'  # Cambia esto por una clave secreta real
+
 
 if os.path.exists("database.db"):
     os.remove("database.db")
@@ -24,16 +27,72 @@ def init_db():
                 calificacion INTEGER
             )
         ''')
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS usuarios (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                username TEXT UNIQUE NOT NULL,
+                password TEXT NOT NULL
+            )
+        ''')
         conn.commit()
 
 init_db()
 
 @app.route('/')
 def index():
+    if 'username' not in session:
+        return redirect(url_for('login'))
     return render_template("index.html")
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        
+        with sqlite3.connect("database.db") as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM usuarios WHERE username = ?", (username,))
+            user = cursor.fetchone()
+            
+            if user and check_password_hash(user[2], password):
+                session['username'] = username
+                return redirect(url_for('index'))
+            else:
+                flash('Usuario o contraseña incorrectos')
+    
+    return render_template('login.html')
+
+@app.route('/registro', methods=['GET', 'POST'])
+def registro():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        hashed_password = generate_password_hash(password)
+        
+        try:
+            with sqlite3.connect("database.db") as conn:
+                cursor = conn.cursor()
+                cursor.execute("INSERT INTO usuarios (username, password) VALUES (?, ?)", (username, hashed_password))
+                conn.commit()
+            flash('Registro exitoso. Por favor, inicia sesión.')
+            return redirect(url_for('login'))
+        except sqlite3.IntegrityError:
+            flash('El nombre de usuario ya existe. Por favor, elige otro.')
+    
+    return render_template('registro.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('login'))
 
 @app.route('/guardar', methods=['POST'])
 def guardar():
+
+    if 'username' not in session:
+        return jsonify({"error": "No autorizado"}), 401
+
     try:
         data = request.get_json()
         if not data:
