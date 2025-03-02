@@ -1,6 +1,10 @@
 from flask import Flask, render_template, request, jsonify, send_file, redirect, url_for, session, flash
 import sqlite3
 import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('Agg')
 import io
 import os
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -159,6 +163,52 @@ def descargar_excel():
                          mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
     except Exception as e:
         return jsonify({"error": f"Error al generar Excel: {str(e)}"}), 500
+
+@app.route('/grafico/<nombre>')
+def grafico(nombre):
+    try:
+        with sqlite3.connect("database.db") as conn:
+            cursor = conn.cursor()
+            cursor.execute('''
+                SELECT categoria, AVG(calificacion)
+                FROM respuestas
+                WHERE nombre = ?
+                GROUP BY categoria
+            ''', (nombre,))
+            datos = cursor.fetchall()
+
+        if not datos:
+            return jsonify({"error": "No se encontraron datos para este usuario"}), 404
+
+        categorias = [fila[0] for fila in datos]
+        valores = [fila[1] for fila in datos]
+
+        valores.append(valores[0])
+
+        N = len(categorias)
+        angulos = np.linspace(0, 2 * np.pi, N, endpoint=False).tolist()
+        angulos += angulos[:1]
+
+        fig, ax = plt.subplots(figsize=(7, 7), subplot_kw=dict(polar=True))
+
+        ax.fill(angulos, valores, color='b', alpha=0.3)
+        ax.plot(angulos, valores, color='b', linewidth=2)
+
+        ax.set_xticks(angulos[:-1])
+        ax.set_xticklabels(categorias, fontsize=10)
+        ax.set_yticks(range(1, 11))
+        ax.set_ylim(1, 10)
+        ax.yaxis.grid(True)
+
+        pdf_buffer = io.BytesIO()
+        plt.savefig(pdf_buffer, format='pdf', bbox_inches='tight')
+        pdf_buffer.seek(0)
+        plt.close()
+
+        return send_file(pdf_buffer, mimetype='application/pdf', as_attachment=True, download_name=f"grafico_{nombre}.pdf")
+
+    except Exception as e:
+        return jsonify({"error": f"Error al generar el gráfico: {str(e)}"}), 500
 
 if __name__ == "__main__":
     app.run(debug=True)
