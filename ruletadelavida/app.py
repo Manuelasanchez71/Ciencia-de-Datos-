@@ -1,51 +1,73 @@
 from flask import Flask, render_template, request, jsonify, send_file, redirect, url_for, session, flash
 import sqlite3
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib
-matplotlib.use('Agg')
 import io
 import os
 from werkzeug.security import generate_password_hash, check_password_hash
+from functools import wraps
+import matplotlib.pyplot as plt
+import numpy as np
+import base64
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
-app.secret_key = 'ruletadelavida'  # Cambia esto por una clave secreta real
-
-
-if os.path.exists("database.db"):
-    os.remove("database.db")
-
+app.secret_key = 'tu_clave_secreta_aqui'  # Cambia esto por una clave secreta real
 
 def init_db():
+    db_exists = os.path.exists("database.db")
     with sqlite3.connect("database.db") as conn:
         cursor = conn.cursor()
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS respuestas (
-                nombre TEXT,
-                edad INTEGER,
-                sexo TEXT,
-                estado_civil TEXT,
-                categoria TEXT,
-                pregunta TEXT,
-                calificacion INTEGER
-            )
-        ''')
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS usuarios (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                username TEXT UNIQUE NOT NULL,
-                password TEXT NOT NULL
-            )
-        ''')
+        if not db_exists:
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS usuarios (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    username TEXT UNIQUE NOT NULL,
+                    password TEXT NOT NULL,
+                    role TEXT NOT NULL
+                )
+            ''')
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS respuestas (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    usuario_id INTEGER,
+                    nombre TEXT,
+                    edad INTEGER,
+                    sexo TEXT,
+                    estado_civil TEXT,
+                    categoria TEXT,
+                    pregunta TEXT,
+                    calificacion INTEGER,
+                    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+                )
+            ''')
+            # Crear un usuario administrador por defecto solo si la base de datos es nueva
+            cursor.execute("INSERT OR IGNORE INTO usuarios (username, password, role) VALUES (?, ?, ?)",
+                           ('admin', generate_password_hash('admin123'), 'admin'))
         conn.commit()
 
 init_db()
 
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'username' not in session:
+            return redirect(url_for('login'))
+        return f(*args, **kwargs)
+    return decorated_function
+
+def admin_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'username' not in session or session.get('role') != 'admin':
+            flash('Acceso no autorizado')
+            return redirect(url_for('index'))
+        return f(*args, **kwargs)
+    return decorated_function
+
 @app.route('/')
+@login_required
 def index():
-    if 'username' not in session:
-        return redirect(url_for('login'))
     return render_template("index.html")
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -61,6 +83,8 @@ def login():
             
             if user and check_password_hash(user[2], password):
                 session['username'] = username
+                session['user_id'] = user[0]
+                session['role'] = user[3]
                 return redirect(url_for('index'))
             else:
                 flash('Usuario o contraseña incorrectos')
@@ -77,7 +101,8 @@ def registro():
         try:
             with sqlite3.connect("database.db") as conn:
                 cursor = conn.cursor()
-                cursor.execute("INSERT INTO usuarios (username, password) VALUES (?, ?)", (username, hashed_password))
+                cursor.execute("INSERT INTO usuarios (username, password, role) VALUES (?, ?, ?)", 
+                               (username, hashed_password, 'user'))  # Asignamos el rol 'user' por defecto
                 conn.commit()
             flash('Registro exitoso. Por favor, inicia sesión.')
             return redirect(url_for('login'))
@@ -88,15 +113,12 @@ def registro():
 
 @app.route('/logout')
 def logout():
-    session.pop('username', None)
+    session.clear()
     return redirect(url_for('login'))
 
 @app.route('/guardar', methods=['POST'])
+@login_required
 def guardar():
-
-    if 'username' not in session:
-        return jsonify({"error": "No autorizado"}), 401
-
     try:
         data = request.get_json()
         if not data:
@@ -134,9 +156,9 @@ def guardar():
             for categoria, preguntas in categorias.items():
                 for i, pregunta in enumerate(preguntas):
                     cursor.execute('''
-                        INSERT INTO respuestas (nombre, edad, sexo, estado_civil, categoria, pregunta, calificacion)
-                        VALUES (?, ?, ?, ?, ?, ?, ?)
-                    ''', (data['nombre'], data['edad'], data['sexo'], data['estado_civil'], 
+                        INSERT INTO respuestas (usuario_id, nombre, edad, sexo, estado_civil, categoria, pregunta, calificacion)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                    ''', (session['user_id'], data['nombre'], data['edad'], data['sexo'], data['estado_civil'], 
                           categoria, pregunta, data[f"{categoria}_{i+1}"]))
             
             conn.commit()
@@ -146,39 +168,34 @@ def guardar():
     except Exception as e:
         return jsonify({"error": f"Error interno: {str(e)}"}), 500
 
-@app.route('/descargar_excel')
-def descargar_excel():
-    try:
-        with sqlite3.connect("database.db") as conn:
-            df = pd.read_sql_query("SELECT * FROM respuestas", conn)
-        
-        output = io.BytesIO()
-        with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
-            df.to_excel(writer, sheet_name='Respuestas', index=False)
-        
-        output.seek(0)
-        return send_file(output, 
-                         download_name='respuestas.xlsx',
-                         as_attachment=True,
-                         mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-    except Exception as e:
-        return jsonify({"error": f"Error al generar Excel: {str(e)}"}), 500
+@app.route('/mis_respuestas')
+@login_required
+def mis_respuestas():
+    with sqlite3.connect("database.db") as conn:
+        df = pd.read_sql_query("SELECT * FROM respuestas WHERE usuario_id = ?", conn, params=(session['user_id'],))
+    
+    # Procesar los datos para mostrarlos en la plantilla
+    respuestas_por_categoria = df.groupby('categoria')['calificacion'].mean().to_dict()
+    
+    # Generar el gráfico
+    grafico_base64 = generar_grafico(session['user_id'])
+    
+    return render_template('mis_respuestas.html', respuestas=respuestas_por_categoria, grafico=grafico_base64)
 
-@app.route('/grafico/<nombre>')
-def grafico(nombre):
+def generar_grafico(user_id):
     try:
         with sqlite3.connect("database.db") as conn:
             cursor = conn.cursor()
             cursor.execute('''
                 SELECT categoria, AVG(calificacion)
                 FROM respuestas
-                WHERE nombre = ?
+                WHERE usuario_id = ?
                 GROUP BY categoria
-            ''', (nombre,))
+            ''', (user_id,))
             datos = cursor.fetchall()
 
         if not datos:
-            return jsonify({"error": "No se encontraron datos para este usuario"}), 404
+            return None
 
         categorias = [fila[0] for fila in datos]
         valores = [fila[1] for fila in datos]
@@ -200,15 +217,176 @@ def grafico(nombre):
         ax.set_ylim(1, 10)
         ax.yaxis.grid(True)
 
-        pdf_buffer = io.BytesIO()
-        plt.savefig(pdf_buffer, format='pdf', bbox_inches='tight')
-        pdf_buffer.seek(0)
+        img_buffer = io.BytesIO()
+        plt.savefig(img_buffer, format='png', bbox_inches='tight')
+        img_buffer.seek(0)
         plt.close()
 
-        return send_file(pdf_buffer, mimetype='application/pdf', as_attachment=True, download_name=f"grafico_{nombre}.pdf")
+        img_base64 = base64.b64encode(img_buffer.getvalue()).decode()
+        return img_base64
 
     except Exception as e:
-        return jsonify({"error": f"Error al generar el gráfico: {str(e)}"}), 500
+        print(f"Error al generar el gráfico: {str(e)}")
+        return None
+
+@app.route('/admin/usuarios')
+@admin_required
+def admin_usuarios():
+    with sqlite3.connect("database.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT id, username FROM usuarios WHERE role = 'user'")
+        usuarios = cursor.fetchall()
+    return render_template('admin_usuarios.html', usuarios=usuarios)
+
+@app.route('/admin/usuario/<int:user_id>')
+@admin_required
+def admin_ver_usuario(user_id):
+    with sqlite3.connect("database.db") as conn:
+        df = pd.read_sql_query("SELECT * FROM respuestas WHERE usuario_id = ?", conn, params=(user_id,))
+    
+    if df.empty:
+        flash('Este usuario aún no ha respondido la encuesta.')
+        return redirect(url_for('admin_usuarios'))
+    
+    respuestas_por_categoria = df.groupby('categoria')['calificacion'].mean().to_dict()
+    grafico_base64 = generar_grafico(user_id)
+    
+    return render_template('admin_ver_usuario.html', 
+                           respuestas=respuestas_por_categoria, 
+                           grafico=grafico_base64, 
+                           user_id=user_id)
+
+@app.route('/admin')
+@admin_required
+def admin_dashboard():
+    with sqlite3.connect("database.db") as conn:
+        df = pd.read_sql_query("SELECT * FROM respuestas", conn)
+    
+    # Si no hay datos, mostrar valores predeterminados
+    if df.empty:
+        return render_template('admin_dashboard.html', 
+                           total_usuarios=0,
+                           promedio_general=0,
+                           categorias=[],
+                           promedios=[],
+                           distribucion_labels=[],
+                           distribucion_values=[],
+                           progreso_fechas=[],
+                           progreso_valores=[])
+    
+    # Análisis general
+    total_usuarios = df['usuario_id'].nunique()
+    promedio_general = df['calificacion'].mean()
+    
+    # Promedios por categoría
+    promedios_por_categoria = df.groupby('categoria')['calificacion'].mean().to_dict()
+    categorias = list(promedios_por_categoria.keys())
+    promedios = list(promedios_por_categoria.values())
+    
+    # Distribución general
+    distribucion = df['categoria'].value_counts().sort_index().to_dict()
+    distribucion_labels = [str(k) for k in distribucion.keys()]
+    distribucion_values = list(distribucion.values())
+    
+    # Progreso en el tiempo
+    df['fecha'] = pd.to_datetime(df['fecha'])
+    progreso_tiempo = df.groupby(df['fecha'].dt.date)['calificacion'].mean().reset_index()
+    progreso_tiempo = progreso_tiempo.sort_values('fecha')
+    
+    progreso_fechas = [fecha.strftime('%Y-%m-%d') for fecha in progreso_tiempo['fecha']]
+    progreso_valores = list(progreso_tiempo['calificacion'])
+    
+    return render_template('admin_dashboard.html', 
+                           total_usuarios=total_usuarios,
+                           promedio_general=promedio_general,
+                           categorias=categorias,
+                           promedios=promedios,
+                           distribucion_labels=distribucion_labels,
+                           distribucion_values=distribucion_values,
+                           progreso_fechas=progreso_fechas,
+                           progreso_valores=progreso_valores)
+
+@app.route('/admin/filtrar_datos', methods=['POST'])
+@admin_required
+def filtrar_datos():
+    categoria = request.form.get('categoria')
+    
+    with sqlite3.connect("database.db") as conn:
+        if categoria == 'todas':
+            df = pd.read_sql_query("SELECT * FROM respuestas", conn)
+        else:
+            df = pd.read_sql_query("SELECT * FROM respuestas WHERE categoria = ?", conn, params=(categoria,))
+    
+    # Si no hay datos, devolver valores predeterminados
+    if df.empty:
+        return jsonify({
+            'promedio_general': 0,
+            'distribucion_labels': [],
+            'distribucion_values': [],
+            'progreso_fechas': [],
+            'progreso_valores': []
+        })
+    
+    promedio_general = df['calificacion'].mean()
+    # Distribución por categoría o por pregunta
+    if categoria == 'todas':
+        distribucion = df.groupby('categoria').size().to_dict()
+    else:
+        # Si se filtra por una categoría específica, mostrar distribución por pregunta
+        distribucion = df[df['categoria'] == categoria].groupby('pregunta').size().to_dict()
+    
+    distribucion_labels = list(distribucion.keys())
+    distribucion_values = list(distribucion.values())
+    
+    df['fecha'] = pd.to_datetime(df['fecha'])
+    progreso_tiempo = df.groupby(df['fecha'].dt.date)['calificacion'].mean().reset_index()
+    progreso_tiempo = progreso_tiempo.sort_values('fecha')
+    
+    return jsonify({
+        'promedio_general': round(promedio_general, 2) if not pd.isna(promedio_general) else 0,
+        'distribucion_labels': distribucion_labels,
+        'distribucion_values': distribucion_values,
+        'progreso_fechas': [fecha.strftime('%Y-%m-%d') for fecha in progreso_tiempo['fecha']],
+        'progreso_valores': list(progreso_tiempo['calificacion'])
+    })
+
+@app.route('/descargar_excel')
+@admin_required
+def descargar_excel():
+    try:
+        with sqlite3.connect("database.db") as conn:
+            df = pd.read_sql_query("""
+                SELECT r.*, u.username 
+                FROM respuestas r
+                JOIN usuarios u ON r.usuario_id = u.id
+            """, conn)
+        
+        output = io.BytesIO()
+        with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+            df.to_excel(writer, sheet_name='Todas las Respuestas', index=False)
+            
+            # Crear una hoja de resumen
+            resumen = pd.DataFrame({
+                'Total Usuarios': [df['usuario_id'].nunique()],
+                'Promedio General': [df['calificacion'].mean()],
+            })
+            
+            # Calcular promedios por categoría
+            promedios_por_categoria = df.groupby('categoria')['calificacion'].mean().reset_index()
+            promedios_por_categoria.columns = ['Categoría', 'Promedio']
+            
+            # Combinar resumen y promedios por categoría
+            resumen = pd.concat([resumen, promedios_por_categoria], ignore_index=True)
+            resumen.to_excel(writer, sheet_name='Resumen', index=False)
+        
+        output.seek(0)
+        return send_file(output, 
+                         download_name='respuestas_ruleta_vida.xlsx',
+                         as_attachment=True,
+                         mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    except Exception as e:
+        return jsonify({"error": f"Error al generar Excel: {str(e)}"}), 500
 
 if __name__ == "__main__":
     app.run(debug=True)
+
