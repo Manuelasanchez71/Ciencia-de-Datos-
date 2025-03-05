@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Respuestas - Ruleta de la Vida</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Mis Respuestas</h1>
+        </header>
+        <nav>
+            <a href="{{ url_for('index') }}">Volver al Inicio</a>
+            <a href="{{ url_for('logout') }}">Cerrar sesión</a>
+        </nav>
+        <main>
+            <h2>Resumen de tus respuestas</h2>
+            <ul>
+                {% for categoria, promedio in respuestas.items() %}
+                <li>{{ categoria }}: {{ promedio|round(2) }}</li>
+                {% endfor %}
+            </ul>
+            
+            <h2>Gráfico de tus respuestas</h2>
+            {% if grafico %}
+            <img src="data:image/png;base64,{{ grafico }}" alt="Gráfico de respuestas" class="grafico-respuestas">
+            {% else %}
+            <p>No hay datos suficientes para generar el gráfico.</p>
+            {% endif %}
+        </main>
+    </div>
+</body>
+</html>
+
