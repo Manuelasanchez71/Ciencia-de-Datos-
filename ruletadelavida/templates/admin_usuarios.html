@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usuarios - Ruleta de la Vida</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <h2><i class="fas fa-chart-pie"></i> Ruleta de la Vida</h2>
+      </div>
+      <ul class="sidebar-menu">
+        <li><a href="{{ url_for('admin_dashboard') }}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+        <li><a href="{{ url_for('admin_usuarios') }}" class="active"><i class="fas fa-users"></i> Usuarios</a></li>
+        <li><a href="{{ url_for('admin_analisis') }}"><i class="fas fa-chart-bar"></i> Análisis</a></li>
+        <li><a href="{{ url_for('index') }}"><i class="fas fa-home"></i> Volver al Inicio</a></li>
+        <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
+      </ul>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="admin-content">
+      <div class="admin-header">
+        <h1>Lista de Usuarios</h1>
+      </div>
+
+      <div class="chart-card">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre de Usuario</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+              <td>{{ usuario[0] }}</td>
+              <td>{{ usuario[1] }}</td>
+              <td>
+                <a href="{{ url_for('admin_ver_usuario', user_id=usuario[0]) }}" class="button">
+                  <i class="fas fa-eye"></i> Ver Respuestas
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
