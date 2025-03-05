@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Ruleta de la Vida</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+          <h2><i class="fas fa-chart-pie"></i> Ruleta de la Vida</h2>
+        </div>
+        <ul class="sidebar-menu">
+          <li><a href="{{ url_for('admin_dashboard') }}" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+          <li><a href="{{ url_for('admin_usuarios') }}"><i class="fas fa-users"></i> Usuarios</a></li>
+          <li><a href="{{ url_for('admin_analisis') }}"><i class="fas fa-chart-bar"></i> Análisis</a></li>
+          <li><a href="{{ url_for('index') }}"><i class="fas fa-home"></i> Volver al Inicio</a></li>
+          <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
+        </ul>
+      </div>
+  
+      <!-- Contenido principal -->
+      <div class="admin-content">
+        <div class="admin-header">
+          <h1>Dashboard</h1>
+          <a href="{{ url_for('descargar_excel') }}" class="button"><i class="fas fa-download"></i> Descargar Excel</a>
+        </div>
+  
+        <!-- Estadísticas -->
+        <div class="admin-stats">
+          <div class="stat-card">
+            <h3>Total de Usuarios</h3>
+            <p>{{ total_usuarios }}</p>
+          </div>
+          <div class="stat-card">
+            <h3>Promedio General</h3>
+            <p id="promedioGeneral">{{ promedio_general|round(2) }}</p>
+          </div>
+        </div>
+  
+        <!-- Filtros -->
+        <div class="filter-container">
+          <h3>Filtrar por Categoría</h3>
+          <select id="filtroCategoria" class="form-control">
+            <option value="todas">Todas las categorías</option>
+            {% for categoria in categorias %}
+            <option value="{{ categoria }}">{{ categoria }}</option>
+            {% endfor %}
+          </select>
+        </div>
+  
+        <!-- Gráficos en fila -->
+        <div class="charts-row">
+          <div class="chart-card">
+            <h3>Promedios por Categoría</h3>
+            <div class="chart-container">
+              <canvas id="promediosCategorias"></canvas>
+            </div>
+          </div>
+          <div class="chart-card">
+            <h3>Distribución por Categoría</h3>
+            <div class="chart-container">
+              <canvas id="distribucionGeneral"></canvas>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Gráfico de progreso -->
+        <div class="chart-card">
+          <h3>Progreso en el Tiempo</h3>
+          <div class="chart-container">
+            <canvas id="progresoTiempo"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <script>
+    var categorias = JSON.parse('{{ categorias | tojson | safe }}');
+    var promedios = JSON.parse('{{ promedios | tojson | safe }}');
+    var distribucion_labels = JSON.parse('{{ distribucion_labels | tojson | safe }}');
+    var distribucion_values = JSON.parse('{{ distribucion_values | tojson | safe }}');
+    var progreso_fechas = JSON.parse('{{ progreso_fechas | tojson | safe }}');
+    var progreso_valores = JSON.parse('{{ progreso_valores | tojson | safe }}');
+  </script>
+  
+  <script src="{{ url_for('static', filename='admin_dashboard.js') }}"></script>
+</body>
+</html>
+
+
+
