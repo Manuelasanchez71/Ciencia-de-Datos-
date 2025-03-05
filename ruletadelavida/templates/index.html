@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruleta de la Vida</title>
-    <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
@@ -12,114 +11,227 @@
         <header>
             <h1>Ruleta de la Vida</h1>
         </header>
-    <nav>
-         <a href="{{ url_for('logout') }}">Cerrar sesión</a>
-    </nav>
+        <nav>
+            {% if session['role'] == 'admin' %}
+            <a href="{{ url_for('admin_dashboard') }}">Panel de Administración</a>
+            {% else %}
+            <a href="{{ url_for('mis_respuestas') }}">Mis Respuestas</a>
+            {% endif %}
+            <a href="{{ url_for('logout') }}">Cerrar sesión</a>
+        </nav>
         <main>
             <form id="formulario" action="/guardar" method="POST">
-            <section>
-                <h2>Información Personal</h2>
-                <div class="form-group">
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre" name="nombre" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="edad">Edad:</label>
-                    <input type="number" id="edad" name="edad" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="sexo">Sexo:</label>
-                    <select id="sexo" name="sexo" required>
-                        <option value="masculino">Masculino</option>
-                        <option value="femenino">Femenino</option>
-                        <option value="otro">Otro</option>
-                    </select>
-                </div>
+                <section>
+                    <h2>Información Personal</h2>
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edad">Edad:</label>
+                        <input type="number" id="edad" name="edad" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sexo">Sexo:</label>
+                        <select id="sexo" name="sexo" required>
+                            <option value="masculino">Masculino</option>
+                            <option value="femenino">Femenino</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="estado_civil">Estado Civil:</label>
+                        <select id="estado_civil" name="estado_civil" required>
+                            <option value="soltero">Soltero</option>
+                            <option value="casado">Casado</option>
+                            <option value="union libre">Unión Libre</option>
+                            <option value="divorciado">Divorciado</option>
+                            <option value="viudo">Viudo</option>
+                        </select>
+                    </div>
+                </section>
 
-                <div class="form-group">
-                    <label for="estado_civil">Estado Civil:</label>
-                    <select id="estado_civil" name="estado_civil" required>
-                        <option value="soltero">Soltero</option>
-                        <option value="casado">Casado</option>
-                        <option value="union libre">Unión Libre</option>
-                        <option value="divorciado">Divorciado</option>
-                        <option value="viudo">Viudo</option>
-                    </select>
-                </div>
-            </section>
-
-            <section>
-                <h2>1. Salud y bienestar:</h2>
-                <p>¿Cómo te sientes físicamente en general?</p>
-                <input type="number" name="salud_y_bienestar_1" min="1" max="10" required>
-                <p>¿Estás tomando decisiones saludables con respecto a tu alimentación y ejercicio?</p>
-                <input type="number" name="salud_y_bienestar_2" min="1" max="10" required>
-                <p>¿Estás durmiendo lo suficiente para sentirte descansado?</p>
-                <input type="number" name="salud_y_bienestar_3" min="1" max="10" required>
-
-                <h2>2. Relaciones:</h2>
-                <p>¿Cómo es tu relación con tu familia, amigos y pareja?</p>
-                <input type="number" name="relaciones_1" min="1" max="10" required>
-                <p>¿Estás comunicándote de manera efectiva con las personas importantes en tu vida?</p>
-                <input type="number" name="relaciones_2" min="1" max="10" required>
-
-                <h2>3. Carrera y propósito:</h2>
-                <p>¿Sientes que estás progresando en tu carrera?</p>
-                <input type="number" name="carrera_y_proposito_1" min="1" max="10" required>
-                <p>¿Tienes claro tu propósito o lo que te gustaría lograr en tu vida profesional?</p>
-                <input type="number" name="carrera_y_proposito_2" min="1" max="10" required>
-                <p>¿Estás buscando oportunidades para crecer profesionalmente?</p>
-                <input type="number" name="carrera_y_proposito_3" min="1" max="10" required>
-
-                <h2>4. Finanzas:</h2>
-                <p>¿Te sientes seguro/a financieramente?</p>
-                <input type="number" name="finanzas_1" min="1" max="10" required>
-                <p>¿Estás gestionando tu dinero de manera efectiva (ahorros, inversiones, gastos)?</p>
-                <input type="number" name="finanzas_2" min="1" max="10" required>
-                <p>¿Tienes un plan financiero a corto y largo plazo?</p>
-                <input type="number" name="finanzas_3" min="1" max="10" required>
-
-                <h2>5. Desarrollo personal y crecimiento:</h2>
-                <p>¿Te sientes motivado/a para mejorar y crecer como persona?</p>
-                <input type="number" name="desarrollo_personal_y_crecimiento_1" min="1" max="10" required>
-                <p>¿Estás tomando tiempo para reflexionar y trabajar en tu autoconocimiento?</p>
-                <input type="number" name="desarrollo_personal_y_crecimiento_2" min="1" max="10" required>
-                <p>¿Tienes metas claras de desarrollo personal?</p>
-                <input type="number" name="desarrollo_personal_y_crecimiento_3" min="1" max="10" required>
-
-                <h2>6. Diversión y ocio:</h2>
-                <p>¿Estás dedicando tiempo a actividades que disfrutas?</p>
-                <input type="number" name="diversion_y_ocio_1" min="1" max="10" required>
-                <p>¿Tienes hobbies o intereses que te ayudan a desconectar?</p>
-                <input type="number" name="diversion_y_ocio_2" min="1" max="10" required>
-                <p>¿Te sientes equilibrado/a entre el estudio y el tiempo libre?</p>
-                <input type="number" name="diversion_y_ocio_3" min="1" max="10" required>
-
-                <h2>7. Espiritualidad:</h2>
-                <p>¿Sientes que tienes un propósito más grande en la vida?</p>
-                <input type="number" name="espiritualidad_1" min="1" max="10" required>
-                <p>¿Te sientes en paz con tu vida y tus creencias?</p>
-                <input type="number" name="espiritualidad_2" min="1" max="10" required>
-                <p> ¿Estás tomando tiempo para reflexionar sobre tu vida y tu conexión con el mundo?</p>
-                <input type="number" name="espiritualidad_3" min="1" max="10" required>
-
-                <h2>8. Entorno físico y hogar:</h2>
-                <p>¿Te sientes cómodo/a y organizado/a en tu espacio de vida?</p>
-                <input type="number" name="entorno_fisico_y_hogar_1" min="1" max="10" required>
-                <p> ¿Tu entorno te inspira o te ayuda a relajarte y ser productivo/a?</p>
-                <input type="number" name="entorno_fisico_y_hogar_2" min="1" max="10" required>
-                <p> ¿Tienes un lugar que te permita desconectar y recargar energías?</p>
-                <input type="number" name="entorno_fisico_y_hogar_3" min="1" max="10" required>
-            </section>
+                <section>
+                    <h2>1. Salud y bienestar:</h2>
+                    <div class="form-group">
+                        <label for="salud_y_bienestar_1">¿Cómo te sientes físicamente en general?</label>
+                        <div class="range-container">
+                            <input type="range" id="salud_y_bienestar_1" name="salud_y_bienestar_1" min="1" max="10" value="5" required>
+                            <output for="salud_y_bienestar_1" class="range-value">5</output>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="salud_y_bienestar_2">¿Estás tomando decisiones saludables con respecto a tu alimentación y ejercicio?</label>
+                        <div class="range-container">
+                            <input type="range" id="salud_y_bienestar_2" name="salud_y_bienestar_2" min="1" max="10" value="5" required>
+                            <output for="salud_y_bienestar_2" class="range-value">5</output>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="salud_y_bienestar_3">¿Estás durmiendo lo suficiente para sentirte descansado?</label>
+                        <div class="range-container">
+                            <input type="range" id="salud_y_bienestar_3" name="salud_y_bienestar_3" min="1" max="10" value="5" required>
+                            <output for="salud_y_bienestar_3" class="range-value">5</output>
+                        </div>
+                    </div>
+                    <h2>2. Relaciones:</h2>
+                    <div class="form-group">
+                        <label for="relaciones_1">¿Cómo te sientes físicamente en general?</label>
+                        <div class="range-container">
+                            <input type="range" id="relaciones_1" name="relaciones_1" min="1" max="10" value="5" required>
+                            <output for="relaciones_1" class="range-value">5</output>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="relaciones_2">¿Estás comunicándote de manera efectiva con las personas importantes en tu vida?</label>
+                        <div class="range-container">
+                            <input type="range" id="relaciones_2" name="relaciones_2" min="1" max="10" value="5" required>
+                            <output for="relaciones_2" class="range-value">5</output>
+                        </div>
+                    </div>
+                    <h2>3. Carrera y proposito:</h2>
+                    <div class="form-group">
+                        <label for="carrera_y_proposito_1">¿Sientes que estás progresando en tu carrera?</label>
+                        <div class="range-container">
+                            <input type="range" id="carrera_y_proposito_1" name="carrera_y_proposito_1" min="1" max="10" value="5" required>
+                            <output for="carrera_y_proposito_1" class="range-value">5</output>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="carrera_y_proposito_2">¿Tienes claro tu propósito o lo que te gustaría lograr en tu vida profesional?</label>
+                        <div class="range-container">
+                            <input type="range" id="carrera_y_proposito_2" name="carrera_y_proposito_2" min="1" max="10" value="5" required>
+                            <output for="carrera_y_proposito_2" class="range-value">5</output>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="carrera_y_proposito_3">¿Estás buscando oportunidades para crecer profesionalmente?</label>
+                        <div class="range-container">
+                            <input type="range" id="carrera_y_proposito_3" name="carrera_y_proposito_3" min="1" max="10" value="5" required>
+                            <output for="carrera_y_proposito_3" class="range-value">5</output>
+                        </div>
+                    </div>
+                    <h2>4. Finanzas:</h2>
+                    <div class="form-group">
+                        <label for="finanzas_1">¿Te sientes seguro/a financieramente?</label>
+                        <div class="range-container">
+                            <input type="range" id="finanzas_1" name="finanzas_1" min="1" max="10" value="5" required>
+                            <output for="finanzas_1" class="range-value">5</output>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="finanzas_2">¿Estás gestionando tu dinero de manera efectiva (ahorros, inversiones, gastos)?</label>
+                        <div class="range-container">
+                            <input type="range" id="finanzas_2" name="finanzas_2" min="1" max="10" value="5" required>
+                            <output for="finanzas_2" class="range-value">5</output>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="finanzas_3">¿Tienes un plan financiero a corto y largo plazo?</label>
+                        <div class="range-container">
+                            <input type="range" id="finanzas_3" name="finanzas_3" min="1" max="10" value="5" required>
+                            <output for="finanzas_3" class="range-value">5</output>
+                        </div>
+                    </div>
+                    <h2>5. Desarrollo personal y crecimiento:</h2>
+                    <div class="form-group">
+                        <label for="desarrollo_personal_y_crecimiento_1">¿Te sientes motivado/a para mejorar y crecer como persona?</label>
+                        <div class="range-container">
+                            <input type="range" id="desarrollo_personal_y_crecimiento_1" name="desarrollo_personal_y_crecimiento_1" min="1" max="10" value="5" required>
+                            <output for="desarrollo_personal_y_crecimiento_1" class="range-value">5</output>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="desarrollo_personal_y_crecimiento_2">¿Estás tomando tiempo para reflexionar y trabajar en tu autoconocimiento?</label>
+                        <div class="range-container">
+                            <input type="range" id="desarrollo_personal_y_crecimiento_2" name="desarrollo_personal_y_crecimiento_2" min="1" max="10" value="5" required>
+                            <output for="desarrollo_personal_y_crecimiento_2" class="range-value">5</output>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="desarrollo_personal_y_crecimiento_3">¿Tienes metas claras de desarrollo personal?</label>
+                        <div class="range-container">
+                            <input type="range" id="desarrollo_personal_y_crecimiento_3" name="desarrollo_personal_y_crecimiento_3" min="1" max="10" value="5" required>
+                            <output for="desarrollo_personal_y_crecimiento_3" class="range-value">5</output>
+                        </div>
+                    </div>
+                    <h2>6. Diversión y ocio:</h2>
+                    <div class="form-group">
+                        <label for="diversion_y_ocio_1">¿Estás dedicando tiempo a actividades que disfrutas?</label>
+                        <div class="range-container">
+                            <input type="range" id="diversion_y_ocio_1" name="diversion_y_ocio_1" min="1" max="10" value="5" required>
+                            <output for="diversion_y_ocio_1" class="range-value">5</output>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="diversion_y_ocio_2">¿Tienes hobbies o intereses que te ayudan a desconectar?</label>
+                        <div class="range-container">
+                            <input type="range" id="diversion_y_ocio_2" name="diversion_y_ocio_2" min="1" max="10" value="5" required>
+                            <output for="diversion_y_ocio_2" class="range-value">5</output>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="diversion_y_ocio_3">¿Te sientes equilibrado/a entre el estudio y el tiempo libre?</label>
+                        <div class="range-container">
+                            <input type="range" id="diversion_y_ocio_3" name="diversion_y_ocio_3" min="1" max="10" value="5" required>
+                            <output for="diversion_y_ocio_3" class="range-value">5</output>
+                        </div>
+                    </div>
+                    <h2>7. Espiritualidad:</h2>
+                    <div class="form-group">
+                        <label for="espiritualidad_1">¿Sientes que tienes un propósito más grande en la vida?</label>
+                        <div class="range-container">
+                            <input type="range" id="espiritualidad_1" name="espiritualidad_1" min="1" max="10" value="5" required>
+                            <output for="espiritualidad_1" class="range-value">5</output>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="espiritualidad_2">¿Te sientes en paz con tu vida y tus creencias?</label>
+                        <div class="range-container">
+                            <input type="range" id="espiritualidad_2" name="espiritualidad_2" min="1" max="10" value="5" required>
+                            <output for="espiritualidad_2" class="range-value">5</output>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="espiritualidad_3">¿Estás tomando tiempo para reflexionar sobre tu vida y tu conexión con el mundo?</label>
+                        <div class="range-container">
+                            <input type="range" id="espiritualidad_3" name="espiritualidad_3" min="1" max="10" value="5" required>
+                            <output for="espiritualidad_3" class="range-value">5</output>
+                        </div>
+                    </div>
+                    <h2>8. Entorno físico y hogar:</h2>
+                    <div class="form-group">
+                        <label for="entorno_fisico_y_hogar_1">¿Te sientes cómodo/a y organizado/a en tu espacio de vida?</label>
+                        <div class="range-container">
+                            <input type="range" id="entorno_fisico_y_hogar_1" name="entorno_fisico_y_hogar_1" min="1" max="10" value="5" required>
+                            <output for="entorno_fisico_y_hogar_1" class="range-value">5</output>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="entorno_fisico_y_hogar_2">¿Tu entorno te inspira o te ayuda a relajarte y ser productivo/a?</label>
+                        <div class="range-container">
+                            <input type="range" id="entorno_fisico_y_hogar_2" name="entorno_fisico_y_hogar_2" min="1" max="10" value="5" required>
+                            <output for="entorno_fisico_y_hogar_2" class="range-value">5</output>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="entorno_fisico_y_hogar_3">¿Tienes un lugar que te permita desconectar y recargar energías?</label>
+                        <div class="range-container">
+                            <input type="range" id="entorno_fisico_y_hogar_3" name="entorno_fisico_y_hogar_3" min="1" max="10" value="5" required>
+                            <output for="entorno_fisico_y_hogar_3" class="range-value">5</output>
+                        </div>
+                    </div>
+                    
+                </section>
 
                 <button type="submit">Enviar</button>
-            
             </form>
+        </main>
+    </div>
 
-    <button id="btnDescargarExcel" style="display:none;">Descargar Excel</button>
+    <button id="btnDescargarPDF" style="display: none;">Descargar Gráfico</button>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
+
