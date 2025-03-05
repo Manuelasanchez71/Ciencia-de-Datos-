@@ -11,7 +11,10 @@ import base64
 from datetime import datetime, timedelta
 
 app = Flask(__name__)
-app.secret_key = 'tu_clave_secreta_aqui'  # Cambia esto por una clave secreta real
+app.secret_key = 'ruletadelavida'  #clave secreta real
+
+# if os.path.exists("database.db"):
+#     os.remove("database.db")
 
 def init_db():
     db_exists = os.path.exists("database.db")
@@ -23,6 +26,8 @@ def init_db():
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     username TEXT UNIQUE NOT NULL,
                     password TEXT NOT NULL,
+                    email TEXT NOT NULL, 
+                    phone TEXT NOT NULL, 
                     role TEXT NOT NULL
                 )
             ''')
@@ -42,8 +47,8 @@ def init_db():
                 )
             ''')
             # Crear un usuario administrador por defecto solo si la base de datos es nueva
-            cursor.execute("INSERT OR IGNORE INTO usuarios (username, password, role) VALUES (?, ?, ?)",
-                           ('admin', generate_password_hash('admin123'), 'admin'))
+            cursor.execute("INSERT OR IGNORE INTO usuarios (username, password, email, phone, role) VALUES (?, ?, ?, ?, ?)",
+                           ('admin', generate_password_hash('admin123'), 'admin@example.com', '1234567890', 'admin'))
         conn.commit()
 
 init_db()
@@ -84,7 +89,7 @@ def login():
             if user and check_password_hash(user[2], password):
                 session['username'] = username
                 session['user_id'] = user[0]
-                session['role'] = user[3]
+                session['role'] = user[5]
                 return redirect(url_for('index'))
             else:
                 flash('Usuario o contraseña incorrectos')
@@ -97,12 +102,14 @@ def registro():
         username = request.form['username']
         password = request.form['password']
         hashed_password = generate_password_hash(password)
+        email = request.form['email']
+        phone = request.form['phone']
         
         try:
             with sqlite3.connect("database.db") as conn:
                 cursor = conn.cursor()
-                cursor.execute("INSERT INTO usuarios (username, password, role) VALUES (?, ?, ?)", 
-                               (username, hashed_password, 'user'))  # Asignamos el rol 'user' por defecto
+                cursor.execute("INSERT INTO usuarios (username, password, email, phone, role) VALUES (?, ?, ?, ?, ?)", 
+                               (username, hashed_password, email, phone, 'user'))  # Asignamos el rol 'user' por defecto
                 conn.commit()
             flash('Registro exitoso. Por favor, inicia sesión.')
             return redirect(url_for('login'))
@@ -387,6 +394,373 @@ def descargar_excel():
     except Exception as e:
         return jsonify({"error": f"Error al generar Excel: {str(e)}"}), 500
 
+    
+@app.route('/admin/analisis')
+@admin_required
+def admin_analisis():
+    with sqlite3.connect("database.db") as conn:
+        df = pd.read_sql_query("SELECT * FROM respuestas", conn)
+    
+    # Si no hay datos, mostrar valores predeterminados
+    if df.empty:
+        return render_template('admin_analisis.html', 
+                          categorias=[],
+                          grupos_edad=[],
+                          sexos=[],
+                          promedio_general=0,
+                          desviacion_estandar=0,
+                          total_respuestas=0,
+                          usuarios_unicos=0,
+                          top_categorias=[],
+                          bottom_categorias=[],
+                          diferencias_demograficas=[],
+                          correlaciones_importantes=[],
+                          datos_calificaciones={"labels": [], "data": []},
+                          datos_categorias={"labels": [], "data": []},
+                          datos_edad={"labels": [], "data": []},
+                          datos_sexo={"labels": [], "data": []},
+                          datos_radar={"labels": [], "data": []},
+                          datos_tendencia={"labels": [], "data": []},
+                          datos_correlacion={"labels": [], "datasets": []})
+    
+    # Preparar datos para la plantilla
+    # 1. Estadísticas generales
+    promedio_general = df['calificacion'].mean()
+    desviacion_estandar = df['calificacion'].std()
+    total_respuestas = len(df)
+    usuarios_unicos = df['usuario_id'].nunique()
+    
+    # 2. Listas para filtros
+    categorias = sorted(df['categoria'].unique())
+    
+    # Crear grupos de edad
+    df['grupo_edad'] = pd.cut(df['edad'], 
+                             bins=[0, 25, 35, 45, 55, 100], 
+                             labels=['18-25', '26-35', '36-45', '46-55', '56+'], 
+                             right=False)
+    grupos_edad = sorted(df['grupo_edad'].unique())
+    
+    sexos = sorted(df['sexo'].unique())
+    
+    # 3. Top y bottom categorías
+    cat_avg = df.groupby('categoria')['calificacion'].mean()
+    top_categorias = [{"nombre": cat, "valor": val} for cat, val in cat_avg.nlargest(3).items()]
+    bottom_categorias = [{"nombre": cat, "valor": val} for cat, val in cat_avg.nsmallest(3).items()]
+    
+    # 4. Diferencias demográficas
+    diferencias_demograficas = []
+    
+    # Por sexo
+    sexo_diff = df.groupby('sexo')['calificacion'].mean().max() - df.groupby('sexo')['calificacion'].mean().min()
+    if sexo_diff > 0.5:  # Umbral arbitrario para considerar una diferencia significativa
+        sexo_max = df.groupby('sexo')['calificacion'].mean().idxmax()
+        sexo_min = df.groupby('sexo')['calificacion'].mean().idxmin()
+        diferencias_demograficas.append(f"Diferencia por sexo: {sexo_diff:.2f} puntos ({sexo_max} > {sexo_min})")
+    
+    # Por estado civil
+    estado_diff = df.groupby('estado_civil')['calificacion'].mean().max() - df.groupby('estado_civil')['calificacion'].mean().min()
+    if estado_diff > 0.5:
+        estado_max = df.groupby('estado_civil')['calificacion'].mean().idxmax()
+        estado_min = df.groupby('estado_civil')['calificacion'].mean().idxmin()
+        diferencias_demograficas.append(f"Diferencia por estado civil: {estado_diff:.2f} puntos ({estado_max} > {estado_min})")
+    
+    # Por grupo de edad
+    edad_diff = df.groupby('grupo_edad')['calificacion'].mean().max() - df.groupby('grupo_edad')['calificacion'].mean().min()
+    if edad_diff > 0.5:
+        edad_max = df.groupby('grupo_edad')['calificacion'].mean().idxmax()
+        edad_min = df.groupby('grupo_edad')['calificacion'].mean().idxmin()
+        diferencias_demograficas.append(f"Diferencia por grupo de edad: {edad_diff:.2f} puntos ({edad_max} > {edad_min})")
+    
+    # 5. Correlaciones importantes
+    # Crear un DataFrame con promedios por usuario y categoría
+    user_cat_avg = df.groupby(['usuario_id', 'categoria'])['calificacion'].mean().unstack()
+    
+    # Calcular matriz de correlación entre categorías
+    cat_corr = user_cat_avg.corr()
+    
+    # Filtrar correlaciones fuertes (positivas o negativas)
+    correlaciones_importantes = []
+    for i in range(len(cat_corr.columns)):
+        for j in range(i+1, len(cat_corr.columns)):
+            corr_val = cat_corr.iloc[i, j]
+            if abs(corr_val) > 0.6:  # Umbral arbitrario para correlación fuerte
+                tipo = "positiva" if corr_val > 0 else "negativa"
+                correlaciones_importantes.append(f"Correlación {tipo} entre {cat_corr.columns[i]} y {cat_corr.columns[j]}: {corr_val:.2f}")
+    
+    # 6. Datos para gráficos
+    # Distribución de calificaciones
+    calificaciones_counts = df['calificacion'].value_counts().sort_index()
+    datos_calificaciones = {
+        "labels": calificaciones_counts.index.tolist(),
+        "data": calificaciones_counts.values.tolist()
+    }
+    
+    # Calificaciones por categoría
+    cat_avg = df.groupby('categoria')['calificacion'].mean().sort_values(ascending=False)
+    datos_categorias = {
+        "labels": cat_avg.index.tolist(),
+        "data": cat_avg.values.tolist()
+    }
+    
+    # Calificaciones por grupo de edad
+    edad_avg = df.groupby('grupo_edad')['calificacion'].mean().sort_index()
+    datos_edad = {
+        "labels": edad_avg.index.tolist(),
+        "data": edad_avg.values.tolist()
+    }
+    
+    # Calificaciones por sexo
+    sexo_avg = df.groupby('sexo')['calificacion'].mean()
+    datos_sexo = {
+        "labels": sexo_avg.index.tolist(),
+        "data": sexo_avg.values.tolist()
+    }
+    
+    # Datos para gráfico de radar
+    cat_radar = df.groupby('categoria')['calificacion'].mean()
+    datos_radar = {
+        "labels": cat_radar.index.tolist(),
+        "data": cat_radar.values.tolist()
+    }
+    
+    # Tendencia temporal
+    df['fecha'] = pd.to_datetime(df['fecha'])
+    df['fecha_mes'] = df['fecha'].dt.to_period('M')
+    tendencia = df.groupby('fecha_mes')['calificacion'].mean()
+    tendencia.index = tendencia.index.astype(str)
+    datos_tendencia = {
+        "labels": tendencia.index.tolist(),
+        "data": tendencia.values.tolist()
+    }
+    
+    # Datos para correlación
+    # Preparar datos para heatmap de correlación
+    datasets = []
+    for i, categoria in enumerate(cat_corr.index):
+        data = []
+        for j, cat_col in enumerate(cat_corr.columns):
+            data.append({
+                "x": cat_col,
+                "y": categoria,
+                "v": round(cat_corr.loc[categoria, cat_col], 2)
+            })
+        datasets.append({
+            "label": categoria,
+            "data": data
+        })
+    
+    datos_correlacion = {
+        "labels": cat_corr.columns.tolist(),
+        "datasets": datasets
+    }
+    
+    return render_template('admin_analisis.html', 
+                          categorias=categorias,
+                          grupos_edad=grupos_edad,
+                          sexos=sexos,
+                          promedio_general=promedio_general,
+                          desviacion_estandar=desviacion_estandar,
+                          total_respuestas=total_respuestas,
+                          usuarios_unicos=usuarios_unicos,
+                          top_categorias=top_categorias,
+                          bottom_categorias=bottom_categorias,
+                          diferencias_demograficas=diferencias_demograficas,
+                          correlaciones_importantes=correlaciones_importantes,
+                          datos_calificaciones=datos_calificaciones,
+                          datos_categorias=datos_categorias,
+                          datos_edad=datos_edad,
+                          datos_sexo=datos_sexo,
+                          datos_radar=datos_radar,
+                          datos_tendencia=datos_tendencia,
+                          datos_correlacion=datos_correlacion)
+
+@app.route('/admin/filtrar_analisis', methods=['POST'])
+@admin_required
+def filtrar_analisis():
+    categoria = request.form.get('categoria', 'todas')
+    edad = request.form.get('edad', 'todos')
+    sexo = request.form.get('sexo', 'todos')
+    
+    with sqlite3.connect("database.db") as conn:
+        df = pd.read_sql_query("SELECT * FROM respuestas", conn)
+    
+    # Crear grupos de edad
+    df['grupo_edad'] = pd.cut(df['edad'], 
+                             bins=[0, 25, 35, 45, 55, 100], 
+                             labels=['18-25', '26-35', '36-45', '46-55', '56+'], 
+                             right=False)
+    
+    # Aplicar filtros
+    if categoria != 'todas':
+        df = df[df['categoria'] == categoria]
+    
+    if edad != 'todos':
+        df = df[df['grupo_edad'] == edad]
+    
+    if sexo != 'todos':
+        df = df[df['sexo'] == sexo]
+    
+    # Si no hay datos después de filtrar
+    if df.empty:
+        return jsonify({
+            'promedio_general': 0,
+            'desviacion_estandar': 0,
+            'total_respuestas': 0,
+            'usuarios_unicos': 0,
+            'insights': {
+                'top_categorias': [],
+                'bottom_categorias': [],
+                'diferencias_demograficas': [],
+                'correlaciones_importantes': []
+            },
+            'graficos': {}
+        })
+    
+    # Calcular estadísticas con los datos filtrados
+    promedio_general = round(df['calificacion'].mean(), 2)
+    desviacion_estandar = round(df['calificacion'].std(), 2)
+    total_respuestas = len(df)
+    usuarios_unicos = df['usuario_id'].nunique()
+    
+    # Calcular insights
+    # Top y bottom categorías
+    cat_avg = df.groupby('categoria')['calificacion'].mean()
+    top_categorias = [{"nombre": cat, "valor": val} for cat, val in cat_avg.nlargest(3).items()]
+    bottom_categorias = [{"nombre": cat, "valor": val} for cat, val in cat_avg.nsmallest(3).items()]
+    
+    # Diferencias demográficas
+    diferencias_demograficas = []
+    
+    # Por sexo (si hay más de un sexo en los datos filtrados)
+    if df['sexo'].nunique() > 1:
+        sexo_diff = df.groupby('sexo')['calificacion'].mean().max() - df.groupby('sexo')['calificacion'].mean().min()
+        if sexo_diff > 0.5:
+            sexo_max = df.groupby('sexo')['calificacion'].mean().idxmax()
+            sexo_min = df.groupby('sexo')['calificacion'].mean().idxmin()
+            diferencias_demograficas.append(f"Diferencia por sexo: {sexo_diff:.2f} puntos ({sexo_max} > {sexo_min})")
+    
+    # Por estado civil (si hay más de un estado civil en los datos filtrados)
+    if df['estado_civil'].nunique() > 1:
+        estado_diff = df.groupby('estado_civil')['calificacion'].mean().max() - df.groupby('estado_civil')['calificacion'].mean().min()
+        if estado_diff > 0.5:
+            estado_max = df.groupby('estado_civil')['calificacion'].mean().idxmax()
+            estado_min = df.groupby('estado_civil')['calificacion'].mean().idxmin()
+            diferencias_demograficas.append(f"Diferencia por estado civil: {estado_diff:.2f} puntos ({estado_max} > {estado_min})")
+    
+    # Por grupo de edad (si hay más de un grupo de edad en los datos filtrados)
+    if df['grupo_edad'].nunique() > 1:
+        edad_diff = df.groupby('grupo_edad')['calificacion'].mean().max() - df.groupby('grupo_edad')['calificacion'].mean().min()
+        if edad_diff > 0.5:
+            edad_max = df.groupby('grupo_edad')['calificacion'].mean().idxmax()
+            edad_min = df.groupby('grupo_edad')['calificacion'].mean().idxmin()
+            diferencias_demograficas.append(f"Diferencia por grupo de edad: {edad_diff:.2f} puntos ({edad_max} > {edad_min})")
+    
+    # Correlaciones (si hay suficientes datos)
+    correlaciones_importantes = []
+    if df['usuario_id'].nunique() > 5 and df['categoria'].nunique() > 1:
+        user_cat_avg = df.groupby(['usuario_id', 'categoria'])['calificacion'].mean().unstack()
+        if not user_cat_avg.empty and user_cat_avg.shape[1] > 1:
+            cat_corr = user_cat_avg.corr()
+            for i in range(len(cat_corr.columns)):
+                for j in range(i+1, len(cat_corr.columns)):
+                    corr_val = cat_corr.iloc[i, j]
+                    if abs(corr_val) > 0.6 and not pd.isna(corr_val):
+                        tipo = "positiva" if corr_val > 0 else "negativa"
+                        correlaciones_importantes.append(f"Correlación {tipo} entre {cat_corr.columns[i]} y {cat_corr.columns[j]}: {corr_val:.2f}")
+    
+    # Preparar datos para gráficos
+    graficos = {}
+    
+    # 1. Distribución de calificaciones
+    calificaciones_counts = df['calificacion'].value_counts().sort_index()
+    graficos['calificaciones'] = {
+        "labels": calificaciones_counts.index.tolist(),
+        "data": calificaciones_counts.values.tolist()
+    }
+    
+    # 2. Calificaciones por categoría
+    cat_avg = df.groupby('categoria')['calificacion'].mean().sort_values(ascending=False)
+    graficos['categorias'] = {
+        "labels": cat_avg.index.tolist(),
+        "data": cat_avg.values.tolist()
+    }
+    
+    # 3. Calificaciones por grupo de edad
+    if df['grupo_edad'].nunique() > 1:
+        edad_avg = df.groupby('grupo_edad')['calificacion'].mean().sort_index()
+        graficos['edad'] = {
+            "labels": edad_avg.index.tolist(),
+            "data": edad_avg.values.tolist()
+        }
+    
+    # 4. Calificaciones por sexo
+    if df['sexo'].nunique() > 1:
+        sexo_avg = df.groupby('sexo')['calificacion'].mean()
+        graficos['sexo'] = {
+            "labels": sexo_avg.index.tolist(),
+            "data": sexo_avg.values.tolist()
+        }
+    
+    # 5. Datos para gráfico de radar
+    cat_radar = df.groupby('categoria')['calificacion'].mean()
+    graficos['radar'] = {
+        "labels": cat_radar.index.tolist(),
+        "data": cat_radar.values.tolist()
+    }
+    
+    # 6. Tendencia temporal
+    df['fecha'] = pd.to_datetime(df['fecha'])
+    df['fecha_mes'] = df['fecha'].dt.to_period('M')
+    tendencia = df.groupby('fecha_mes')['calificacion'].mean()
+    tendencia.index = tendencia.index.astype(str)
+    graficos['tendencia'] = {
+        "labels": tendencia.index.tolist(),
+        "data": tendencia.values.tolist()
+    }
+    
+    # 7. Datos para correlación
+    if df['usuario_id'].nunique() > 5 and df['categoria'].nunique() > 1:
+        user_cat_avg = df.groupby(['usuario_id', 'categoria'])['calificacion'].mean().unstack()
+        if not user_cat_avg.empty and user_cat_avg.shape[1] > 1:
+            cat_corr = user_cat_avg.corr()
+            
+            # Preparar datos para heatmap de correlación
+            datasets = []
+            for i, categoria in enumerate(cat_corr.index):
+                data = []
+                for j, cat_col in enumerate(cat_corr.columns):
+                    data.append({
+                        "x": cat_col,
+                        "y": categoria,
+                        "v": round(cat_corr.loc[categoria, cat_col], 2)
+                    })
+                datasets.append({
+                    "label": categoria,
+                    "data": data
+                })
+            
+            graficos['correlacion'] = {
+                "labels": cat_corr.columns.tolist(),
+                "datasets": datasets
+            }
+    
+    # Preparar respuesta
+    response = {
+        'promedio_general': promedio_general,
+        'desviacion_estandar': desviacion_estandar,
+        'total_respuestas': total_respuestas,
+        'usuarios_unicos': usuarios_unicos,
+        'insights': {
+            'top_categorias': top_categorias,
+            'bottom_categorias': bottom_categorias,
+            'diferencias_demograficas': diferencias_demograficas,
+            'correlaciones_importantes': correlaciones_importantes
+        },
+        'graficos': graficos
+    }
+    
+    return jsonify(response)
+    
 if __name__ == "__main__":
     app.run(debug=True)
 
