@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis - Ruleta de la Vida</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        #cargando {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Indicador de carga -->
+    <div id="cargando">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-chart-pie"></i> Ruleta de la Vida</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="{{ url_for('admin_dashboard') }}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="{{ url_for('admin_usuarios') }}"><i class="fas fa-users"></i> Usuarios</a></li>
+                <li><a href="{{ url_for('admin_analisis') }}" class="active"><i class="fas fa-chart-bar"></i> Análisis</a></li>
+                <li><a href="{{ url_for('index') }}"><i class="fas fa-home"></i> Volver al Inicio</a></li>
+                <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
+            </ul>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="admin-content">
+            <div class="admin-header">
+                <h1>Análisis Exploratorio</h1>
+                <a href="{{ url_for('descargar_excel') }}" class="button"><i class="fas fa-download"></i> Descargar Excel</a>
+            </div>
+
+            <!-- Filtros -->
+            <div class="filter-container">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <h3>Filtrar por Categoría</h3>
+                        <select id="filtroCategoria" class="form-control">
+                            <option value="todas">Todas las categorías</option>
+                            {% for categoria in categorias %}
+                            <option value="{{ categoria }}">{{ categoria }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div>
+                        <h3>Filtrar por Grupo de Edad</h3>
+                        <select id="filtroEdad" class="form-control">
+                            <option value="todos">Todos los grupos</option>
+                            {% for grupo in grupos_edad %}
+                            <option value="{{ grupo }}">{{ grupo }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div>
+                        <h3>Filtrar por Sexo</h3>
+                        <select id="filtroSexo" class="form-control">
+                            <option value="todos">Todos</option>
+                            {% for sexo in sexos %}
+                            <option value="{{ sexo }}">{{ sexo }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estadísticas generales -->
+            <div class="admin-stats">
+                <div class="stat-card">
+                    <h3>Calificación Promedio</h3>
+                    <p id="promedioGeneral">{{ promedio_general|round(2) }}</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Desviación Estándar</h3>
+                    <p id="desviacionEstandar">{{ desviacion_estandar|round(2) }}</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Respuestas</h3>
+                    <p id="totalRespuestas">{{ total_respuestas }}</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Usuarios Únicos</h3>
+                    <p id="usuariosUnicos">{{ usuarios_unicos }}</p>
+                </div>
+            </div>
+
+            <!-- Gráficos principales -->
+            <div class="charts-row">
+                <div class="chart-card">
+                    <h3>Distribución de Calificaciones</h3>
+                    <div class="chart-container">
+                        <canvas id="distribucionCalificaciones"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>Calificaciones por Categoría</h3>
+                    <div class="chart-container">
+                        <canvas id="calificacionesCategorias"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráficos demográficos -->
+            <div class="charts-row">
+                <div class="chart-card">
+                    <h3>Calificaciones por Grupo de Edad</h3>
+                    <div class="chart-container">
+                        <canvas id="calificacionesEdad"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>Calificaciones por Sexo</h3>
+                    <div class="chart-container">
+                        <canvas id="calificacionesSexo"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráfico de radar y tendencia temporal -->
+            <div class="charts-row">
+                <div class="chart-card">
+                    <h3>Perfil de la Ruleta de la Vida</h3>
+                    <div class="chart-container">
+                        <canvas id="perfilRadar"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>Tendencia Temporal</h3>
+                    <div class="chart-container">
+                        <canvas id="tendenciaTemporal"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Correlaciones -->
+            <div class="chart-card">
+                <h3>Correlación entre Categorías</h3>
+                <div class="chart-container">
+                    <canvas id="correlacionCategorias"></canvas>
+                </div>
+            </div>
+
+            <!-- Insights -->
+            <div class="chart-card">
+                <h3>Insights Clave</h3>
+                <div class="insights-container">
+                    <div class="insight-item">
+                        <h4><i class="fas fa-star"></i> Categorías Destacadas</h4>
+                        <ul id="categoriasDestacadas">
+                            {% for categoria in top_categorias %}
+                            <li><strong>{{ categoria.nombre }}:</strong> {{ categoria.valor|round(2) }}/10</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="insight-item">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Áreas de Oportunidad</h4>
+                        <ul id="areasOportunidad">
+                            {% for categoria in bottom_categorias %}
+                            <li><strong>{{ categoria.nombre }}:</strong> {{ categoria.valor|round(2) }}/10</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="insight-item">
+                        <h4><i class="fas fa-users"></i> Diferencias Demográficas</h4>
+                        <ul id="diferenciasDemograficas">
+                            {% if diferencias_demograficas %}
+                                {% for diferencia in diferencias_demograficas %}
+                                <li>{{ diferencia }}</li>
+                                {% endfor %}
+                            {% else %}
+                                <li>No se encontraron diferencias demográficas significativas.</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="insight-item">
+                        <h4><i class="fas fa-link"></i> Correlaciones Importantes</h4>
+                        <ul id="correlacionesImportantes">
+                            {% if correlaciones_importantes %}
+                                {% for correlacion in correlaciones_importantes %}
+                                <li>{{ correlacion }}</li>
+                                {% endfor %}
+                            {% else %}
+                                <li>No se encontraron correlaciones fuertes entre categorías.</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Datos JSON para los gráficos -->
+    <div id="datos-calificaciones" data-json='{{ datos_calificaciones|tojson|safe }}' style="display: none;"></div>
+    <div id="datos-categorias" data-json='{{ datos_categorias|tojson|safe }}' style="display: none;"></div>
+    <div id="datos-edad" data-json='{{ datos_edad|tojson|safe }}' style="display: none;"></div>
+    <div id="datos-sexo" data-json='{{ datos_sexo|tojson|safe }}' style="display: none;"></div>
+    <div id="datos-radar" data-json='{{ datos_radar|tojson|safe }}' style="display: none;"></div>
+    <div id="datos-tendencia" data-json='{{ datos_tendencia|tojson|safe }}' style="display: none;"></div>
+    <div id="datos-correlacion" data-json='{{ datos_correlacion|tojson|safe }}' style="display: none;"></div>
+
+    <script src="{{ url_for('static', filename='admin_analisis.js') }}"></script>
+</body>
+</html>
+
