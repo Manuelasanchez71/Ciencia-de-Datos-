@@ -8,16 +8,23 @@ document.addEventListener("DOMContentLoaded", () => {
   let chartTendencia
   let chartCorrelacion
 
-  // Función para obtener datos JSON de forma segura
+  // Modificar la función getJsonData para manejar valores null
   function getJsonData(elementId) {
     try {
       const element = document.getElementById(elementId)
       if (!element) return null
       const jsonStr = element.getAttribute("data-json")
-      return JSON.parse(jsonStr)
+      const data = JSON.parse(jsonStr)
+
+      // Si hay datos, asegurarse de que los valores NaN o null se manejen correctamente
+      if (data && data.data) {
+        data.data = data.data.map((val) => (val === null ? 0 : val))
+      }
+
+      return data
     } catch (error) {
       console.error(`Error al parsear JSON desde ${elementId}:`, error)
-      return null
+      return { labels: [], data: [] }
     }
   }
 
@@ -45,273 +52,330 @@ document.addEventListener("DOMContentLoaded", () => {
   ]
 
   // 1. Gráfico de distribución de calificaciones
-  const ctxDistribucion = document.getElementById("distribucionCalificaciones").getContext("2d")
-  chartDistribucion = new Chart(ctxDistribucion, {
-    type: "bar",
-    data: {
-      labels: datosCalificaciones.labels,
-      datasets: [
-        {
-          label: "Frecuencia",
-          data: datosCalificaciones.data,
-          backgroundColor: "rgba(54, 162, 235, 0.7)",
-          borderColor: "rgba(54, 162, 235, 1)",
-          borderWidth: 1,
+  const ctxDistribucion = document.getElementById("distribucionCalificaciones")
+  if (ctxDistribucion) {
+    chartDistribucion = new Chart(ctxDistribucion.getContext("2d"), {
+      type: "bar",
+      data: {
+        labels: datosCalificaciones.labels,
+        datasets: [
+          {
+            label: "Frecuencia",
+            data: datosCalificaciones.data,
+            backgroundColor: "rgba(54, 162, 235, 0.7)",
+            borderColor: "rgba(54, 162, 235, 1)",
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+          x: {
+            title: {
+              display: true,
+              text: "Calificación",
+            },
+          },
         },
-      ],
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-        x: {
+        plugins: {
           title: {
             display: true,
-            text: "Calificación",
+            text: "Distribución de Calificaciones",
+          },
+          legend: {
+            display: false,
           },
         },
       },
-      plugins: {
-        title: {
-          display: true,
-          text: "Distribución de Calificaciones",
-        },
-        legend: {
-          display: false,
-        },
-      },
-    },
-  })
+    })
+  }
 
   // 2. Gráfico de calificaciones por categoría
-  const ctxCategorias = document.getElementById("calificacionesCategorias").getContext("2d")
-  chartCategorias = new Chart(ctxCategorias, {
-    type: "bar",
-    data: {
-      labels: datosCategorias.labels,
-      datasets: [
-        {
-          label: "Calificación Promedio",
-          data: datosCategorias.data,
-          backgroundColor: coloresCategorias.slice(0, datosCategorias.labels.length),
-          borderColor: coloresCategorias
-            .slice(0, datosCategorias.labels.length)
-            .map((color) => color.replace("0.7", "1")),
-          borderWidth: 1,
+  const ctxCategorias = document.getElementById("calificacionesCategorias")
+  if (ctxCategorias) {
+    chartCategorias = new Chart(ctxCategorias.getContext("2d"), {
+      type: "bar",
+      data: {
+        labels: datosCategorias.labels,
+        datasets: [
+          {
+            label: "Calificación Promedio",
+            data: datosCategorias.data,
+            backgroundColor: coloresCategorias.slice(0, datosCategorias.labels.length),
+            borderColor: coloresCategorias
+              .slice(0, datosCategorias.labels.length)
+              .map((color) => color.replace("0.7", "1")),
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 10,
+          },
         },
-      ],
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        y: {
-          beginAtZero: true,
-          max: 10,
+        plugins: {
+          title: {
+            display: true,
+            text: "Calificación Promedio por Categoría",
+          },
         },
       },
-      plugins: {
-        title: {
-          display: true,
-          text: "Calificación Promedio por Categoría",
-        },
-      },
-    },
-  })
+    })
+  }
 
   // 3. Gráfico de calificaciones por grupo de edad
-  const ctxEdad = document.getElementById("calificacionesEdad").getContext("2d")
-  chartEdad = new Chart(ctxEdad, {
-    type: "bar",
-    data: {
-      labels: datosEdad.labels,
-      datasets: [
-        {
-          label: "Calificación Promedio",
-          data: datosEdad.data,
-          backgroundColor: "rgba(255, 159, 64, 0.7)",
-          borderColor: "rgba(255, 159, 64, 1)",
-          borderWidth: 1,
+  const ctxEdad = document.getElementById("calificacionesEdad")
+  if (ctxEdad) {
+    // Verificar si hay datos de edad disponibles
+    if (datosEdad.labels && datosEdad.labels.length > 0) {
+      chartEdad = new Chart(ctxEdad.getContext("2d"), {
+        type: "bar",
+        data: {
+          labels: datosEdad.labels,
+          datasets: [
+            {
+              label: "Calificación Promedio",
+              data: datosEdad.data,
+              backgroundColor: "rgba(255, 159, 64, 0.7)",
+              borderColor: "rgba(255, 159, 64, 1)",
+              borderWidth: 1,
+            },
+          ],
         },
-      ],
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        y: {
-          beginAtZero: true,
-          max: 10,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 10,
+            },
+          },
+          plugins: {
+            title: {
+              display: true,
+              text: "Calificación Promedio por Grupo de Edad",
+            },
+          },
         },
-      },
-      plugins: {
-        title: {
-          display: true,
-          text: "Calificación Promedio por Grupo de Edad",
-        },
-      },
-    },
-  })
+      })
+    } else {
+      // Si no hay datos, mostrar un mensaje
+      ctxEdad.height = 100
+      const ctx = ctxEdad.getContext("2d")
+      ctx.font = "16px Arial"
+      ctx.fillStyle = "#666"
+      ctx.textAlign = "center"
+      ctx.fillText("No hay datos suficientes para mostrar este gráfico", ctxEdad.width / 2, ctxEdad.height / 2)
+    }
+  }
 
   // 4. Gráfico de calificaciones por sexo
-  const ctxSexo = document.getElementById("calificacionesSexo").getContext("2d")
-  chartSexo = new Chart(ctxSexo, {
-    type: "bar",
-    data: {
-      labels: datosSexo.labels,
-      datasets: [
-        {
-          label: "Calificación Promedio",
-          data: datosSexo.data,
-          backgroundColor: ["rgba(54, 162, 235, 0.7)", "rgba(255, 99, 132, 0.7)", "rgba(75, 192, 192, 0.7)"].slice(
-            0,
-            datosSexo.labels.length,
-          ),
-          borderColor: ["rgba(54, 162, 235, 1)", "rgba(255, 99, 132, 1)", "rgba(75, 192, 192, 1)"].slice(
-            0,
-            datosSexo.labels.length,
-          ),
-          borderWidth: 1,
+  const ctxSexo = document.getElementById("calificacionesSexo")
+  if (ctxSexo) {
+    chartSexo = new Chart(ctxSexo.getContext("2d"), {
+      type: "bar",
+      data: {
+        labels: datosSexo.labels,
+        datasets: [
+          {
+            label: "Calificación Promedio",
+            data: datosSexo.data,
+            backgroundColor: ["rgba(54, 162, 235, 0.7)", "rgba(255, 99, 132, 0.7)", "rgba(75, 192, 192, 0.7)"].slice(
+              0,
+              datosSexo.labels.length,
+            ),
+            borderColor: ["rgba(54, 162, 235, 1)", "rgba(255, 99, 132, 1)", "rgba(75, 192, 192, 1)"].slice(
+              0,
+              datosSexo.labels.length,
+            ),
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 10,
+          },
         },
-      ],
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        y: {
-          beginAtZero: true,
-          max: 10,
+        plugins: {
+          title: {
+            display: true,
+            text: "Calificación Promedio por Sexo",
+          },
         },
       },
-      plugins: {
-        title: {
-          display: true,
-          text: "Calificación Promedio por Sexo",
-        },
-      },
-    },
-  })
+    })
+  }
 
   // 5. Gráfico de radar para el perfil
-  const ctxRadar = document.getElementById("perfilRadar").getContext("2d")
-  chartRadar = new Chart(ctxRadar, {
-    type: "radar",
-    data: {
-      labels: datosRadar.labels,
-      datasets: [
-        {
-          label: "Perfil Promedio",
-          data: datosRadar.data,
-          backgroundColor: "rgba(54, 162, 235, 0.2)",
-          borderColor: "rgba(54, 162, 235, 1)",
-          pointBackgroundColor: "rgba(54, 162, 235, 1)",
-          pointBorderColor: "#fff",
-          pointHoverBackgroundColor: "#fff",
-          pointHoverBorderColor: "rgba(54, 162, 235, 1)",
-        },
-      ],
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        r: {
-          angleLines: {
-            display: true,
+  const ctxRadar = document.getElementById("perfilRadar")
+  if (ctxRadar) {
+    chartRadar = new Chart(ctxRadar.getContext("2d"), {
+      type: "radar",
+      data: {
+        labels: datosRadar.labels,
+        datasets: [
+          {
+            label: "Perfil Promedio",
+            data: datosRadar.data,
+            backgroundColor: "rgba(54, 162, 235, 0.2)",
+            borderColor: "rgba(54, 162, 235, 1)",
+            pointBackgroundColor: "rgba(54, 162, 235, 1)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(54, 162, 235, 1)",
           },
-          suggestedMin: 0,
-          suggestedMax: 10,
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          r: {
+            angleLines: {
+              display: true,
+            },
+            suggestedMin: 0,
+            suggestedMax: 10,
+          },
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: "Perfil de la Ruleta de la Vida",
+          },
         },
       },
-      plugins: {
-        title: {
-          display: true,
-          text: "Perfil de la Ruleta de la Vida",
-        },
-      },
-    },
-  })
+    })
+  }
 
   // 6. Gráfico de tendencia temporal
-  const ctxTendencia = document.getElementById("tendenciaTemporal").getContext("2d")
-  chartTendencia = new Chart(ctxTendencia, {
-    type: "line",
-    data: {
-      labels: datosTendencia.labels,
-      datasets: [
-        {
-          label: "Calificación Promedio",
-          data: datosTendencia.data,
-          fill: false,
-          backgroundColor: "rgba(75, 192, 192, 0.7)",
-          borderColor: "rgba(75, 192, 192, 1)",
-          tension: 0.1,
+  const ctxTendencia = document.getElementById("tendenciaTemporal")
+  if (ctxTendencia) {
+    if (datosTendencia.labels && datosTendencia.labels.length > 0) {
+      chartTendencia = new Chart(ctxTendencia.getContext("2d"), {
+        type: "line",
+        data: {
+          labels: datosTendencia.labels,
+          datasets: [
+            {
+              label: "Calificación Promedio",
+              data: datosTendencia.data,
+              fill: false,
+              backgroundColor: "rgba(75, 192, 192, 0.7)",
+              borderColor: "rgba(75, 192, 192, 1)",
+              tension: 0.1,
+            },
+          ],
         },
-      ],
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        y: {
-          beginAtZero: true,
-          max: 10,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 10,
+            },
+          },
+          plugins: {
+            title: {
+              display: true,
+              text: "Tendencia de Calificaciones en el Tiempo",
+            },
+          },
         },
-      },
-      plugins: {
-        title: {
-          display: true,
-          text: "Tendencia de Calificaciones en el Tiempo",
-        },
-      },
-    },
-  })
+      })
+    } else {
+      // Si no hay datos, mostrar un mensaje
+      ctxTendencia.height = 100
+      const ctx = ctxTendencia.getContext("2d")
+      ctx.font = "16px Arial"
+      ctx.fillStyle = "#666"
+      ctx.textAlign = "center"
+      ctx.fillText(
+        "No hay datos suficientes para mostrar este gráfico",
+        ctxTendencia.width / 2,
+        ctxTendencia.height / 2,
+      )
+    }
+  }
 
   // 7. Gráfico de correlación entre categorías (heatmap)
-  const ctxCorrelacion = document.getElementById("correlacionCategorias").getContext("2d")
-
-  // Para el heatmap, usamos un enfoque diferente ya que Chart.js no tiene un tipo de gráfico heatmap nativo
-  // Creamos una visualización simple de correlación
-  chartCorrelacion = new Chart(ctxCorrelacion, {
-    type: "bar",
-    data: {
-      labels: datosCorrelacion.labels,
-      datasets: [
-        {
-          label: "Correlación",
-          data: datosCorrelacion.datasets.length > 0 ? datosCorrelacion.datasets[0].data.map((d) => d.v) : [],
-          backgroundColor: "rgba(75, 192, 192, 0.7)",
-          borderColor: "rgba(75, 192, 192, 1)",
-          borderWidth: 1,
+  const ctxCorrelacion = document.getElementById("correlacionCategorias")
+  if (ctxCorrelacion) {
+    // Para el heatmap, usamos un enfoque diferente ya que Chart.js no tiene un tipo de gráfico heatmap nativo
+    // Creamos una visualización simple de correlación
+    if (datosCorrelacion.labels && datosCorrelacion.labels.length > 0) {
+      chartCorrelacion = new Chart(ctxCorrelacion.getContext("2d"), {
+        type: "bar",
+        data: {
+          labels: datosCorrelacion.labels,
+          datasets: [
+            {
+              label: "Correlación",
+              data: datosCorrelacion.datasets.length > 0 ? datosCorrelacion.datasets[0].data.map((d) => d.v) : [],
+              backgroundColor: "rgba(75, 192, 192, 0.7)",
+              borderColor: "rgba(75, 192, 192, 1)",
+              borderWidth: 1,
+            },
+          ],
         },
-      ],
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      indexAxis: "y",
-      plugins: {
-        title: {
-          display: true,
-          text: "Correlación entre Categorías",
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          indexAxis: "y",
+          plugins: {
+            title: {
+              display: true,
+              text: "Correlación entre Categorías",
+            },
+            legend: {
+              display: false,
+            },
+          },
         },
-        legend: {
-          display: false,
-        },
-      },
-    },
-  })
+      })
+    } else {
+      // Si no hay datos, mostrar un mensaje
+      ctxCorrelacion.height = 100
+      const ctx = ctxCorrelacion.getContext("2d")
+      ctx.font = "16px Arial"
+      ctx.fillStyle = "#666"
+      ctx.textAlign = "center"
+      ctx.fillText(
+        "No hay datos suficientes para mostrar este gráfico",
+        ctxCorrelacion.width / 2,
+        ctxCorrelacion.height / 2,
+      )
+    }
+  }
 
   // Manejo de filtros
   document.getElementById("filtroCategoria").addEventListener("change", aplicarFiltros)
   document.getElementById("filtroEdad").addEventListener("change", aplicarFiltros)
   document.getElementById("filtroSexo").addEventListener("change", aplicarFiltros)
 
+  // Modificar la función aplicarFiltros para manejar la respuesta JSON
   function aplicarFiltros() {
+    // Mostrar indicador de carga
+    const cargando = document.getElementById("cargando")
+    if (cargando) cargando.style.display = "flex"
+
     const categoria = document.getElementById("filtroCategoria").value
     const edad = document.getElementById("filtroEdad").value
     const sexo = document.getElementById("filtroSexo").value
@@ -327,11 +391,29 @@ document.addEventListener("DOMContentLoaded", () => {
       method: "POST",
       body: formData,
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Error en la respuesta del servidor: ${response.status}`)
+        }
+        return response.text() // Obtener como texto primero
+      })
+      .then((text) => {
+        // Intentar parsear el texto como JSON
+        try {
+          return JSON.parse(text)
+        } catch (e) {
+          console.error("Error al parsear JSON:", e)
+          console.log("Texto recibido:", text)
+          throw new Error("Error al parsear la respuesta del servidor")
+        }
+      })
       .then((data) => {
+        // Ocultar indicador de carga
+        if (cargando) cargando.style.display = "none"
+
         // Actualizar estadísticas
-        document.getElementById("promedioGeneral").textContent = data.promedio_general
-        document.getElementById("desviacionEstandar").textContent = data.desviacion_estandar
+        document.getElementById("promedioGeneral").textContent = data.promedio_general.toFixed(2)
+        document.getElementById("desviacionEstandar").textContent = data.desviacion_estandar.toFixed(2)
         document.getElementById("totalRespuestas").textContent = data.total_respuestas
         document.getElementById("usuariosUnicos").textContent = data.usuarios_unicos
 
@@ -344,8 +426,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       })
       .catch((error) => {
+        // Ocultar indicador de carga
+        if (cargando) cargando.style.display = "none"
+
         console.error("Error al filtrar datos:", error)
-        alert("Ocurrió un error al filtrar los datos.")
+        alert("Ocurrió un error al filtrar los datos: " + error.message)
       })
   }
 
@@ -413,36 +498,73 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function actualizarGraficos(graficos) {
     // Actualizar cada gráfico con los nuevos datos
-    if (graficos.calificaciones) {
+    if (graficos.calificaciones && chartDistribucion) {
       actualizarDatosGrafico(chartDistribucion, graficos.calificaciones)
     }
 
-    if (graficos.categorias) {
+    if (graficos.categorias && chartCategorias) {
       actualizarDatosGrafico(chartCategorias, graficos.categorias)
     }
 
-    if (graficos.edad) {
+    if (graficos.edad && chartEdad) {
       actualizarDatosGrafico(chartEdad, graficos.edad)
+    } else if (chartEdad) {
+      // Si no hay datos de edad, limpiar el gráfico
+      chartEdad.data.labels = []
+      chartEdad.data.datasets[0].data = []
+      chartEdad.update()
+
+      // Mostrar mensaje de no hay datos suficientes
+      const ctxEdad = document.getElementById("calificacionesEdad")
+      if (ctxEdad) {
+        const ctx = ctxEdad.getContext("2d")
+        ctx.clearRect(0, 0, ctxEdad.width, ctxEdad.height)
+        ctx.font = "16px Arial"
+        ctx.fillStyle = "#666"
+        ctx.textAlign = "center"
+        ctx.fillText("No hay datos suficientes para mostrar este gráfico", ctxEdad.width / 2, ctxEdad.height / 2)
+      }
     }
 
-    if (graficos.sexo) {
+    if (graficos.sexo && chartSexo) {
       actualizarDatosGrafico(chartSexo, graficos.sexo)
     }
 
-    if (graficos.radar) {
+    if (graficos.radar && chartRadar) {
       actualizarDatosGrafico(chartRadar, graficos.radar)
     }
 
-    if (graficos.tendencia) {
+    if (graficos.tendencia && chartTendencia) {
       actualizarDatosGrafico(chartTendencia, graficos.tendencia)
+    } else if (chartTendencia) {
+      // Si no hay datos de tendencia, limpiar el gráfico
+      chartTendencia.data.labels = []
+      chartTendencia.data.datasets[0].data = []
+      chartTendencia.update()
+
+      // Mostrar mensaje de no hay datos suficientes
+      const ctxTendencia = document.getElementById("tendenciaTemporal")
+      if (ctxTendencia) {
+        const ctx = ctxTendencia.getContext("2d")
+        ctx.clearRect(0, 0, ctxTendencia.width, ctxTendencia.height)
+        ctx.font = "16px Arial"
+        ctx.fillStyle = "#666"
+        ctx.textAlign = "center"
+        ctx.fillText(
+          "No hay datos suficientes para mostrar este gráfico",
+          ctxTendencia.width / 2,
+          ctxTendencia.height / 2,
+        )
+      }
     }
 
-    if (graficos.correlacion) {
+    if (graficos.correlacion && chartCorrelacion) {
       // Para el gráfico de correlación, necesitamos un manejo especial
       actualizarGraficoCorrelacion(chartCorrelacion, graficos.correlacion)
     }
   }
 
+  // Modificar la función actualizarDatosGrafico para manejar valores null
   function actualizarDatosGrafico(chart, nuevosDatos) {
     if (!chart || !nuevosDatos) return
 
@@ -451,9 +573,9 @@ document.addEventListener("DOMContentLoaded", () => {
       chart.data.labels = nuevosDatos.labels
     }
 
-    // Actualizar datos
+    // Actualizar datos, reemplazando null por 0
     if (nuevosDatos.data) {
-      chart.data.datasets[0].data = nuevosDatos.data
+      chart.data.datasets[0].data = nuevosDatos.data.map((val) => (val === null ? 0 : val))
     }
 
     // Si hay colores personalizados, actualizarlos
