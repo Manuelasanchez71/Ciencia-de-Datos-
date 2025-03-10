@@ -223,13 +223,13 @@
     </div>
 
     <!-- Datos JSON para los gráficos -->
-    <div id="datos-calificaciones" data-json='{{ datos_calificaciones|tojson|safe }}' style="display: none;"></div>
-    <div id="datos-categorias" data-json='{{ datos_categorias|tojson|safe }}' style="display: none;"></div>
-    <div id="datos-edad" data-json='{{ datos_edad|tojson|safe }}' style="display: none;"></div>
-    <div id="datos-sexo" data-json='{{ datos_sexo|tojson|safe }}' style="display: none;"></div>
-    <div id="datos-radar" data-json='{{ datos_radar|tojson|safe }}' style="display: none;"></div>
-    <div id="datos-tendencia" data-json='{{ datos_tendencia|tojson|safe }}' style="display: none;"></div>
-    <div id="datos-correlacion" data-json='{{ datos_correlacion|tojson|safe }}' style="display: none;"></div>
+    <div id="datos-calificaciones" data-json='{{ datos_calificaciones}}' style="display: none;"></div>
+    <div id="datos-categorias" data-json='{{ datos_categorias}}' style="display: none;"></div>
+    <div id="datos-edad" data-json='{{ datos_edad}}' style="display: none;"></div>
+    <div id="datos-sexo" data-json='{{ datos_sexo}}' style="display: none;"></div>
+    <div id="datos-radar" data-json='{{ datos_radar}}' style="display: none;"></div>
+    <div id="datos-tendencia" data-json='{{ datos_tendencia}}' style="display: none;"></div>
+    <div id="datos-correlacion" data-json='{{ datos_correlacion}}' style="display: none;"></div>
 
     <script src="{{ url_for('static', filename='admin_analisis.js') }}"></script>
 </body>
