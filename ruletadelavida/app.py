@@ -241,7 +241,7 @@ def generar_grafico(user_id):
 def admin_usuarios():
     with sqlite3.connect("database.db") as conn:
         cursor = conn.cursor()
-        cursor.execute("SELECT id, username FROM usuarios WHERE role = 'user'")
+        cursor.execute("SELECT id, username, role FROM usuarios")
         usuarios = cursor.fetchall()
     return render_template('admin_usuarios.html', usuarios=usuarios)
 
@@ -262,6 +262,83 @@ def admin_ver_usuario(user_id):
                            respuestas=respuestas_por_categoria, 
                            grafico=grafico_base64, 
                            user_id=user_id)
+
+
+@app.route('/admin/editar_usuario/<int:user_id>')
+@admin_required
+def admin_editar_usuario(user_id):
+    with sqlite3.connect("database.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT id, username, role FROM usuarios WHERE id = ?", (user_id,))
+        usuario = cursor.fetchone()
+        
+        if not usuario:
+            flash("Usuario no encontrado", "error")
+            return redirect(url_for('admin_usuarios'))
+        
+        # Si el rol no está en la base de datos, asignar 'usuario' por defecto
+        if len(usuario) < 3:
+            usuario = list(usuario)
+            usuario.append('usuario')
+            
+    return render_template('admin_editar_usuario.html', usuario=usuario)
+
+@app.route('/admin/actualizar_usuario/<int:user_id>', methods=['POST'])
+@admin_required
+def admin_actualizar_usuario(user_id):
+    username = request.form.get('username')
+    role = request.form.get('role')
+    password = request.form.get('password')
+    
+    if not username:
+        flash("El nombre de usuario es obligatorio", "error")
+        return redirect(url_for('admin_editar_usuario', user_id=user_id))
+    
+    with sqlite3.connect("database.db") as conn:
+        cursor = conn.cursor()
+        
+        # Verificar si el nombre de usuario ya existe (excepto para el usuario actual)
+        cursor.execute("SELECT id FROM usuarios WHERE username = ? AND id != ?", (username, user_id))
+        if cursor.fetchone():
+            flash("El nombre de usuario ya está en uso", "error")
+            return redirect(url_for('admin_editar_usuario', user_id=user_id))
+        
+        # Actualizar el usuario
+        if password:
+            # Si se proporciona una nueva contraseña, actualizarla también
+            hashed_password = generate_password_hash(password)
+            cursor.execute("UPDATE usuarios SET username = ?, password = ?, role = ? WHERE id = ?", 
+                          (username, hashed_password, role, user_id))
+        else:
+            # Si no se proporciona contraseña, mantener la actual
+            cursor.execute("UPDATE usuarios SET username = ?, role = ? WHERE id = ?", 
+                          (username, role, user_id))
+        
+        conn.commit()
+        
+    flash("Usuario actualizado correctamente")
+    return redirect(url_for('admin_usuarios'))
+
+@app.route('/admin/eliminar_usuario/<int:user_id>', methods=['POST'])
+@admin_required
+def admin_eliminar_usuario(user_id):
+    with sqlite3.connect("database.db") as conn:
+        cursor = conn.cursor()
+        
+        # Verificar que no estamos eliminando al usuario actual
+        if session.get('user_id') == user_id:
+            flash("No puedes eliminar tu propio usuario", "error")
+            return redirect(url_for('admin_usuarios'))
+        
+        # Eliminar las respuestas asociadas al usuario
+        cursor.execute("DELETE FROM respuestas WHERE usuario_id = ?", (user_id,))
+        
+        # Eliminar el usuario
+        cursor.execute("DELETE FROM usuarios WHERE id = ?", (user_id,))
+        conn.commit()
+        
+    flash("Usuario y sus respuestas eliminados correctamente")
+    return redirect(url_for('admin_usuarios'))
 
 @app.route('/admin')
 @admin_required
