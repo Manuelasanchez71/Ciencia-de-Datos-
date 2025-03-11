@@ -29,12 +29,13 @@
         <h1>Lista de Usuarios</h1>
       </div>
 
-      <div class="chart-card">
+      <div class="chart-cardd">
         <table>
           <thead>
             <tr>
               <th>ID</th>
               <th>Nombre de Usuario</th>
+              <th>Rol</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -43,10 +44,19 @@
             <tr>
               <td>{{ usuario[0] }}</td>
               <td>{{ usuario[1] }}</td>
+              <td>{{ usuario[2] if usuario|length > 2 and usuario[2] else 'usuario' }}</td>
               <td>
-                <a href="{{ url_for('admin_ver_usuario', user_id=usuario[0]) }}" class="button">
-                  <i class="fas fa-eye"></i> Ver Respuestas
-                </a>
+                <div class="actions-column">
+                  <a href="{{ url_for('admin_ver_usuario', user_id=usuario[0]) }}" class="button button-small-ver">
+                    <i class="fas fa-eye"></i> Ver respuestas
+                  </a>
+                  <a href="{{ url_for('admin_editar_usuario', user_id=usuario[0]) }}" class="button button-small button-edit">
+                    <i class="fas fa-edit"></i> Editar
+                  </a>
+                  <button onclick="confirmarEliminar('{{ usuario[0] }}', '{{ usuario[1] }}')" class="button button-small button-delete">
+                    <i class="fas fa-trash"></i> Eliminar
+                  </button>
+                </div>
               </td>
             </tr>
             {% endfor %}
@@ -55,6 +65,47 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal de confirmación para eliminar usuario -->
+  <div id="modal-eliminar" class="modal">
+    <div class="modal-content">
+      <h3>Confirmar eliminación</h3>
+      <p>¿Estás seguro de que deseas eliminar al usuario <span id="nombre-usuario"></span>?</p>
+      <p class="warning-text">Esta acción no se puede deshacer y eliminará todas las respuestas asociadas.</p>
+      <div class="modal-buttons">
+        <button id="btn-cancelar" class="button button-secondary">Cancelar</button>
+        <form id="form-eliminar" method="POST" action="">
+          <button type="submit" class="button button-delete">Eliminar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Función para mostrar el modal de confirmación
+    function confirmarEliminar(userId, username) {
+      const modal = document.getElementById('modal-eliminar');
+      const nombreUsuario = document.getElementById('nombre-usuario');
+      const formEliminar = document.getElementById('form-eliminar');
+      
+      nombreUsuario.textContent = username;
+      formEliminar.action = "/admin/eliminar_usuario/" + userId;
+      modal.style.display = 'flex';
+    }
+
+    // Cerrar el modal al hacer clic en Cancelar
+    document.getElementById('btn-cancelar').addEventListener('click', function() {
+      document.getElementById('modal-eliminar').style.display = 'none';
+    });
+
+    // Cerrar el modal al hacer clic fuera del contenido
+    window.addEventListener('click', function(event) {
+      const modal = document.getElementById('modal-eliminar');
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
 
