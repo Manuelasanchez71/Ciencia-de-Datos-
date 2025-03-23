@@ -1,0 +1,93 @@
+id,usuario_id,nombre,edad,sexo,estado_civil,categoria,pregunta,calificacion,fecha,username
+1,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,salud_y_bienestar,¿Cómo te sientes físicamente en general?,4,2025-03-05 02:07:37,Jaqueline
+2,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,salud_y_bienestar,¿Estás tomando decisiones saludables con respecto a tu alimentación y ejercicio?,5,2025-03-05 02:07:37,Jaqueline
+3,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,salud_y_bienestar,¿Estás durmiendo lo suficiente para sentirte descansado?,6,2025-03-05 02:07:37,Jaqueline
+4,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,relaciones,"¿Cómo es tu relación con tu familia, amigos y pareja?",3,2025-03-05 02:07:37,Jaqueline
+5,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,relaciones,¿Estás comunicándote de manera efectiva con las personas importantes en tu vida?,4,2025-03-05 02:07:37,Jaqueline
+6,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,carrera_y_proposito,¿Sientes que estás progresando en tu carrera?,5,2025-03-05 02:07:37,Jaqueline
+7,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,carrera_y_proposito,¿Tienes claro tu propósito o lo que te gustaría lograr en tu vida profesional?,2,2025-03-05 02:07:37,Jaqueline
+8,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,carrera_y_proposito,¿Estás buscando oportunidades para crecer profesionalmente?,3,2025-03-05 02:07:37,Jaqueline
+9,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,finanzas,¿Te sientes seguro/a financieramente?,4,2025-03-05 02:07:37,Jaqueline
+10,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,finanzas,"¿Estás gestionando tu dinero de manera efectiva (ahorros, inversiones, gastos)?",5,2025-03-05 02:07:37,Jaqueline
+11,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,finanzas,¿Tienes un plan financiero a corto y largo plazo?,6,2025-03-05 02:07:37,Jaqueline
+12,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,desarrollo_personal_y_crecimiento,¿Te sientes motivado/a para mejorar y crecer como persona?,7,2025-03-05 02:07:37,Jaqueline
+13,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,desarrollo_personal_y_crecimiento,¿Estás tomando tiempo para reflexionar y trabajar en tu autoconocimiento?,6,2025-03-05 02:07:37,Jaqueline
+14,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,desarrollo_personal_y_crecimiento,¿Tienes metas claras de desarrollo personal?,7,2025-03-05 02:07:37,Jaqueline
+15,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,diversion_y_ocio,¿Estás dedicando tiempo a actividades que disfrutas?,8,2025-03-05 02:07:37,Jaqueline
+16,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,diversion_y_ocio,¿Tienes hobbies o intereses que te ayudan a desconectar?,9,2025-03-05 02:07:37,Jaqueline
+17,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,diversion_y_ocio,¿Te sientes equilibrado/a entre el estudio y el tiempo libre?,10,2025-03-05 02:07:37,Jaqueline
+18,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,espiritualidad,¿Sientes que tienes un propósito más grande en la vida?,8,2025-03-05 02:07:37,Jaqueline
+19,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,espiritualidad,¿Te sientes en paz con tu vida y tus creencias?,7,2025-03-05 02:07:37,Jaqueline
+20,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,espiritualidad,¿Estás tomando tiempo para reflexionar sobre tu vida y tu conexión con el mundo?,6,2025-03-05 02:07:37,Jaqueline
+21,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,entorno_fisico_y_hogar,¿Te sientes cómodo/a y organizado/a en tu espacio de vida?,7,2025-03-05 02:07:37,Jaqueline
+22,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,entorno_fisico_y_hogar,¿Tu entorno te inspira o te ayuda a relajarte y ser productivo/a?,6,2025-03-05 02:07:37,Jaqueline
+23,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,entorno_fisico_y_hogar,¿Tienes un lugar que te permita desconectar y recargar energías?,4,2025-03-05 02:07:37,Jaqueline
+24,4,Andrey Stiben Orozco ,32,masculino,soltero,salud_y_bienestar,¿Cómo te sientes físicamente en general?,7,2025-03-05 04:20:38,Andrey
+25,4,Andrey Stiben Orozco ,32,masculino,soltero,salud_y_bienestar,¿Estás tomando decisiones saludables con respecto a tu alimentación y ejercicio?,3,2025-03-05 04:20:38,Andrey
+26,4,Andrey Stiben Orozco ,32,masculino,soltero,salud_y_bienestar,¿Estás durmiendo lo suficiente para sentirte descansado?,7,2025-03-05 04:20:38,Andrey
+27,4,Andrey Stiben Orozco ,32,masculino,soltero,relaciones,"¿Cómo es tu relación con tu familia, amigos y pareja?",8,2025-03-05 04:20:38,Andrey
+28,4,Andrey Stiben Orozco ,32,masculino,soltero,relaciones,¿Estás comunicándote de manera efectiva con las personas importantes en tu vida?,6,2025-03-05 04:20:38,Andrey
+29,4,Andrey Stiben Orozco ,32,masculino,soltero,carrera_y_proposito,¿Sientes que estás progresando en tu carrera?,9,2025-03-05 04:20:38,Andrey
+30,4,Andrey Stiben Orozco ,32,masculino,soltero,carrera_y_proposito,¿Tienes claro tu propósito o lo que te gustaría lograr en tu vida profesional?,10,2025-03-05 04:20:38,Andrey
+31,4,Andrey Stiben Orozco ,32,masculino,soltero,carrera_y_proposito,¿Estás buscando oportunidades para crecer profesionalmente?,9,2025-03-05 04:20:38,Andrey
+32,4,Andrey Stiben Orozco ,32,masculino,soltero,finanzas,¿Te sientes seguro/a financieramente?,7,2025-03-05 04:20:38,Andrey
+33,4,Andrey Stiben Orozco ,32,masculino,soltero,finanzas,"¿Estás gestionando tu dinero de manera efectiva (ahorros, inversiones, gastos)?",5,2025-03-05 04:20:38,Andrey
+34,4,Andrey Stiben Orozco ,32,masculino,soltero,finanzas,¿Tienes un plan financiero a corto y largo plazo?,4,2025-03-05 04:20:38,Andrey
+35,4,Andrey Stiben Orozco ,32,masculino,soltero,desarrollo_personal_y_crecimiento,¿Te sientes motivado/a para mejorar y crecer como persona?,9,2025-03-05 04:20:38,Andrey
+36,4,Andrey Stiben Orozco ,32,masculino,soltero,desarrollo_personal_y_crecimiento,¿Estás tomando tiempo para reflexionar y trabajar en tu autoconocimiento?,8,2025-03-05 04:20:38,Andrey
+37,4,Andrey Stiben Orozco ,32,masculino,soltero,desarrollo_personal_y_crecimiento,¿Tienes metas claras de desarrollo personal?,10,2025-03-05 04:20:38,Andrey
+38,4,Andrey Stiben Orozco ,32,masculino,soltero,diversion_y_ocio,¿Estás dedicando tiempo a actividades que disfrutas?,9,2025-03-05 04:20:38,Andrey
+39,4,Andrey Stiben Orozco ,32,masculino,soltero,diversion_y_ocio,¿Tienes hobbies o intereses que te ayudan a desconectar?,10,2025-03-05 04:20:38,Andrey
+40,4,Andrey Stiben Orozco ,32,masculino,soltero,diversion_y_ocio,¿Te sientes equilibrado/a entre el estudio y el tiempo libre?,7,2025-03-05 04:20:38,Andrey
+41,4,Andrey Stiben Orozco ,32,masculino,soltero,espiritualidad,¿Sientes que tienes un propósito más grande en la vida?,10,2025-03-05 04:20:38,Andrey
+42,4,Andrey Stiben Orozco ,32,masculino,soltero,espiritualidad,¿Te sientes en paz con tu vida y tus creencias?,9,2025-03-05 04:20:38,Andrey
+43,4,Andrey Stiben Orozco ,32,masculino,soltero,espiritualidad,¿Estás tomando tiempo para reflexionar sobre tu vida y tu conexión con el mundo?,8,2025-03-05 04:20:38,Andrey
+44,4,Andrey Stiben Orozco ,32,masculino,soltero,entorno_fisico_y_hogar,¿Te sientes cómodo/a y organizado/a en tu espacio de vida?,7,2025-03-05 04:20:38,Andrey
+45,4,Andrey Stiben Orozco ,32,masculino,soltero,entorno_fisico_y_hogar,¿Tu entorno te inspira o te ayuda a relajarte y ser productivo/a?,8,2025-03-05 04:20:38,Andrey
+46,4,Andrey Stiben Orozco ,32,masculino,soltero,entorno_fisico_y_hogar,¿Tienes un lugar que te permita desconectar y recargar energías?,6,2025-03-05 04:20:38,Andrey
+47,6,Gabriel Jaime Obando,73,masculino,soltero,salud_y_bienestar,¿Cómo te sientes físicamente en general?,5,2025-03-05 04:25:02,Gabriel
+48,6,Gabriel Jaime Obando,73,masculino,soltero,salud_y_bienestar,¿Estás tomando decisiones saludables con respecto a tu alimentación y ejercicio?,2,2025-03-05 04:25:02,Gabriel
+49,6,Gabriel Jaime Obando,73,masculino,soltero,salud_y_bienestar,¿Estás durmiendo lo suficiente para sentirte descansado?,3,2025-03-05 04:25:02,Gabriel
+50,6,Gabriel Jaime Obando,73,masculino,soltero,relaciones,"¿Cómo es tu relación con tu familia, amigos y pareja?",7,2025-03-05 04:25:02,Gabriel
+51,6,Gabriel Jaime Obando,73,masculino,soltero,relaciones,¿Estás comunicándote de manera efectiva con las personas importantes en tu vida?,6,2025-03-05 04:25:02,Gabriel
+52,6,Gabriel Jaime Obando,73,masculino,soltero,carrera_y_proposito,¿Sientes que estás progresando en tu carrera?,4,2025-03-05 04:25:02,Gabriel
+53,6,Gabriel Jaime Obando,73,masculino,soltero,carrera_y_proposito,¿Tienes claro tu propósito o lo que te gustaría lograr en tu vida profesional?,5,2025-03-05 04:25:02,Gabriel
+54,6,Gabriel Jaime Obando,73,masculino,soltero,carrera_y_proposito,¿Estás buscando oportunidades para crecer profesionalmente?,4,2025-03-05 04:25:02,Gabriel
+55,6,Gabriel Jaime Obando,73,masculino,soltero,finanzas,¿Te sientes seguro/a financieramente?,8,2025-03-05 04:25:02,Gabriel
+56,6,Gabriel Jaime Obando,73,masculino,soltero,finanzas,"¿Estás gestionando tu dinero de manera efectiva (ahorros, inversiones, gastos)?",6,2025-03-05 04:25:02,Gabriel
+57,6,Gabriel Jaime Obando,73,masculino,soltero,finanzas,¿Tienes un plan financiero a corto y largo plazo?,3,2025-03-05 04:25:02,Gabriel
+58,6,Gabriel Jaime Obando,73,masculino,soltero,desarrollo_personal_y_crecimiento,¿Te sientes motivado/a para mejorar y crecer como persona?,7,2025-03-05 04:25:02,Gabriel
+59,6,Gabriel Jaime Obando,73,masculino,soltero,desarrollo_personal_y_crecimiento,¿Estás tomando tiempo para reflexionar y trabajar en tu autoconocimiento?,5,2025-03-05 04:25:02,Gabriel
+60,6,Gabriel Jaime Obando,73,masculino,soltero,desarrollo_personal_y_crecimiento,¿Tienes metas claras de desarrollo personal?,6,2025-03-05 04:25:02,Gabriel
+61,6,Gabriel Jaime Obando,73,masculino,soltero,diversion_y_ocio,¿Estás dedicando tiempo a actividades que disfrutas?,8,2025-03-05 04:25:02,Gabriel
+62,6,Gabriel Jaime Obando,73,masculino,soltero,diversion_y_ocio,¿Tienes hobbies o intereses que te ayudan a desconectar?,9,2025-03-05 04:25:02,Gabriel
+63,6,Gabriel Jaime Obando,73,masculino,soltero,diversion_y_ocio,¿Te sientes equilibrado/a entre el estudio y el tiempo libre?,6,2025-03-05 04:25:02,Gabriel
+64,6,Gabriel Jaime Obando,73,masculino,soltero,espiritualidad,¿Sientes que tienes un propósito más grande en la vida?,10,2025-03-05 04:25:02,Gabriel
+65,6,Gabriel Jaime Obando,73,masculino,soltero,espiritualidad,¿Te sientes en paz con tu vida y tus creencias?,8,2025-03-05 04:25:02,Gabriel
+66,6,Gabriel Jaime Obando,73,masculino,soltero,espiritualidad,¿Estás tomando tiempo para reflexionar sobre tu vida y tu conexión con el mundo?,7,2025-03-05 04:25:02,Gabriel
+67,6,Gabriel Jaime Obando,73,masculino,soltero,entorno_fisico_y_hogar,¿Te sientes cómodo/a y organizado/a en tu espacio de vida?,6,2025-03-05 04:25:02,Gabriel
+68,6,Gabriel Jaime Obando,73,masculino,soltero,entorno_fisico_y_hogar,¿Tu entorno te inspira o te ayuda a relajarte y ser productivo/a?,5,2025-03-05 04:25:02,Gabriel
+69,6,Gabriel Jaime Obando,73,masculino,soltero,entorno_fisico_y_hogar,¿Tienes un lugar que te permita desconectar y recargar energías?,2,2025-03-05 04:25:02,Gabriel
+70,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,salud_y_bienestar,¿Cómo te sientes físicamente en general?,2,2025-03-11 20:00:36,Jaqueline
+71,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,salud_y_bienestar,¿Estás tomando decisiones saludables con respecto a tu alimentación y ejercicio?,1,2025-03-11 20:00:36,Jaqueline
+72,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,salud_y_bienestar,¿Estás durmiendo lo suficiente para sentirte descansado?,3,2025-03-11 20:00:36,Jaqueline
+73,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,relaciones,"¿Cómo es tu relación con tu familia, amigos y pareja?",4,2025-03-11 20:00:36,Jaqueline
+74,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,relaciones,¿Estás comunicándote de manera efectiva con las personas importantes en tu vida?,5,2025-03-11 20:00:36,Jaqueline
+75,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,carrera_y_proposito,¿Sientes que estás progresando en tu carrera?,6,2025-03-11 20:00:36,Jaqueline
+76,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,carrera_y_proposito,¿Tienes claro tu propósito o lo que te gustaría lograr en tu vida profesional?,7,2025-03-11 20:00:36,Jaqueline
+77,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,carrera_y_proposito,¿Estás buscando oportunidades para crecer profesionalmente?,8,2025-03-11 20:00:36,Jaqueline
+78,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,finanzas,¿Te sientes seguro/a financieramente?,9,2025-03-11 20:00:36,Jaqueline
+79,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,finanzas,"¿Estás gestionando tu dinero de manera efectiva (ahorros, inversiones, gastos)?",10,2025-03-11 20:00:36,Jaqueline
+80,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,finanzas,¿Tienes un plan financiero a corto y largo plazo?,8,2025-03-11 20:00:36,Jaqueline
+81,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,desarrollo_personal_y_crecimiento,¿Te sientes motivado/a para mejorar y crecer como persona?,6,2025-03-11 20:00:36,Jaqueline
+82,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,desarrollo_personal_y_crecimiento,¿Estás tomando tiempo para reflexionar y trabajar en tu autoconocimiento?,4,2025-03-11 20:00:36,Jaqueline
+83,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,desarrollo_personal_y_crecimiento,¿Tienes metas claras de desarrollo personal?,6,2025-03-11 20:00:36,Jaqueline
+84,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,diversion_y_ocio,¿Estás dedicando tiempo a actividades que disfrutas?,8,2025-03-11 20:00:36,Jaqueline
+85,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,diversion_y_ocio,¿Tienes hobbies o intereses que te ayudan a desconectar?,2,2025-03-11 20:00:36,Jaqueline
+86,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,diversion_y_ocio,¿Te sientes equilibrado/a entre el estudio y el tiempo libre?,1,2025-03-11 20:00:36,Jaqueline
+87,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,espiritualidad,¿Sientes que tienes un propósito más grande en la vida?,3,2025-03-11 20:00:36,Jaqueline
+88,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,espiritualidad,¿Te sientes en paz con tu vida y tus creencias?,4,2025-03-11 20:00:36,Jaqueline
+89,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,espiritualidad,¿Estás tomando tiempo para reflexionar sobre tu vida y tu conexión con el mundo?,6,2025-03-11 20:00:36,Jaqueline
+90,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,entorno_fisico_y_hogar,¿Te sientes cómodo/a y organizado/a en tu espacio de vida?,3,2025-03-11 20:00:36,Jaqueline
+91,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,entorno_fisico_y_hogar,¿Tu entorno te inspira o te ayuda a relajarte y ser productivo/a?,8,2025-03-11 20:00:36,Jaqueline
+92,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,entorno_fisico_y_hogar,¿Tienes un lugar que te permita desconectar y recargar energías?,10,2025-03-11 20:00:36,Jaqueline
