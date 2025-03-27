@@ -41,7 +41,7 @@
     <div id="cargando">
         <div class="spinner"></div>
     </div>
-
+    {% block content %}
     <div class="admin-layout">
         <!-- Sidebar -->
         <div class="sidebar">
@@ -233,6 +233,10 @@
     <div id="datos-correlacion" data-json='{{ datos_correlacion}}' style="display: none;"></div>
 
     <script src="{{ url_for('static', filename='admin_analisis.js') }}"></script>
+{% endblock %} 
 </body>
+  {% block footer %}
+    {% include 'footer.html' %}
+  {% endblock %}
 </html>
 
