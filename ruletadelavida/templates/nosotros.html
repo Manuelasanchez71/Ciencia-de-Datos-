@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Nosotros - Ruleta de la Vida{% endblock %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruleta de la Vida</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    {% block content %}
+    <div class="container">
+
+        <h2>Sobre Nosotros</h2>
+        <p>Bienvenido a la Ruleta de la Vida. Somos un equipo dedicado a mejorar la calidad de vida de las personas a través de herramientas interactivas.</p>
+
+        <h2>Misión</h2>
+        <p>Ser una herramienta innovadora y accesible que ayude a las personas a reflexionar sobre su bienestar integral, brindando información clara y visual sobre su desarrollo en distintas áreas de la vida. Buscamos inspirar el crecimiento personal a través de la autoevaluación y la toma de decisiones informadas.</p>
+
+        <h2>Visión</h2>
+        <p>Facilitar a los usuarios una plataforma intuitiva y dinámica para evaluar su estado en diferentes aspectos de la vida, proporcionando reportes interactivos y gráficos visuales que les permitan identificar áreas de mejora y establecer objetivos para su crecimiento personal y bienestar.</p>
+    </div>
+</body>
+
+{% endblock %}
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+</html>
