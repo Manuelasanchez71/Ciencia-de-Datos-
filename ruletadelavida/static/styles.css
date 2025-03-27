@@ -18,6 +18,7 @@ body {
   background-color: var(--light-bg);
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
 .container {
@@ -26,6 +27,7 @@ body {
   margin: auto;
   overflow: hidden;
   padding: 0 20px;
+  
 }
 
 /* Estilos para encabezados */
@@ -46,7 +48,7 @@ header h1 {
 
 /* Navegación */
 nav {
-  background: #444;
+  background: #333333;
   color: var(--white);
   padding: 10px 0;
   text-align: center;
@@ -787,3 +789,133 @@ table td:nth-child(4) {
   background-color: #f44336;
 }
 
+footer {
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+  display: inline;
+  margin: 0 15px;
+}
+
+.footer ul a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.footer ul a i {
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+/* Efecto hover */
+.footer ul a:hover {
+  color: #4CAF50;
+}
+
+/*estilos para el formulario de contacto */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor del formulario */
+.contact-form-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+/* Título del formulario */
+.contact-form-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Estilos para etiquetas */
+.contact-form-container label {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Estilos para los campos de entrada */
+.contact-form-container input,
+.contact-form-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Estilos específicos para el área de texto */
+.contact-form-container textarea {
+  height: 100px;
+  resize: none;
+}
+
+/* Botón de envío */
+.contact-form-container button {
+  width: 100%;
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Efecto hover en el botón */
+.contact-form-container button:hover {
+  background-color: #218838;
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 600px) {
+  .contact-form-container {
+      width: 90%;
+  }
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.styled-table th, .styled-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+  vertical-align: top; /* Asegura que el contenido se alinee arriba */
+}
+.styled-table th {
+  background-color: #f4f4f4;
+}
+.email-column {
+  max-width: 150px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+.mensaje-column {
+  max-width: 300px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal; /* Permite que el texto haga saltos de línea */
+}
