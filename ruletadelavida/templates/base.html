@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi Página{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ruleta de la Vida</h1>
+        </header>
+        
+        <nav>
+            {% if session['role'] == 'admin' %}
+            <a href="{{ url_for('admin_dashboard') }}">Panel de Administración</a>
+            {% else %}
+            <a href="{{ url_for('mis_respuestas') }}">Mis Respuestas</a>
+            {% endif %}
+            <a href="{{ url_for('logout') }}">Cerrar sesión</a>
+        </nav>
+        
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+
+        {% block footer %}{% endblock %}
+    </div>
+</body>
+</html>

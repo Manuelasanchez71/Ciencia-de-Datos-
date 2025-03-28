@@ -9,9 +9,25 @@ import matplotlib.pyplot as plt
 import numpy as np
 import base64
 from datetime import datetime, timedelta
+from flask_mail import Mail, Message
+from dotenv import load_dotenv
+
+# Cargar variables de entorno
+load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = 'ruletadelavida'  #clave secreta real
+
+# Configurar Flask-Mail con los datos de Hotmail (Outlook)
+app.config["MAIL_SERVER"] = os.getenv("MAIL_SERVER")
+app.config["MAIL_PORT"] = int(os.getenv("MAIL_PORT"))
+app.config["MAIL_USE_TLS"] = os.getenv("MAIL_USE_TLS") == "True"
+app.config["MAIL_USE_SSL"] = os.getenv("MAIL_USE_SSL") == "True"
+app.config["MAIL_USERNAME"] = os.getenv("MAIL_USERNAME")
+app.config["MAIL_PASSWORD"] = os.getenv("MAIL_PASSWORD")
+app.config["MAIL_DEFAULT_SENDER"] = os.getenv("MAIL_DEFAULT_SENDER")
+
+mail = Mail(app)
 
 # if os.path.exists("database.db"):
 #     os.remove("database.db")
@@ -46,6 +62,16 @@ def init_db():
                     FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
                 )
             ''')
+            cursor.execute('''
+                    CREATE TABLE IF NOT EXISTS contacto (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                nombre TEXT NOT NULL,
+                email TEXT NOT NULL,
+                mensaje TEXT NOT NULL,
+                fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )    
+            ''')
+            
             # Crear un usuario administrador por defecto solo si la base de datos es nueva
             cursor.execute("INSERT OR IGNORE INTO usuarios (username, password, email, phone, role) VALUES (?, ?, ?, ?, ?)",
                            ('admin', generate_password_hash('admin123'), 'admin@example.com', '1234567890', 'admin'))
@@ -923,6 +949,67 @@ def filtrar_analisis():
         status=200,
         mimetype='application/json'
     )
+
+@app.route('/nosotros')
+def nosotros():
+    return render_template('nosotros.html')
+
+@app.route('/contacto')
+def contacto():
+    return render_template('contacto.html')
+
+@app.route('/enviar_contacto', methods=['GET', 'POST'])
+def enviar_contacto():
+    if request.method == 'POST':
+        nombre = request.form.get('nombre')
+        email = request.form.get('email')
+        mensaje = request.form.get('mensaje')
+
+        if nombre and email and mensaje:
+            # Guardar datos en la base de datos
+            with sqlite3.connect("database.db") as conn:
+                cursor = conn.cursor()
+                cursor.execute("INSERT INTO contacto (nombre, email, mensaje) VALUES (?, ?, ?)", 
+                               (nombre, email, mensaje))
+                conn.commit()
+
+            # Enviar correo de confirmación al usuario
+            try:
+                msg = Message(
+                    subject="📩 Hemos recibido tu mensaje",
+                    sender=app.config['MAIL_DEFAULT_SENDER'], # Siempre tu correo SMTP
+                    recipients=[email], # Correo del usuario que llenó el formulario
+                    reply_to=email  # Permite responder al usuario directamente
+                )
+                msg.body = f"""
+                Hola {nombre},
+
+                Gracias por contactarnos. Hemos recibido tu mensaje y te responderemos pronto.
+
+                Mensaje recibido:
+                "{mensaje}"
+
+                Atentamente,
+                El equipo de Ruleta de la Vida.
+                """
+                mail.send(msg)
+                flash('Mensaje enviado con éxito. Se ha enviado una confirmación a tu correo.', 'success')
+            except Exception as e:
+                flash(f'Error al enviar el correo: {str(e)}', 'danger')
+        else:
+            flash('Por favor, completa todos los campos.', 'warning')
+
+    return redirect(url_for('index'))
+
+@app.route('/admin/contactos')
+def admin_contactos():
+    with sqlite3.connect("database.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT id, nombre, email, mensaje, fecha FROM contacto ORDER BY fecha DESC")
+        mensajes = cursor.fetchall()
+
+    return render_template('admin_contactos.html', mensajes=mensajes)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

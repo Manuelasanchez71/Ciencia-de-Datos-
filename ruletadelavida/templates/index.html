@@ -21,8 +21,8 @@
             {% endif %}
             <a href="{{ url_for('logout') }}">Cerrar sesión</a>
         </nav>
+        {% block content %}
         <main>
-            {% block content %}
             <form id="formulario" action="/guardar" method="POST">
                 <section>
                     <h2>Información Personal</h2>
@@ -229,16 +229,15 @@
 
                 <button type="submit">Enviar</button>
             </form>
-            {% endblock %}
         </main>
     </div>
 
     <button id="btnDescargarPDF" style="display: none;">Descargar Gráfico</button>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
+    {% endblock %}
 </body>
     {% block footer %}
         {% include 'footer.html' %}
     {% endblock %}
 </html>
-

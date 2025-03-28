@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Ruleta de la Vida</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    {% block content %}
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+          <h2><i class="fas fa-chart-pie"></i> Ruleta de la Vida</h2>
+        </div>
+        <ul class="sidebar-menu">
+          <li><a href="{{ url_for('admin_dashboard') }}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+          <li><a href="{{ url_for('admin_usuarios') }}"><i class="fas fa-users"></i> Usuarios</a></li>
+          <li><a href="{{ url_for('admin_analisis') }}"><i class="fas fa-chart-bar"></i> Análisis</a></li>
+          <li><a href="{{ url_for('admin_contactos') }}" class="active"><i class="fas fa-envelope"></i> Respuestas de contacto</a></li>
+          <li><a href="{{ url_for('index') }}"><i class="fas fa-home"></i> Volver al Inicio</a></li>
+          <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
+        </ul>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="admin-content">
+        <div class="admin-header">
+            <h2>Mensajes de Contacto</h2>
+        </div>
+        
+        <div class="chart-cardd">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Mensaje</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for mensaje in mensajes %}
+                    <tr>
+                        <td>{{ mensaje[0] }}</td>
+                        <td>{{ mensaje[1] }}</td>
+                        <td class="email-column">{{ mensaje[2] }}</td>
+                        <td class="mensaje-column">{{ mensaje[3] }}</td>
+                        <td>{{ mensaje[4] }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5">No hay mensajes de contacto.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+  </div>
+  {% endblock %}
+</body>
+  {% block footer %}
+    {% include 'footer.html' %}
+  {% endblock %}
+</html>

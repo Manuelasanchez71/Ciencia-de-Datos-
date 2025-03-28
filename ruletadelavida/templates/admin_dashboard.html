@@ -9,6 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+  {% block content %}
   <div class="admin-layout">
     <!-- Sidebar -->
     <div class="sidebar">
@@ -91,7 +92,11 @@
   </script>
   
   <script src="{{ url_for('static', filename='admin_dashboard.js') }}"></script>
+  {% endblock %}
 </body>
+  {% block footer %}
+    {% include 'footer.html' %}
+  {% endblock %}
 </html>
 
 
