@@ -12,11 +12,14 @@ from datetime import datetime, timedelta
 from flask_mail import Mail, Message
 from dotenv import load_dotenv
 
+
 # Cargar variables de entorno
 load_dotenv()
 
+
 app = Flask(__name__)
 app.secret_key = 'ruletadelavida'  #clave secreta real
+app.config['TESTING'] = True
 
 # Configurar Flask-Mail con los datos de Hotmail (Outlook)
 app.config["MAIL_SERVER"] = os.getenv("MAIL_SERVER")
@@ -29,8 +32,8 @@ app.config["MAIL_DEFAULT_SENDER"] = os.getenv("MAIL_DEFAULT_SENDER")
 
 mail = Mail(app)
 
-# if os.path.exists("database.db"):
-#     os.remove("database.db")
+if os.path.exists("database.db"):
+   os.remove("database.db")
 
 def init_db():
     db_exists = os.path.exists("database.db")
@@ -127,10 +130,16 @@ def registro():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        hashed_password = generate_password_hash(password)
         email = request.form['email']
         phone = request.form['phone']
-        
+
+        # 🔴 Validación: Si algún campo está vacío, mostrar error
+        if not username or not password or not email or not phone:
+            flash('Todos los campos son obligatorios', 'error')
+            return render_template('registro.html')
+
+        hashed_password = generate_password_hash(password)
+
         try:
             with sqlite3.connect("database.db") as conn:
                 cursor = conn.cursor()
@@ -141,8 +150,9 @@ def registro():
             return redirect(url_for('login'))
         except sqlite3.IntegrityError:
             flash('El nombre de usuario ya existe. Por favor, elige otro.')
-    
+
     return render_template('registro.html')
+
 
 @app.route('/logout')
 def logout():
