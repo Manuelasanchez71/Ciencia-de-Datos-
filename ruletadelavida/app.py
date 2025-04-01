@@ -32,8 +32,8 @@ app.config["MAIL_DEFAULT_SENDER"] = os.getenv("MAIL_DEFAULT_SENDER")
 
 mail = Mail(app)
 
-if os.path.exists("database.db"):
-   os.remove("database.db")
+# if os.path.exists("database.db"):
+#    os.remove("database.db")
 
 def init_db():
     db_exists = os.path.exists("database.db")
