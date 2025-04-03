@@ -25,6 +25,17 @@
       </ul>
     </div>
 
+     <!-- Mensajes flash -->
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash-messages">
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
     <!-- Contenido principal -->
     <div class="admin-content">
       <div class="admin-header">
