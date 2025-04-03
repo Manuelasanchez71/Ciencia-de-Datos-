@@ -1,0 +1,186 @@
+{
+    "dimensiones": [
+        "salud_y_bienestar",
+        "relaciones",
+        "carrera_y_proposito",
+        "finanzas",
+        "desarrollo_personal",
+        "diversion_y_ocio",
+        "espiritualidad",
+        "entorno_fisico"
+    ],
+    "promedios": {
+        "relaciones": 6.680060725353778,
+        "entorno_fisico": 6.557815512868766,
+        "desarrollo_personal": 6.3185565408616355,
+        "diversion_y_ocio": 6.06844934965562,
+        "salud_y_bienestar": 5.988229770173673,
+        "carrera_y_proposito": 5.889845543079276,
+        "finanzas": 5.835337641121445,
+        "espiritualidad": 5.048218107935291
+    },
+    "correlacion_matriz": {
+        "salud_y_bienestar": {
+            "salud_y_bienestar": 1.0,
+            "relaciones": 0.6302356791900663,
+            "carrera_y_proposito": 0.6626182863067954,
+            "finanzas": 0.5808208350799136,
+            "desarrollo_personal": 0.7076762150408394,
+            "diversion_y_ocio": 0.8905677006112637,
+            "espiritualidad": -0.1023976274991985,
+            "entorno_fisico": 0.5356243890050651
+        },
+        "relaciones": {
+            "salud_y_bienestar": 0.6302356791900663,
+            "relaciones": 1.0,
+            "carrera_y_proposito": 0.5489588415413076,
+            "finanzas": 0.5419642153398629,
+            "desarrollo_personal": 0.6475017864516255,
+            "diversion_y_ocio": 0.5888012101416662,
+            "espiritualidad": -0.1241289538770767,
+            "entorno_fisico": 0.5588902147634975
+        },
+        "carrera_y_proposito": {
+            "salud_y_bienestar": 0.6626182863067954,
+            "relaciones": 0.5489588415413076,
+            "carrera_y_proposito": 1.0,
+            "finanzas": 0.8973233847167157,
+            "desarrollo_personal": 0.592444872107534,
+            "diversion_y_ocio": 0.5749318903529222,
+            "espiritualidad": -0.1838382027981413,
+            "entorno_fisico": 0.5064119439841883
+        },
+        "finanzas": {
+            "salud_y_bienestar": 0.5808208350799136,
+            "relaciones": 0.5419642153398629,
+            "carrera_y_proposito": 0.8973233847167157,
+            "finanzas": 1.0,
+            "desarrollo_personal": 0.533926651527606,
+            "diversion_y_ocio": 0.5075098297059194,
+            "espiritualidad": -0.1142328772312062,
+            "entorno_fisico": 0.4657691743745734
+        },
+        "desarrollo_personal": {
+            "salud_y_bienestar": 0.7076762150408394,
+            "relaciones": 0.6475017864516255,
+            "carrera_y_proposito": 0.592444872107534,
+            "finanzas": 0.533926651527606,
+            "desarrollo_personal": 1.0,
+            "diversion_y_ocio": 0.6722192424597695,
+            "espiritualidad": -0.19855368604913476,
+            "entorno_fisico": 0.529613466210404
+        },
+        "diversion_y_ocio": {
+            "salud_y_bienestar": 0.8905677006112637,
+            "relaciones": 0.5888012101416662,
+            "carrera_y_proposito": 0.5749318903529222,
+            "finanzas": 0.5075098297059194,
+            "desarrollo_personal": 0.6722192424597695,
+            "diversion_y_ocio": 1.0,
+            "espiritualidad": -0.10778910613571772,
+            "entorno_fisico": 0.5085192989464491
+        },
+        "espiritualidad": {
+            "salud_y_bienestar": -0.1023976274991985,
+            "relaciones": -0.1241289538770767,
+            "carrera_y_proposito": -0.1838382027981413,
+            "finanzas": -0.1142328772312062,
+            "desarrollo_personal": -0.19855368604913476,
+            "diversion_y_ocio": -0.10778910613571772,
+            "espiritualidad": 1.0,
+            "entorno_fisico": -0.11378665447738352
+        },
+        "entorno_fisico": {
+            "salud_y_bienestar": 0.5356243890050651,
+            "relaciones": 0.5588902147634975,
+            "carrera_y_proposito": 0.5064119439841883,
+            "finanzas": 0.4657691743745734,
+            "desarrollo_personal": 0.529613466210404,
+            "diversion_y_ocio": 0.5085192989464491,
+            "espiritualidad": -0.11378665447738352,
+            "entorno_fisico": 1.0
+        }
+    },
+    "estadisticas": {
+        "salud_y_bienestar": {
+            "count": 100.0,
+            "mean": 5.988229770173673,
+            "std": 1.7663311757922435,
+            "min": 1.4393473609557152,
+            "25%": 4.568443451032959,
+            "50%": 6.151017605971161,
+            "75%": 7.019815730525132,
+            "max": 9.996478607375149
+        },
+        "relaciones": {
+            "count": 100.0,
+            "mean": 6.680060725353778,
+            "std": 1.8013890403827788,
+            "min": 2.402688366578284,
+            "25%": 5.457203491540818,
+            "50%": 6.758779852296753,
+            "75%": 7.829882865400777,
+            "max": 10.0
+        },
+        "carrera_y_proposito": {
+            "count": 100.0,
+            "mean": 5.889845543079276,
+            "std": 2.0079922527130956,
+            "min": 1.0,
+            "25%": 4.5455679041840105,
+            "50%": 6.048526134046659,
+            "75%": 7.3769101436976525,
+            "max": 10.0
+        },
+        "finanzas": {
+            "count": 100.0,
+            "mean": 5.835337641121445,
+            "std": 2.321582737248234,
+            "min": 1.0,
+            "25%": 4.163979468367234,
+            "50%": 5.661099947138171,
+            "75%": 7.735585406767237,
+            "max": 10.0
+        },
+        "desarrollo_personal": {
+            "count": 100.0,
+            "mean": 6.3185565408616355,
+            "std": 1.5343048400092063,
+            "min": 2.853890001687364,
+            "25%": 5.43644715928486,
+            "50%": 6.315859647916066,
+            "75%": 7.430354897182454,
+            "max": 10.0
+        },
+        "diversion_y_ocio": {
+            "count": 100.0,
+            "mean": 6.06844934965562,
+            "std": 2.0053889021928937,
+            "min": 1.0,
+            "25%": 4.56523701660853,
+            "50%": 6.058900245899105,
+            "75%": 7.611000204173535,
+            "max": 10.0
+        },
+        "espiritualidad": {
+            "count": 100.0,
+            "mean": 5.048218107935291,
+            "std": 1.8342122012009392,
+            "min": 1.3064551310571968,
+            "25%": 3.73795330932511,
+            "50%": 5.070911152700221,
+            "75%": 6.40583716895635,
+            "max": 10.0
+        },
+        "entorno_fisico": {
+            "count": 100.0,
+            "mean": 6.557815512868766,
+            "std": 1.6469796235962129,
+            "min": 2.959266576466883,
+            "25%": 5.167368210460733,
+            "50%": 6.681727622566161,
+            "75%": 7.550274105065513,
+            "max": 10.0
+        }
+    }
+}
