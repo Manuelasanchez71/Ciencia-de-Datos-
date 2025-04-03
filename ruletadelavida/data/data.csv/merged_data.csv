@@ -1,93 +1,323 @@
 id,usuario_id,nombre,edad,sexo,estado_civil,categoria,pregunta,calificacion,fecha,username
-1,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,salud_y_bienestar,¿Cómo te sientes físicamente en general?,4,2025-03-05 02:07:37,Jaqueline
-2,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,salud_y_bienestar,¿Estás tomando decisiones saludables con respecto a tu alimentación y ejercicio?,5,2025-03-05 02:07:37,Jaqueline
-3,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,salud_y_bienestar,¿Estás durmiendo lo suficiente para sentirte descansado?,6,2025-03-05 02:07:37,Jaqueline
-4,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,relaciones,"¿Cómo es tu relación con tu familia, amigos y pareja?",3,2025-03-05 02:07:37,Jaqueline
-5,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,relaciones,¿Estás comunicándote de manera efectiva con las personas importantes en tu vida?,4,2025-03-05 02:07:37,Jaqueline
-6,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,carrera_y_proposito,¿Sientes que estás progresando en tu carrera?,5,2025-03-05 02:07:37,Jaqueline
-7,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,carrera_y_proposito,¿Tienes claro tu propósito o lo que te gustaría lograr en tu vida profesional?,2,2025-03-05 02:07:37,Jaqueline
-8,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,carrera_y_proposito,¿Estás buscando oportunidades para crecer profesionalmente?,3,2025-03-05 02:07:37,Jaqueline
-9,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,finanzas,¿Te sientes seguro/a financieramente?,4,2025-03-05 02:07:37,Jaqueline
-10,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,finanzas,"¿Estás gestionando tu dinero de manera efectiva (ahorros, inversiones, gastos)?",5,2025-03-05 02:07:37,Jaqueline
-11,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,finanzas,¿Tienes un plan financiero a corto y largo plazo?,6,2025-03-05 02:07:37,Jaqueline
-12,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,desarrollo_personal_y_crecimiento,¿Te sientes motivado/a para mejorar y crecer como persona?,7,2025-03-05 02:07:37,Jaqueline
-13,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,desarrollo_personal_y_crecimiento,¿Estás tomando tiempo para reflexionar y trabajar en tu autoconocimiento?,6,2025-03-05 02:07:37,Jaqueline
-14,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,desarrollo_personal_y_crecimiento,¿Tienes metas claras de desarrollo personal?,7,2025-03-05 02:07:37,Jaqueline
-15,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,diversion_y_ocio,¿Estás dedicando tiempo a actividades que disfrutas?,8,2025-03-05 02:07:37,Jaqueline
-16,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,diversion_y_ocio,¿Tienes hobbies o intereses que te ayudan a desconectar?,9,2025-03-05 02:07:37,Jaqueline
-17,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,diversion_y_ocio,¿Te sientes equilibrado/a entre el estudio y el tiempo libre?,10,2025-03-05 02:07:37,Jaqueline
-18,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,espiritualidad,¿Sientes que tienes un propósito más grande en la vida?,8,2025-03-05 02:07:37,Jaqueline
-19,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,espiritualidad,¿Te sientes en paz con tu vida y tus creencias?,7,2025-03-05 02:07:37,Jaqueline
-20,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,espiritualidad,¿Estás tomando tiempo para reflexionar sobre tu vida y tu conexión con el mundo?,6,2025-03-05 02:07:37,Jaqueline
-21,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,entorno_fisico_y_hogar,¿Te sientes cómodo/a y organizado/a en tu espacio de vida?,7,2025-03-05 02:07:37,Jaqueline
-22,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,entorno_fisico_y_hogar,¿Tu entorno te inspira o te ayuda a relajarte y ser productivo/a?,6,2025-03-05 02:07:37,Jaqueline
-23,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,entorno_fisico_y_hogar,¿Tienes un lugar que te permita desconectar y recargar energías?,4,2025-03-05 02:07:37,Jaqueline
-24,4,Andrey Stiben Orozco ,32,masculino,soltero,salud_y_bienestar,¿Cómo te sientes físicamente en general?,7,2025-03-05 04:20:38,Andrey
-25,4,Andrey Stiben Orozco ,32,masculino,soltero,salud_y_bienestar,¿Estás tomando decisiones saludables con respecto a tu alimentación y ejercicio?,3,2025-03-05 04:20:38,Andrey
-26,4,Andrey Stiben Orozco ,32,masculino,soltero,salud_y_bienestar,¿Estás durmiendo lo suficiente para sentirte descansado?,7,2025-03-05 04:20:38,Andrey
-27,4,Andrey Stiben Orozco ,32,masculino,soltero,relaciones,"¿Cómo es tu relación con tu familia, amigos y pareja?",8,2025-03-05 04:20:38,Andrey
-28,4,Andrey Stiben Orozco ,32,masculino,soltero,relaciones,¿Estás comunicándote de manera efectiva con las personas importantes en tu vida?,6,2025-03-05 04:20:38,Andrey
-29,4,Andrey Stiben Orozco ,32,masculino,soltero,carrera_y_proposito,¿Sientes que estás progresando en tu carrera?,9,2025-03-05 04:20:38,Andrey
-30,4,Andrey Stiben Orozco ,32,masculino,soltero,carrera_y_proposito,¿Tienes claro tu propósito o lo que te gustaría lograr en tu vida profesional?,10,2025-03-05 04:20:38,Andrey
-31,4,Andrey Stiben Orozco ,32,masculino,soltero,carrera_y_proposito,¿Estás buscando oportunidades para crecer profesionalmente?,9,2025-03-05 04:20:38,Andrey
-32,4,Andrey Stiben Orozco ,32,masculino,soltero,finanzas,¿Te sientes seguro/a financieramente?,7,2025-03-05 04:20:38,Andrey
-33,4,Andrey Stiben Orozco ,32,masculino,soltero,finanzas,"¿Estás gestionando tu dinero de manera efectiva (ahorros, inversiones, gastos)?",5,2025-03-05 04:20:38,Andrey
-34,4,Andrey Stiben Orozco ,32,masculino,soltero,finanzas,¿Tienes un plan financiero a corto y largo plazo?,4,2025-03-05 04:20:38,Andrey
-35,4,Andrey Stiben Orozco ,32,masculino,soltero,desarrollo_personal_y_crecimiento,¿Te sientes motivado/a para mejorar y crecer como persona?,9,2025-03-05 04:20:38,Andrey
-36,4,Andrey Stiben Orozco ,32,masculino,soltero,desarrollo_personal_y_crecimiento,¿Estás tomando tiempo para reflexionar y trabajar en tu autoconocimiento?,8,2025-03-05 04:20:38,Andrey
-37,4,Andrey Stiben Orozco ,32,masculino,soltero,desarrollo_personal_y_crecimiento,¿Tienes metas claras de desarrollo personal?,10,2025-03-05 04:20:38,Andrey
-38,4,Andrey Stiben Orozco ,32,masculino,soltero,diversion_y_ocio,¿Estás dedicando tiempo a actividades que disfrutas?,9,2025-03-05 04:20:38,Andrey
-39,4,Andrey Stiben Orozco ,32,masculino,soltero,diversion_y_ocio,¿Tienes hobbies o intereses que te ayudan a desconectar?,10,2025-03-05 04:20:38,Andrey
-40,4,Andrey Stiben Orozco ,32,masculino,soltero,diversion_y_ocio,¿Te sientes equilibrado/a entre el estudio y el tiempo libre?,7,2025-03-05 04:20:38,Andrey
-41,4,Andrey Stiben Orozco ,32,masculino,soltero,espiritualidad,¿Sientes que tienes un propósito más grande en la vida?,10,2025-03-05 04:20:38,Andrey
-42,4,Andrey Stiben Orozco ,32,masculino,soltero,espiritualidad,¿Te sientes en paz con tu vida y tus creencias?,9,2025-03-05 04:20:38,Andrey
-43,4,Andrey Stiben Orozco ,32,masculino,soltero,espiritualidad,¿Estás tomando tiempo para reflexionar sobre tu vida y tu conexión con el mundo?,8,2025-03-05 04:20:38,Andrey
-44,4,Andrey Stiben Orozco ,32,masculino,soltero,entorno_fisico_y_hogar,¿Te sientes cómodo/a y organizado/a en tu espacio de vida?,7,2025-03-05 04:20:38,Andrey
-45,4,Andrey Stiben Orozco ,32,masculino,soltero,entorno_fisico_y_hogar,¿Tu entorno te inspira o te ayuda a relajarte y ser productivo/a?,8,2025-03-05 04:20:38,Andrey
-46,4,Andrey Stiben Orozco ,32,masculino,soltero,entorno_fisico_y_hogar,¿Tienes un lugar que te permita desconectar y recargar energías?,6,2025-03-05 04:20:38,Andrey
-47,6,Gabriel Jaime Obando,73,masculino,soltero,salud_y_bienestar,¿Cómo te sientes físicamente en general?,5,2025-03-05 04:25:02,Gabriel
-48,6,Gabriel Jaime Obando,73,masculino,soltero,salud_y_bienestar,¿Estás tomando decisiones saludables con respecto a tu alimentación y ejercicio?,2,2025-03-05 04:25:02,Gabriel
-49,6,Gabriel Jaime Obando,73,masculino,soltero,salud_y_bienestar,¿Estás durmiendo lo suficiente para sentirte descansado?,3,2025-03-05 04:25:02,Gabriel
-50,6,Gabriel Jaime Obando,73,masculino,soltero,relaciones,"¿Cómo es tu relación con tu familia, amigos y pareja?",7,2025-03-05 04:25:02,Gabriel
-51,6,Gabriel Jaime Obando,73,masculino,soltero,relaciones,¿Estás comunicándote de manera efectiva con las personas importantes en tu vida?,6,2025-03-05 04:25:02,Gabriel
-52,6,Gabriel Jaime Obando,73,masculino,soltero,carrera_y_proposito,¿Sientes que estás progresando en tu carrera?,4,2025-03-05 04:25:02,Gabriel
-53,6,Gabriel Jaime Obando,73,masculino,soltero,carrera_y_proposito,¿Tienes claro tu propósito o lo que te gustaría lograr en tu vida profesional?,5,2025-03-05 04:25:02,Gabriel
-54,6,Gabriel Jaime Obando,73,masculino,soltero,carrera_y_proposito,¿Estás buscando oportunidades para crecer profesionalmente?,4,2025-03-05 04:25:02,Gabriel
-55,6,Gabriel Jaime Obando,73,masculino,soltero,finanzas,¿Te sientes seguro/a financieramente?,8,2025-03-05 04:25:02,Gabriel
-56,6,Gabriel Jaime Obando,73,masculino,soltero,finanzas,"¿Estás gestionando tu dinero de manera efectiva (ahorros, inversiones, gastos)?",6,2025-03-05 04:25:02,Gabriel
-57,6,Gabriel Jaime Obando,73,masculino,soltero,finanzas,¿Tienes un plan financiero a corto y largo plazo?,3,2025-03-05 04:25:02,Gabriel
-58,6,Gabriel Jaime Obando,73,masculino,soltero,desarrollo_personal_y_crecimiento,¿Te sientes motivado/a para mejorar y crecer como persona?,7,2025-03-05 04:25:02,Gabriel
-59,6,Gabriel Jaime Obando,73,masculino,soltero,desarrollo_personal_y_crecimiento,¿Estás tomando tiempo para reflexionar y trabajar en tu autoconocimiento?,5,2025-03-05 04:25:02,Gabriel
-60,6,Gabriel Jaime Obando,73,masculino,soltero,desarrollo_personal_y_crecimiento,¿Tienes metas claras de desarrollo personal?,6,2025-03-05 04:25:02,Gabriel
-61,6,Gabriel Jaime Obando,73,masculino,soltero,diversion_y_ocio,¿Estás dedicando tiempo a actividades que disfrutas?,8,2025-03-05 04:25:02,Gabriel
-62,6,Gabriel Jaime Obando,73,masculino,soltero,diversion_y_ocio,¿Tienes hobbies o intereses que te ayudan a desconectar?,9,2025-03-05 04:25:02,Gabriel
-63,6,Gabriel Jaime Obando,73,masculino,soltero,diversion_y_ocio,¿Te sientes equilibrado/a entre el estudio y el tiempo libre?,6,2025-03-05 04:25:02,Gabriel
-64,6,Gabriel Jaime Obando,73,masculino,soltero,espiritualidad,¿Sientes que tienes un propósito más grande en la vida?,10,2025-03-05 04:25:02,Gabriel
-65,6,Gabriel Jaime Obando,73,masculino,soltero,espiritualidad,¿Te sientes en paz con tu vida y tus creencias?,8,2025-03-05 04:25:02,Gabriel
-66,6,Gabriel Jaime Obando,73,masculino,soltero,espiritualidad,¿Estás tomando tiempo para reflexionar sobre tu vida y tu conexión con el mundo?,7,2025-03-05 04:25:02,Gabriel
-67,6,Gabriel Jaime Obando,73,masculino,soltero,entorno_fisico_y_hogar,¿Te sientes cómodo/a y organizado/a en tu espacio de vida?,6,2025-03-05 04:25:02,Gabriel
-68,6,Gabriel Jaime Obando,73,masculino,soltero,entorno_fisico_y_hogar,¿Tu entorno te inspira o te ayuda a relajarte y ser productivo/a?,5,2025-03-05 04:25:02,Gabriel
-69,6,Gabriel Jaime Obando,73,masculino,soltero,entorno_fisico_y_hogar,¿Tienes un lugar que te permita desconectar y recargar energías?,2,2025-03-05 04:25:02,Gabriel
-70,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,salud_y_bienestar,¿Cómo te sientes físicamente en general?,2,2025-03-11 20:00:36,Jaqueline
-71,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,salud_y_bienestar,¿Estás tomando decisiones saludables con respecto a tu alimentación y ejercicio?,1,2025-03-11 20:00:36,Jaqueline
-72,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,salud_y_bienestar,¿Estás durmiendo lo suficiente para sentirte descansado?,3,2025-03-11 20:00:36,Jaqueline
-73,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,relaciones,"¿Cómo es tu relación con tu familia, amigos y pareja?",4,2025-03-11 20:00:36,Jaqueline
-74,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,relaciones,¿Estás comunicándote de manera efectiva con las personas importantes en tu vida?,5,2025-03-11 20:00:36,Jaqueline
-75,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,carrera_y_proposito,¿Sientes que estás progresando en tu carrera?,6,2025-03-11 20:00:36,Jaqueline
-76,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,carrera_y_proposito,¿Tienes claro tu propósito o lo que te gustaría lograr en tu vida profesional?,7,2025-03-11 20:00:36,Jaqueline
-77,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,carrera_y_proposito,¿Estás buscando oportunidades para crecer profesionalmente?,8,2025-03-11 20:00:36,Jaqueline
-78,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,finanzas,¿Te sientes seguro/a financieramente?,9,2025-03-11 20:00:36,Jaqueline
-79,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,finanzas,"¿Estás gestionando tu dinero de manera efectiva (ahorros, inversiones, gastos)?",10,2025-03-11 20:00:36,Jaqueline
-80,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,finanzas,¿Tienes un plan financiero a corto y largo plazo?,8,2025-03-11 20:00:36,Jaqueline
-81,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,desarrollo_personal_y_crecimiento,¿Te sientes motivado/a para mejorar y crecer como persona?,6,2025-03-11 20:00:36,Jaqueline
-82,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,desarrollo_personal_y_crecimiento,¿Estás tomando tiempo para reflexionar y trabajar en tu autoconocimiento?,4,2025-03-11 20:00:36,Jaqueline
-83,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,desarrollo_personal_y_crecimiento,¿Tienes metas claras de desarrollo personal?,6,2025-03-11 20:00:36,Jaqueline
-84,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,diversion_y_ocio,¿Estás dedicando tiempo a actividades que disfrutas?,8,2025-03-11 20:00:36,Jaqueline
-85,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,diversion_y_ocio,¿Tienes hobbies o intereses que te ayudan a desconectar?,2,2025-03-11 20:00:36,Jaqueline
-86,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,diversion_y_ocio,¿Te sientes equilibrado/a entre el estudio y el tiempo libre?,1,2025-03-11 20:00:36,Jaqueline
-87,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,espiritualidad,¿Sientes que tienes un propósito más grande en la vida?,3,2025-03-11 20:00:36,Jaqueline
-88,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,espiritualidad,¿Te sientes en paz con tu vida y tus creencias?,4,2025-03-11 20:00:36,Jaqueline
-89,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,espiritualidad,¿Estás tomando tiempo para reflexionar sobre tu vida y tu conexión con el mundo?,6,2025-03-11 20:00:36,Jaqueline
-90,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,entorno_fisico_y_hogar,¿Te sientes cómodo/a y organizado/a en tu espacio de vida?,3,2025-03-11 20:00:36,Jaqueline
-91,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,entorno_fisico_y_hogar,¿Tu entorno te inspira o te ayuda a relajarte y ser productivo/a?,8,2025-03-11 20:00:36,Jaqueline
-92,2,Jaqueline Orozco Aranzazu ,31,femenino,union libre,entorno_fisico_y_hogar,¿Tienes un lugar que te permita desconectar y recargar energías?,10,2025-03-11 20:00:36,Jaqueline
+24,1,Manuela Sanchez ,23,femenino,soltero,salud_y_bienestar,¿Cómo te sientes físicamente en general?,10,2025-03-31 20:51:43,admin
+25,1,Manuela Sanchez ,23,femenino,soltero,salud_y_bienestar,¿Estás tomando decisiones saludables con respecto a tu alimentación y ejercicio?,9,2025-03-31 20:51:43,admin
+26,1,Manuela Sanchez ,23,femenino,soltero,salud_y_bienestar,¿Estás durmiendo lo suficiente para sentirte descansado?,8,2025-03-31 20:51:43,admin
+27,1,Manuela Sanchez ,23,femenino,soltero,relaciones,"¿Cómo es tu relación con tu familia, amigos y pareja?",6,2025-03-31 20:51:43,admin
+28,1,Manuela Sanchez ,23,femenino,soltero,relaciones,¿Estás comunicándote de manera efectiva con las personas importantes en tu vida?,5,2025-03-31 20:51:43,admin
+29,1,Manuela Sanchez ,23,femenino,soltero,carrera_y_proposito,¿Sientes que estás progresando en tu carrera?,4,2025-03-31 20:51:43,admin
+30,1,Manuela Sanchez ,23,femenino,soltero,carrera_y_proposito,¿Tienes claro tu propósito o lo que te gustaría lograr en tu vida profesional?,5,2025-03-31 20:51:43,admin
+31,1,Manuela Sanchez ,23,femenino,soltero,carrera_y_proposito,¿Estás buscando oportunidades para crecer profesionalmente?,6,2025-03-31 20:51:43,admin
+32,1,Manuela Sanchez ,23,femenino,soltero,finanzas,¿Te sientes seguro/a financieramente?,7,2025-03-31 20:51:43,admin
+33,1,Manuela Sanchez ,23,femenino,soltero,finanzas,"¿Estás gestionando tu dinero de manera efectiva (ahorros, inversiones, gastos)?",8,2025-03-31 20:51:43,admin
+34,1,Manuela Sanchez ,23,femenino,soltero,finanzas,¿Tienes un plan financiero a corto y largo plazo?,2,2025-03-31 20:51:43,admin
+35,1,Manuela Sanchez ,23,femenino,soltero,desarrollo_personal_y_crecimiento,¿Te sientes motivado/a para mejorar y crecer como persona?,1,2025-03-31 20:51:43,admin
+36,1,Manuela Sanchez ,23,femenino,soltero,desarrollo_personal_y_crecimiento,¿Estás tomando tiempo para reflexionar y trabajar en tu autoconocimiento?,4,2025-03-31 20:51:43,admin
+37,1,Manuela Sanchez ,23,femenino,soltero,desarrollo_personal_y_crecimiento,¿Tienes metas claras de desarrollo personal?,5,2025-03-31 20:51:43,admin
+38,1,Manuela Sanchez ,23,femenino,soltero,diversion_y_ocio,¿Estás dedicando tiempo a actividades que disfrutas?,7,2025-03-31 20:51:43,admin
+39,1,Manuela Sanchez ,23,femenino,soltero,diversion_y_ocio,¿Tienes hobbies o intereses que te ayudan a desconectar?,6,2025-03-31 20:51:43,admin
+40,1,Manuela Sanchez ,23,femenino,soltero,diversion_y_ocio,¿Te sientes equilibrado/a entre el estudio y el tiempo libre?,8,2025-03-31 20:51:43,admin
+41,1,Manuela Sanchez ,23,femenino,soltero,espiritualidad,¿Sientes que tienes un propósito más grande en la vida?,3,2025-03-31 20:51:43,admin
+42,1,Manuela Sanchez ,23,femenino,soltero,espiritualidad,¿Te sientes en paz con tu vida y tus creencias?,4,2025-03-31 20:51:43,admin
+43,1,Manuela Sanchez ,23,femenino,soltero,espiritualidad,¿Estás tomando tiempo para reflexionar sobre tu vida y tu conexión con el mundo?,6,2025-03-31 20:51:43,admin
+44,1,Manuela Sanchez ,23,femenino,soltero,entorno_fisico_y_hogar,¿Te sientes cómodo/a y organizado/a en tu espacio de vida?,4,2025-03-31 20:51:43,admin
+45,1,Manuela Sanchez ,23,femenino,soltero,entorno_fisico_y_hogar,¿Tu entorno te inspira o te ayuda a relajarte y ser productivo/a?,8,2025-03-31 20:51:43,admin
+46,1,Manuela Sanchez ,23,femenino,soltero,entorno_fisico_y_hogar,¿Tienes un lugar que te permita desconectar y recargar energías?,10,2025-03-31 20:51:43,admin
+143,6,Zaida del Torrent,56,femenino,soltero,salud_y_bienestar,¿Cómo te sientes físicamente en general?,8,2025-04-03 04:40:29,Zaida
+144,6,Zaida del Torrent,56,femenino,soltero,salud_y_bienestar,¿Estás tomando decisiones saludables con respecto a tu alimentación y ejercicio?,5,2025-04-03 04:40:29,Zaida
+145,6,Zaida del Torrent,56,femenino,soltero,salud_y_bienestar,¿Estás durmiendo lo suficiente para sentirte descansado?,7,2025-04-03 04:40:29,Zaida
+146,6,Zaida del Torrent,56,femenino,soltero,relaciones,"¿Cómo es tu relación con tu familia, amigos y pareja?",10,2025-04-03 04:40:29,Zaida
+147,6,Zaida del Torrent,56,femenino,soltero,relaciones,¿Estás comunicándote de manera efectiva con las personas importantes en tu vida?,3,2025-04-03 04:40:29,Zaida
+148,6,Zaida del Torrent,56,femenino,soltero,carrera_y_proposito,¿Sientes que estás progresando en tu carrera?,8,2025-04-03 04:40:29,Zaida
+149,6,Zaida del Torrent,56,femenino,soltero,carrera_y_proposito,¿Tienes claro tu propósito o lo que te gustaría lograr en tu vida profesional?,5,2025-04-03 04:40:29,Zaida
+150,6,Zaida del Torrent,56,femenino,soltero,carrera_y_proposito,¿Estás buscando oportunidades para crecer profesionalmente?,4,2025-04-03 04:40:29,Zaida
+151,6,Zaida del Torrent,56,femenino,soltero,finanzas,¿Te sientes seguro/a financieramente?,8,2025-04-03 04:40:29,Zaida
+152,6,Zaida del Torrent,56,femenino,soltero,finanzas,"¿Estás gestionando tu dinero de manera efectiva (ahorros, inversiones, gastos)?",8,2025-04-03 04:40:29,Zaida
+153,6,Zaida del Torrent,56,femenino,soltero,finanzas,¿Tienes un plan financiero a corto y largo plazo?,3,2025-04-03 04:40:29,Zaida
+154,6,Zaida del Torrent,56,femenino,soltero,desarrollo_personal_y_crecimiento,¿Te sientes motivado/a para mejorar y crecer como persona?,6,2025-04-03 04:40:29,Zaida
+155,6,Zaida del Torrent,56,femenino,soltero,desarrollo_personal_y_crecimiento,¿Estás tomando tiempo para reflexionar y trabajar en tu autoconocimiento?,5,2025-04-03 04:40:29,Zaida
+156,6,Zaida del Torrent,56,femenino,soltero,desarrollo_personal_y_crecimiento,¿Tienes metas claras de desarrollo personal?,2,2025-04-03 04:40:29,Zaida
+157,6,Zaida del Torrent,56,femenino,soltero,diversion_y_ocio,¿Estás dedicando tiempo a actividades que disfrutas?,8,2025-04-03 04:40:29,Zaida
+158,6,Zaida del Torrent,56,femenino,soltero,diversion_y_ocio,¿Tienes hobbies o intereses que te ayudan a desconectar?,6,2025-04-03 04:40:29,Zaida
+159,6,Zaida del Torrent,56,femenino,soltero,diversion_y_ocio,¿Te sientes equilibrado/a entre el estudio y el tiempo libre?,2,2025-04-03 04:40:29,Zaida
+160,6,Zaida del Torrent,56,femenino,soltero,espiritualidad,¿Sientes que tienes un propósito más grande en la vida?,5,2025-04-03 04:40:29,Zaida
+161,6,Zaida del Torrent,56,femenino,soltero,espiritualidad,¿Te sientes en paz con tu vida y tus creencias?,1,2025-04-03 04:40:29,Zaida
+162,6,Zaida del Torrent,56,femenino,soltero,espiritualidad,¿Estás tomando tiempo para reflexionar sobre tu vida y tu conexión con el mundo?,10,2025-04-03 04:40:29,Zaida
+163,6,Zaida del Torrent,56,femenino,soltero,entorno_fisico_y_hogar,¿Te sientes cómodo/a y organizado/a en tu espacio de vida?,6,2025-04-03 04:40:29,Zaida
+164,6,Zaida del Torrent,56,femenino,soltero,entorno_fisico_y_hogar,¿Tu entorno te inspira o te ayuda a relajarte y ser productivo/a?,9,2025-04-03 04:40:29,Zaida
+165,6,Zaida del Torrent,56,femenino,soltero,entorno_fisico_y_hogar,¿Tienes un lugar que te permita desconectar y recargar energías?,1,2025-04-03 04:40:29,Zaida
+166,7,Feliciana Atienza,44,masculino,union libre,salud_y_bienestar,¿Cómo te sientes físicamente en general?,10,2025-04-03 04:43:50,Feliciana
+167,7,Feliciana Atienza,44,masculino,union libre,salud_y_bienestar,¿Estás tomando decisiones saludables con respecto a tu alimentación y ejercicio?,3,2025-04-03 04:43:50,Feliciana
+168,7,Feliciana Atienza,44,masculino,union libre,salud_y_bienestar,¿Estás durmiendo lo suficiente para sentirte descansado?,7,2025-04-03 04:43:50,Feliciana
+169,7,Feliciana Atienza,44,masculino,union libre,relaciones,"¿Cómo es tu relación con tu familia, amigos y pareja?",4,2025-04-03 04:43:50,Feliciana
+170,7,Feliciana Atienza,44,masculino,union libre,relaciones,¿Estás comunicándote de manera efectiva con las personas importantes en tu vida?,9,2025-04-03 04:43:50,Feliciana
+171,7,Feliciana Atienza,44,masculino,union libre,carrera_y_proposito,¿Sientes que estás progresando en tu carrera?,3,2025-04-03 04:43:50,Feliciana
+172,7,Feliciana Atienza,44,masculino,union libre,carrera_y_proposito,¿Tienes claro tu propósito o lo que te gustaría lograr en tu vida profesional?,5,2025-04-03 04:43:50,Feliciana
+173,7,Feliciana Atienza,44,masculino,union libre,carrera_y_proposito,¿Estás buscando oportunidades para crecer profesionalmente?,3,2025-04-03 04:43:50,Feliciana
+174,7,Feliciana Atienza,44,masculino,union libre,finanzas,¿Te sientes seguro/a financieramente?,5,2025-04-03 04:43:50,Feliciana
+175,7,Feliciana Atienza,44,masculino,union libre,finanzas,"¿Estás gestionando tu dinero de manera efectiva (ahorros, inversiones, gastos)?",9,2025-04-03 04:43:50,Feliciana
+176,7,Feliciana Atienza,44,masculino,union libre,finanzas,¿Tienes un plan financiero a corto y largo plazo?,7,2025-04-03 04:43:50,Feliciana
+177,7,Feliciana Atienza,44,masculino,union libre,desarrollo_personal_y_crecimiento,¿Te sientes motivado/a para mejorar y crecer como persona?,2,2025-04-03 04:43:50,Feliciana
+178,7,Feliciana Atienza,44,masculino,union libre,desarrollo_personal_y_crecimiento,¿Estás tomando tiempo para reflexionar y trabajar en tu autoconocimiento?,4,2025-04-03 04:43:50,Feliciana
+179,7,Feliciana Atienza,44,masculino,union libre,desarrollo_personal_y_crecimiento,¿Tienes metas claras de desarrollo personal?,9,2025-04-03 04:43:50,Feliciana
+180,7,Feliciana Atienza,44,masculino,union libre,diversion_y_ocio,¿Estás dedicando tiempo a actividades que disfrutas?,4,2025-04-03 04:43:50,Feliciana
+181,7,Feliciana Atienza,44,masculino,union libre,diversion_y_ocio,¿Tienes hobbies o intereses que te ayudan a desconectar?,7,2025-04-03 04:43:50,Feliciana
+182,7,Feliciana Atienza,44,masculino,union libre,diversion_y_ocio,¿Te sientes equilibrado/a entre el estudio y el tiempo libre?,5,2025-04-03 04:43:50,Feliciana
+183,7,Feliciana Atienza,44,masculino,union libre,espiritualidad,¿Sientes que tienes un propósito más grande en la vida?,8,2025-04-03 04:43:50,Feliciana
+184,7,Feliciana Atienza,44,masculino,union libre,espiritualidad,¿Te sientes en paz con tu vida y tus creencias?,6,2025-04-03 04:43:50,Feliciana
+185,7,Feliciana Atienza,44,masculino,union libre,espiritualidad,¿Estás tomando tiempo para reflexionar sobre tu vida y tu conexión con el mundo?,4,2025-04-03 04:43:50,Feliciana
+186,7,Feliciana Atienza,44,masculino,union libre,entorno_fisico_y_hogar,¿Te sientes cómodo/a y organizado/a en tu espacio de vida?,7,2025-04-03 04:43:50,Feliciana
+187,7,Feliciana Atienza,44,masculino,union libre,entorno_fisico_y_hogar,¿Tu entorno te inspira o te ayuda a relajarte y ser productivo/a?,5,2025-04-03 04:43:50,Feliciana
+188,7,Feliciana Atienza,44,masculino,union libre,entorno_fisico_y_hogar,¿Tienes un lugar que te permita desconectar y recargar energías?,10,2025-04-03 04:43:50,Feliciana
+189,8,Asdrubal Román,64,masculino,casado,salud_y_bienestar,¿Cómo te sientes físicamente en general?,3,2025-04-03 04:45:38,Asdrubal
+190,8,Asdrubal Román,64,masculino,casado,salud_y_bienestar,¿Estás tomando decisiones saludables con respecto a tu alimentación y ejercicio?,5,2025-04-03 04:45:38,Asdrubal
+191,8,Asdrubal Román,64,masculino,casado,salud_y_bienestar,¿Estás durmiendo lo suficiente para sentirte descansado?,7,2025-04-03 04:45:38,Asdrubal
+192,8,Asdrubal Román,64,masculino,casado,relaciones,"¿Cómo es tu relación con tu familia, amigos y pareja?",9,2025-04-03 04:45:38,Asdrubal
+193,8,Asdrubal Román,64,masculino,casado,relaciones,¿Estás comunicándote de manera efectiva con las personas importantes en tu vida?,8,2025-04-03 04:45:38,Asdrubal
+194,8,Asdrubal Román,64,masculino,casado,carrera_y_proposito,¿Sientes que estás progresando en tu carrera?,10,2025-04-03 04:45:38,Asdrubal
+195,8,Asdrubal Román,64,masculino,casado,carrera_y_proposito,¿Tienes claro tu propósito o lo que te gustaría lograr en tu vida profesional?,7,2025-04-03 04:45:38,Asdrubal
+196,8,Asdrubal Román,64,masculino,casado,carrera_y_proposito,¿Estás buscando oportunidades para crecer profesionalmente?,5,2025-04-03 04:45:38,Asdrubal
+197,8,Asdrubal Román,64,masculino,casado,finanzas,¿Te sientes seguro/a financieramente?,3,2025-04-03 04:45:38,Asdrubal
+198,8,Asdrubal Román,64,masculino,casado,finanzas,"¿Estás gestionando tu dinero de manera efectiva (ahorros, inversiones, gastos)?",6,2025-04-03 04:45:38,Asdrubal
+199,8,Asdrubal Román,64,masculino,casado,finanzas,¿Tienes un plan financiero a corto y largo plazo?,2,2025-04-03 04:45:38,Asdrubal
+200,8,Asdrubal Román,64,masculino,casado,desarrollo_personal_y_crecimiento,¿Te sientes motivado/a para mejorar y crecer como persona?,8,2025-04-03 04:45:38,Asdrubal
+201,8,Asdrubal Román,64,masculino,casado,desarrollo_personal_y_crecimiento,¿Estás tomando tiempo para reflexionar y trabajar en tu autoconocimiento?,6,2025-04-03 04:45:38,Asdrubal
+202,8,Asdrubal Román,64,masculino,casado,desarrollo_personal_y_crecimiento,¿Tienes metas claras de desarrollo personal?,3,2025-04-03 04:45:38,Asdrubal
+203,8,Asdrubal Román,64,masculino,casado,diversion_y_ocio,¿Estás dedicando tiempo a actividades que disfrutas?,5,2025-04-03 04:45:38,Asdrubal
+204,8,Asdrubal Román,64,masculino,casado,diversion_y_ocio,¿Tienes hobbies o intereses que te ayudan a desconectar?,7,2025-04-03 04:45:38,Asdrubal
+205,8,Asdrubal Román,64,masculino,casado,diversion_y_ocio,¿Te sientes equilibrado/a entre el estudio y el tiempo libre?,9,2025-04-03 04:45:38,Asdrubal
+206,8,Asdrubal Román,64,masculino,casado,espiritualidad,¿Sientes que tienes un propósito más grande en la vida?,1,2025-04-03 04:45:38,Asdrubal
+207,8,Asdrubal Román,64,masculino,casado,espiritualidad,¿Te sientes en paz con tu vida y tus creencias?,10,2025-04-03 04:45:38,Asdrubal
+208,8,Asdrubal Román,64,masculino,casado,espiritualidad,¿Estás tomando tiempo para reflexionar sobre tu vida y tu conexión con el mundo?,5,2025-04-03 04:45:38,Asdrubal
+209,8,Asdrubal Román,64,masculino,casado,entorno_fisico_y_hogar,¿Te sientes cómodo/a y organizado/a en tu espacio de vida?,4,2025-04-03 04:45:38,Asdrubal
+210,8,Asdrubal Román,64,masculino,casado,entorno_fisico_y_hogar,¿Tu entorno te inspira o te ayuda a relajarte y ser productivo/a?,5,2025-04-03 04:45:38,Asdrubal
+211,8,Asdrubal Román,64,masculino,casado,entorno_fisico_y_hogar,¿Tienes un lugar que te permita desconectar y recargar energías?,3,2025-04-03 04:45:38,Asdrubal
+212,8,Asdrubal Román,64,masculino,casado,salud_y_bienestar,¿Cómo te sientes físicamente en general?,3,2025-04-03 04:46:46,Asdrubal
+213,8,Asdrubal Román,64,masculino,casado,salud_y_bienestar,¿Estás tomando decisiones saludables con respecto a tu alimentación y ejercicio?,5,2025-04-03 04:46:46,Asdrubal
+214,8,Asdrubal Román,64,masculino,casado,salud_y_bienestar,¿Estás durmiendo lo suficiente para sentirte descansado?,7,2025-04-03 04:46:46,Asdrubal
+215,8,Asdrubal Román,64,masculino,casado,relaciones,"¿Cómo es tu relación con tu familia, amigos y pareja?",9,2025-04-03 04:46:46,Asdrubal
+216,8,Asdrubal Román,64,masculino,casado,relaciones,¿Estás comunicándote de manera efectiva con las personas importantes en tu vida?,8,2025-04-03 04:46:46,Asdrubal
+217,8,Asdrubal Román,64,masculino,casado,carrera_y_proposito,¿Sientes que estás progresando en tu carrera?,10,2025-04-03 04:46:46,Asdrubal
+218,8,Asdrubal Román,64,masculino,casado,carrera_y_proposito,¿Tienes claro tu propósito o lo que te gustaría lograr en tu vida profesional?,7,2025-04-03 04:46:46,Asdrubal
+219,8,Asdrubal Román,64,masculino,casado,carrera_y_proposito,¿Estás buscando oportunidades para crecer profesionalmente?,5,2025-04-03 04:46:46,Asdrubal
+220,8,Asdrubal Román,64,masculino,casado,finanzas,¿Te sientes seguro/a financieramente?,3,2025-04-03 04:46:46,Asdrubal
+221,8,Asdrubal Román,64,masculino,casado,finanzas,"¿Estás gestionando tu dinero de manera efectiva (ahorros, inversiones, gastos)?",6,2025-04-03 04:46:46,Asdrubal
+222,8,Asdrubal Román,64,masculino,casado,finanzas,¿Tienes un plan financiero a corto y largo plazo?,2,2025-04-03 04:46:46,Asdrubal
+223,8,Asdrubal Román,64,masculino,casado,desarrollo_personal_y_crecimiento,¿Te sientes motivado/a para mejorar y crecer como persona?,8,2025-04-03 04:46:46,Asdrubal
+224,8,Asdrubal Román,64,masculino,casado,desarrollo_personal_y_crecimiento,¿Estás tomando tiempo para reflexionar y trabajar en tu autoconocimiento?,6,2025-04-03 04:46:46,Asdrubal
+225,8,Asdrubal Román,64,masculino,casado,desarrollo_personal_y_crecimiento,¿Tienes metas claras de desarrollo personal?,3,2025-04-03 04:46:46,Asdrubal
+226,8,Asdrubal Román,64,masculino,casado,diversion_y_ocio,¿Estás dedicando tiempo a actividades que disfrutas?,5,2025-04-03 04:46:46,Asdrubal
+227,8,Asdrubal Román,64,masculino,casado,diversion_y_ocio,¿Tienes hobbies o intereses que te ayudan a desconectar?,7,2025-04-03 04:46:46,Asdrubal
+228,8,Asdrubal Román,64,masculino,casado,diversion_y_ocio,¿Te sientes equilibrado/a entre el estudio y el tiempo libre?,9,2025-04-03 04:46:46,Asdrubal
+229,8,Asdrubal Román,64,masculino,casado,espiritualidad,¿Sientes que tienes un propósito más grande en la vida?,1,2025-04-03 04:46:46,Asdrubal
+230,8,Asdrubal Román,64,masculino,casado,espiritualidad,¿Te sientes en paz con tu vida y tus creencias?,10,2025-04-03 04:46:46,Asdrubal
+231,8,Asdrubal Román,64,masculino,casado,espiritualidad,¿Estás tomando tiempo para reflexionar sobre tu vida y tu conexión con el mundo?,5,2025-04-03 04:46:46,Asdrubal
+232,8,Asdrubal Román,64,masculino,casado,entorno_fisico_y_hogar,¿Te sientes cómodo/a y organizado/a en tu espacio de vida?,4,2025-04-03 04:46:46,Asdrubal
+233,8,Asdrubal Román,64,masculino,casado,entorno_fisico_y_hogar,¿Tu entorno te inspira o te ayuda a relajarte y ser productivo/a?,5,2025-04-03 04:46:46,Asdrubal
+234,8,Asdrubal Román,64,masculino,casado,entorno_fisico_y_hogar,¿Tienes un lugar que te permita desconectar y recargar energías?,3,2025-04-03 04:46:46,Asdrubal
+235,9,Rosalva Espejo Arjona,43,femenino,soltero,salud_y_bienestar,¿Cómo te sientes físicamente en general?,4,2025-04-03 04:48:44,Rosalva
+236,9,Rosalva Espejo Arjona,43,femenino,soltero,salud_y_bienestar,¿Estás tomando decisiones saludables con respecto a tu alimentación y ejercicio?,5,2025-04-03 04:48:44,Rosalva
+237,9,Rosalva Espejo Arjona,43,femenino,soltero,salud_y_bienestar,¿Estás durmiendo lo suficiente para sentirte descansado?,6,2025-04-03 04:48:44,Rosalva
+238,9,Rosalva Espejo Arjona,43,femenino,soltero,relaciones,"¿Cómo es tu relación con tu familia, amigos y pareja?",1,2025-04-03 04:48:44,Rosalva
+239,9,Rosalva Espejo Arjona,43,femenino,soltero,relaciones,¿Estás comunicándote de manera efectiva con las personas importantes en tu vida?,2,2025-04-03 04:48:44,Rosalva
+240,9,Rosalva Espejo Arjona,43,femenino,soltero,carrera_y_proposito,¿Sientes que estás progresando en tu carrera?,4,2025-04-03 04:48:44,Rosalva
+241,9,Rosalva Espejo Arjona,43,femenino,soltero,carrera_y_proposito,¿Tienes claro tu propósito o lo que te gustaría lograr en tu vida profesional?,5,2025-04-03 04:48:44,Rosalva
+242,9,Rosalva Espejo Arjona,43,femenino,soltero,carrera_y_proposito,¿Estás buscando oportunidades para crecer profesionalmente?,6,2025-04-03 04:48:44,Rosalva
+243,9,Rosalva Espejo Arjona,43,femenino,soltero,finanzas,¿Te sientes seguro/a financieramente?,7,2025-04-03 04:48:44,Rosalva
+244,9,Rosalva Espejo Arjona,43,femenino,soltero,finanzas,"¿Estás gestionando tu dinero de manera efectiva (ahorros, inversiones, gastos)?",8,2025-04-03 04:48:44,Rosalva
+245,9,Rosalva Espejo Arjona,43,femenino,soltero,finanzas,¿Tienes un plan financiero a corto y largo plazo?,5,2025-04-03 04:48:44,Rosalva
+246,9,Rosalva Espejo Arjona,43,femenino,soltero,desarrollo_personal_y_crecimiento,¿Te sientes motivado/a para mejorar y crecer como persona?,4,2025-04-03 04:48:44,Rosalva
+247,9,Rosalva Espejo Arjona,43,femenino,soltero,desarrollo_personal_y_crecimiento,¿Estás tomando tiempo para reflexionar y trabajar en tu autoconocimiento?,10,2025-04-03 04:48:44,Rosalva
+248,9,Rosalva Espejo Arjona,43,femenino,soltero,desarrollo_personal_y_crecimiento,¿Tienes metas claras de desarrollo personal?,6,2025-04-03 04:48:44,Rosalva
+249,9,Rosalva Espejo Arjona,43,femenino,soltero,diversion_y_ocio,¿Estás dedicando tiempo a actividades que disfrutas?,5,2025-04-03 04:48:44,Rosalva
+250,9,Rosalva Espejo Arjona,43,femenino,soltero,diversion_y_ocio,¿Tienes hobbies o intereses que te ayudan a desconectar?,6,2025-04-03 04:48:44,Rosalva
+251,9,Rosalva Espejo Arjona,43,femenino,soltero,diversion_y_ocio,¿Te sientes equilibrado/a entre el estudio y el tiempo libre?,8,2025-04-03 04:48:44,Rosalva
+252,9,Rosalva Espejo Arjona,43,femenino,soltero,espiritualidad,¿Sientes que tienes un propósito más grande en la vida?,4,2025-04-03 04:48:44,Rosalva
+253,9,Rosalva Espejo Arjona,43,femenino,soltero,espiritualidad,¿Te sientes en paz con tu vida y tus creencias?,2,2025-04-03 04:48:44,Rosalva
+254,9,Rosalva Espejo Arjona,43,femenino,soltero,espiritualidad,¿Estás tomando tiempo para reflexionar sobre tu vida y tu conexión con el mundo?,5,2025-04-03 04:48:44,Rosalva
+255,9,Rosalva Espejo Arjona,43,femenino,soltero,entorno_fisico_y_hogar,¿Te sientes cómodo/a y organizado/a en tu espacio de vida?,6,2025-04-03 04:48:44,Rosalva
+256,9,Rosalva Espejo Arjona,43,femenino,soltero,entorno_fisico_y_hogar,¿Tu entorno te inspira o te ayuda a relajarte y ser productivo/a?,8,2025-04-03 04:48:44,Rosalva
+257,9,Rosalva Espejo Arjona,43,femenino,soltero,entorno_fisico_y_hogar,¿Tienes un lugar que te permita desconectar y recargar energías?,3,2025-04-03 04:48:44,Rosalva
+258,10,Crescencia Mulet Cuéllar,50,femenino,union libre,salud_y_bienestar,¿Cómo te sientes físicamente en general?,10,2025-04-03 04:53:54,Crescencia
+259,10,Crescencia Mulet Cuéllar,50,femenino,union libre,salud_y_bienestar,¿Estás tomando decisiones saludables con respecto a tu alimentación y ejercicio?,8,2025-04-03 04:53:54,Crescencia
+260,10,Crescencia Mulet Cuéllar,50,femenino,union libre,salud_y_bienestar,¿Estás durmiendo lo suficiente para sentirte descansado?,7,2025-04-03 04:53:54,Crescencia
+261,10,Crescencia Mulet Cuéllar,50,femenino,union libre,relaciones,"¿Cómo es tu relación con tu familia, amigos y pareja?",6,2025-04-03 04:53:54,Crescencia
+262,10,Crescencia Mulet Cuéllar,50,femenino,union libre,relaciones,¿Estás comunicándote de manera efectiva con las personas importantes en tu vida?,5,2025-04-03 04:53:54,Crescencia
+263,10,Crescencia Mulet Cuéllar,50,femenino,union libre,carrera_y_proposito,¿Sientes que estás progresando en tu carrera?,4,2025-04-03 04:53:54,Crescencia
+264,10,Crescencia Mulet Cuéllar,50,femenino,union libre,carrera_y_proposito,¿Tienes claro tu propósito o lo que te gustaría lograr en tu vida profesional?,3,2025-04-03 04:53:54,Crescencia
+265,10,Crescencia Mulet Cuéllar,50,femenino,union libre,carrera_y_proposito,¿Estás buscando oportunidades para crecer profesionalmente?,2,2025-04-03 04:53:54,Crescencia
+266,10,Crescencia Mulet Cuéllar,50,femenino,union libre,finanzas,¿Te sientes seguro/a financieramente?,1,2025-04-03 04:53:54,Crescencia
+267,10,Crescencia Mulet Cuéllar,50,femenino,union libre,finanzas,"¿Estás gestionando tu dinero de manera efectiva (ahorros, inversiones, gastos)?",3,2025-04-03 04:53:54,Crescencia
+268,10,Crescencia Mulet Cuéllar,50,femenino,union libre,finanzas,¿Tienes un plan financiero a corto y largo plazo?,4,2025-04-03 04:53:54,Crescencia
+269,10,Crescencia Mulet Cuéllar,50,femenino,union libre,desarrollo_personal_y_crecimiento,¿Te sientes motivado/a para mejorar y crecer como persona?,5,2025-04-03 04:53:54,Crescencia
+270,10,Crescencia Mulet Cuéllar,50,femenino,union libre,desarrollo_personal_y_crecimiento,¿Estás tomando tiempo para reflexionar y trabajar en tu autoconocimiento?,6,2025-04-03 04:53:54,Crescencia
+271,10,Crescencia Mulet Cuéllar,50,femenino,union libre,desarrollo_personal_y_crecimiento,¿Tienes metas claras de desarrollo personal?,7,2025-04-03 04:53:54,Crescencia
+272,10,Crescencia Mulet Cuéllar,50,femenino,union libre,diversion_y_ocio,¿Estás dedicando tiempo a actividades que disfrutas?,8,2025-04-03 04:53:54,Crescencia
+273,10,Crescencia Mulet Cuéllar,50,femenino,union libre,diversion_y_ocio,¿Tienes hobbies o intereses que te ayudan a desconectar?,9,2025-04-03 04:53:54,Crescencia
+274,10,Crescencia Mulet Cuéllar,50,femenino,union libre,diversion_y_ocio,¿Te sientes equilibrado/a entre el estudio y el tiempo libre?,5,2025-04-03 04:53:54,Crescencia
+275,10,Crescencia Mulet Cuéllar,50,femenino,union libre,espiritualidad,¿Sientes que tienes un propósito más grande en la vida?,10,2025-04-03 04:53:54,Crescencia
+276,10,Crescencia Mulet Cuéllar,50,femenino,union libre,espiritualidad,¿Te sientes en paz con tu vida y tus creencias?,6,2025-04-03 04:53:54,Crescencia
+277,10,Crescencia Mulet Cuéllar,50,femenino,union libre,espiritualidad,¿Estás tomando tiempo para reflexionar sobre tu vida y tu conexión con el mundo?,8,2025-04-03 04:53:54,Crescencia
+278,10,Crescencia Mulet Cuéllar,50,femenino,union libre,entorno_fisico_y_hogar,¿Te sientes cómodo/a y organizado/a en tu espacio de vida?,4,2025-04-03 04:53:54,Crescencia
+279,10,Crescencia Mulet Cuéllar,50,femenino,union libre,entorno_fisico_y_hogar,¿Tu entorno te inspira o te ayuda a relajarte y ser productivo/a?,3,2025-04-03 04:53:54,Crescencia
+280,10,Crescencia Mulet Cuéllar,50,femenino,union libre,entorno_fisico_y_hogar,¿Tienes un lugar que te permita desconectar y recargar energías?,5,2025-04-03 04:53:54,Crescencia
+281,10,Crescencia Mulet Cuéllar,50,femenino,union libre,salud_y_bienestar,¿Cómo te sientes físicamente en general?,10,2025-04-03 04:54:56,Crescencia
+282,10,Crescencia Mulet Cuéllar,50,femenino,union libre,salud_y_bienestar,¿Estás tomando decisiones saludables con respecto a tu alimentación y ejercicio?,8,2025-04-03 04:54:56,Crescencia
+283,10,Crescencia Mulet Cuéllar,50,femenino,union libre,salud_y_bienestar,¿Estás durmiendo lo suficiente para sentirte descansado?,7,2025-04-03 04:54:56,Crescencia
+284,10,Crescencia Mulet Cuéllar,50,femenino,union libre,relaciones,"¿Cómo es tu relación con tu familia, amigos y pareja?",6,2025-04-03 04:54:56,Crescencia
+285,10,Crescencia Mulet Cuéllar,50,femenino,union libre,relaciones,¿Estás comunicándote de manera efectiva con las personas importantes en tu vida?,5,2025-04-03 04:54:56,Crescencia
+286,10,Crescencia Mulet Cuéllar,50,femenino,union libre,carrera_y_proposito,¿Sientes que estás progresando en tu carrera?,4,2025-04-03 04:54:56,Crescencia
+287,10,Crescencia Mulet Cuéllar,50,femenino,union libre,carrera_y_proposito,¿Tienes claro tu propósito o lo que te gustaría lograr en tu vida profesional?,3,2025-04-03 04:54:56,Crescencia
+288,10,Crescencia Mulet Cuéllar,50,femenino,union libre,carrera_y_proposito,¿Estás buscando oportunidades para crecer profesionalmente?,2,2025-04-03 04:54:56,Crescencia
+289,10,Crescencia Mulet Cuéllar,50,femenino,union libre,finanzas,¿Te sientes seguro/a financieramente?,1,2025-04-03 04:54:56,Crescencia
+290,10,Crescencia Mulet Cuéllar,50,femenino,union libre,finanzas,"¿Estás gestionando tu dinero de manera efectiva (ahorros, inversiones, gastos)?",3,2025-04-03 04:54:56,Crescencia
+291,10,Crescencia Mulet Cuéllar,50,femenino,union libre,finanzas,¿Tienes un plan financiero a corto y largo plazo?,4,2025-04-03 04:54:56,Crescencia
+292,10,Crescencia Mulet Cuéllar,50,femenino,union libre,desarrollo_personal_y_crecimiento,¿Te sientes motivado/a para mejorar y crecer como persona?,5,2025-04-03 04:54:56,Crescencia
+293,10,Crescencia Mulet Cuéllar,50,femenino,union libre,desarrollo_personal_y_crecimiento,¿Estás tomando tiempo para reflexionar y trabajar en tu autoconocimiento?,6,2025-04-03 04:54:56,Crescencia
+294,10,Crescencia Mulet Cuéllar,50,femenino,union libre,desarrollo_personal_y_crecimiento,¿Tienes metas claras de desarrollo personal?,7,2025-04-03 04:54:56,Crescencia
+295,10,Crescencia Mulet Cuéllar,50,femenino,union libre,diversion_y_ocio,¿Estás dedicando tiempo a actividades que disfrutas?,8,2025-04-03 04:54:56,Crescencia
+296,10,Crescencia Mulet Cuéllar,50,femenino,union libre,diversion_y_ocio,¿Tienes hobbies o intereses que te ayudan a desconectar?,9,2025-04-03 04:54:56,Crescencia
+297,10,Crescencia Mulet Cuéllar,50,femenino,union libre,diversion_y_ocio,¿Te sientes equilibrado/a entre el estudio y el tiempo libre?,5,2025-04-03 04:54:56,Crescencia
+298,10,Crescencia Mulet Cuéllar,50,femenino,union libre,espiritualidad,¿Sientes que tienes un propósito más grande en la vida?,10,2025-04-03 04:54:56,Crescencia
+299,10,Crescencia Mulet Cuéllar,50,femenino,union libre,espiritualidad,¿Te sientes en paz con tu vida y tus creencias?,6,2025-04-03 04:54:56,Crescencia
+300,10,Crescencia Mulet Cuéllar,50,femenino,union libre,espiritualidad,¿Estás tomando tiempo para reflexionar sobre tu vida y tu conexión con el mundo?,8,2025-04-03 04:54:56,Crescencia
+301,10,Crescencia Mulet Cuéllar,50,femenino,union libre,entorno_fisico_y_hogar,¿Te sientes cómodo/a y organizado/a en tu espacio de vida?,4,2025-04-03 04:54:56,Crescencia
+302,10,Crescencia Mulet Cuéllar,50,femenino,union libre,entorno_fisico_y_hogar,¿Tu entorno te inspira o te ayuda a relajarte y ser productivo/a?,3,2025-04-03 04:54:56,Crescencia
+303,10,Crescencia Mulet Cuéllar,50,femenino,union libre,entorno_fisico_y_hogar,¿Tienes un lugar que te permita desconectar y recargar energías?,5,2025-04-03 04:54:56,Crescencia
+304,12,Omero Pulgarin ,17,masculino,soltero,salud_y_bienestar,¿Cómo te sientes físicamente en general?,4,2025-04-03 05:02:45,Omero
+305,12,Omero Pulgarin ,17,masculino,soltero,salud_y_bienestar,¿Estás tomando decisiones saludables con respecto a tu alimentación y ejercicio?,5,2025-04-03 05:02:45,Omero
+306,12,Omero Pulgarin ,17,masculino,soltero,salud_y_bienestar,¿Estás durmiendo lo suficiente para sentirte descansado?,9,2025-04-03 05:02:45,Omero
+307,12,Omero Pulgarin ,17,masculino,soltero,relaciones,"¿Cómo es tu relación con tu familia, amigos y pareja?",10,2025-04-03 05:02:45,Omero
+308,12,Omero Pulgarin ,17,masculino,soltero,relaciones,¿Estás comunicándote de manera efectiva con las personas importantes en tu vida?,7,2025-04-03 05:02:45,Omero
+309,12,Omero Pulgarin ,17,masculino,soltero,carrera_y_proposito,¿Sientes que estás progresando en tu carrera?,3,2025-04-03 05:02:45,Omero
+310,12,Omero Pulgarin ,17,masculino,soltero,carrera_y_proposito,¿Tienes claro tu propósito o lo que te gustaría lograr en tu vida profesional?,7,2025-04-03 05:02:45,Omero
+311,12,Omero Pulgarin ,17,masculino,soltero,carrera_y_proposito,¿Estás buscando oportunidades para crecer profesionalmente?,5,2025-04-03 05:02:45,Omero
+312,12,Omero Pulgarin ,17,masculino,soltero,finanzas,¿Te sientes seguro/a financieramente?,8,2025-04-03 05:02:45,Omero
+313,12,Omero Pulgarin ,17,masculino,soltero,finanzas,"¿Estás gestionando tu dinero de manera efectiva (ahorros, inversiones, gastos)?",5,2025-04-03 05:02:45,Omero
+314,12,Omero Pulgarin ,17,masculino,soltero,finanzas,¿Tienes un plan financiero a corto y largo plazo?,3,2025-04-03 05:02:45,Omero
+315,12,Omero Pulgarin ,17,masculino,soltero,desarrollo_personal_y_crecimiento,¿Te sientes motivado/a para mejorar y crecer como persona?,7,2025-04-03 05:02:45,Omero
+316,12,Omero Pulgarin ,17,masculino,soltero,desarrollo_personal_y_crecimiento,¿Estás tomando tiempo para reflexionar y trabajar en tu autoconocimiento?,9,2025-04-03 05:02:45,Omero
+317,12,Omero Pulgarin ,17,masculino,soltero,desarrollo_personal_y_crecimiento,¿Tienes metas claras de desarrollo personal?,10,2025-04-03 05:02:45,Omero
+318,12,Omero Pulgarin ,17,masculino,soltero,diversion_y_ocio,¿Estás dedicando tiempo a actividades que disfrutas?,8,2025-04-03 05:02:45,Omero
+319,12,Omero Pulgarin ,17,masculino,soltero,diversion_y_ocio,¿Tienes hobbies o intereses que te ayudan a desconectar?,6,2025-04-03 05:02:45,Omero
+320,12,Omero Pulgarin ,17,masculino,soltero,diversion_y_ocio,¿Te sientes equilibrado/a entre el estudio y el tiempo libre?,4,2025-04-03 05:02:45,Omero
+321,12,Omero Pulgarin ,17,masculino,soltero,espiritualidad,¿Sientes que tienes un propósito más grande en la vida?,4,2025-04-03 05:02:45,Omero
+322,12,Omero Pulgarin ,17,masculino,soltero,espiritualidad,¿Te sientes en paz con tu vida y tus creencias?,6,2025-04-03 05:02:45,Omero
+323,12,Omero Pulgarin ,17,masculino,soltero,espiritualidad,¿Estás tomando tiempo para reflexionar sobre tu vida y tu conexión con el mundo?,9,2025-04-03 05:02:45,Omero
+324,12,Omero Pulgarin ,17,masculino,soltero,entorno_fisico_y_hogar,¿Te sientes cómodo/a y organizado/a en tu espacio de vida?,10,2025-04-03 05:02:45,Omero
+325,12,Omero Pulgarin ,17,masculino,soltero,entorno_fisico_y_hogar,¿Tu entorno te inspira o te ayuda a relajarte y ser productivo/a?,7,2025-04-03 05:02:45,Omero
+326,12,Omero Pulgarin ,17,masculino,soltero,entorno_fisico_y_hogar,¿Tienes un lugar que te permita desconectar y recargar energías?,4,2025-04-03 05:02:45,Omero
+327,14,Mario Garay ,25,masculino,soltero,salud_y_bienestar,¿Cómo te sientes físicamente en general?,4,2025-04-03 05:10:24,Garay
+328,14,Mario Garay ,25,masculino,soltero,salud_y_bienestar,¿Estás tomando decisiones saludables con respecto a tu alimentación y ejercicio?,7,2025-04-03 05:10:24,Garay
+329,14,Mario Garay ,25,masculino,soltero,salud_y_bienestar,¿Estás durmiendo lo suficiente para sentirte descansado?,10,2025-04-03 05:10:24,Garay
+330,14,Mario Garay ,25,masculino,soltero,relaciones,"¿Cómo es tu relación con tu familia, amigos y pareja?",7,2025-04-03 05:10:24,Garay
+331,14,Mario Garay ,25,masculino,soltero,relaciones,¿Estás comunicándote de manera efectiva con las personas importantes en tu vida?,6,2025-04-03 05:10:24,Garay
+332,14,Mario Garay ,25,masculino,soltero,carrera_y_proposito,¿Sientes que estás progresando en tu carrera?,5,2025-04-03 05:10:24,Garay
+333,14,Mario Garay ,25,masculino,soltero,carrera_y_proposito,¿Tienes claro tu propósito o lo que te gustaría lograr en tu vida profesional?,4,2025-04-03 05:10:24,Garay
+334,14,Mario Garay ,25,masculino,soltero,carrera_y_proposito,¿Estás buscando oportunidades para crecer profesionalmente?,3,2025-04-03 05:10:24,Garay
+335,14,Mario Garay ,25,masculino,soltero,finanzas,¿Te sientes seguro/a financieramente?,6,2025-04-03 05:10:24,Garay
+336,14,Mario Garay ,25,masculino,soltero,finanzas,"¿Estás gestionando tu dinero de manera efectiva (ahorros, inversiones, gastos)?",8,2025-04-03 05:10:24,Garay
+337,14,Mario Garay ,25,masculino,soltero,finanzas,¿Tienes un plan financiero a corto y largo plazo?,10,2025-04-03 05:10:24,Garay
+338,14,Mario Garay ,25,masculino,soltero,desarrollo_personal_y_crecimiento,¿Te sientes motivado/a para mejorar y crecer como persona?,9,2025-04-03 05:10:24,Garay
+339,14,Mario Garay ,25,masculino,soltero,desarrollo_personal_y_crecimiento,¿Estás tomando tiempo para reflexionar y trabajar en tu autoconocimiento?,7,2025-04-03 05:10:24,Garay
+340,14,Mario Garay ,25,masculino,soltero,desarrollo_personal_y_crecimiento,¿Tienes metas claras de desarrollo personal?,5,2025-04-03 05:10:24,Garay
+341,14,Mario Garay ,25,masculino,soltero,diversion_y_ocio,¿Estás dedicando tiempo a actividades que disfrutas?,3,2025-04-03 05:10:24,Garay
+342,14,Mario Garay ,25,masculino,soltero,diversion_y_ocio,¿Tienes hobbies o intereses que te ayudan a desconectar?,1,2025-04-03 05:10:24,Garay
+343,14,Mario Garay ,25,masculino,soltero,diversion_y_ocio,¿Te sientes equilibrado/a entre el estudio y el tiempo libre?,2,2025-04-03 05:10:24,Garay
+344,14,Mario Garay ,25,masculino,soltero,espiritualidad,¿Sientes que tienes un propósito más grande en la vida?,6,2025-04-03 05:10:24,Garay
+345,14,Mario Garay ,25,masculino,soltero,espiritualidad,¿Te sientes en paz con tu vida y tus creencias?,7,2025-04-03 05:10:24,Garay
+346,14,Mario Garay ,25,masculino,soltero,espiritualidad,¿Estás tomando tiempo para reflexionar sobre tu vida y tu conexión con el mundo?,9,2025-04-03 05:10:24,Garay
+347,14,Mario Garay ,25,masculino,soltero,entorno_fisico_y_hogar,¿Te sientes cómodo/a y organizado/a en tu espacio de vida?,4,2025-04-03 05:10:24,Garay
+348,14,Mario Garay ,25,masculino,soltero,entorno_fisico_y_hogar,¿Tu entorno te inspira o te ayuda a relajarte y ser productivo/a?,6,2025-04-03 05:10:24,Garay
+349,14,Mario Garay ,25,masculino,soltero,entorno_fisico_y_hogar,¿Tienes un lugar que te permita desconectar y recargar energías?,8,2025-04-03 05:10:24,Garay
+350,15,Jimena Gálvez Cabezas,45,femenino,union libre,salud_y_bienestar,¿Cómo te sientes físicamente en general?,10,2025-04-03 05:12:26,Jimena
+351,15,Jimena Gálvez Cabezas,45,femenino,union libre,salud_y_bienestar,¿Estás tomando decisiones saludables con respecto a tu alimentación y ejercicio?,9,2025-04-03 05:12:26,Jimena
+352,15,Jimena Gálvez Cabezas,45,femenino,union libre,salud_y_bienestar,¿Estás durmiendo lo suficiente para sentirte descansado?,8,2025-04-03 05:12:26,Jimena
+353,15,Jimena Gálvez Cabezas,45,femenino,union libre,relaciones,"¿Cómo es tu relación con tu familia, amigos y pareja?",6,2025-04-03 05:12:26,Jimena
+354,15,Jimena Gálvez Cabezas,45,femenino,union libre,relaciones,¿Estás comunicándote de manera efectiva con las personas importantes en tu vida?,5,2025-04-03 05:12:26,Jimena
+355,15,Jimena Gálvez Cabezas,45,femenino,union libre,carrera_y_proposito,¿Sientes que estás progresando en tu carrera?,4,2025-04-03 05:12:26,Jimena
+356,15,Jimena Gálvez Cabezas,45,femenino,union libre,carrera_y_proposito,¿Tienes claro tu propósito o lo que te gustaría lograr en tu vida profesional?,2,2025-04-03 05:12:26,Jimena
+357,15,Jimena Gálvez Cabezas,45,femenino,union libre,carrera_y_proposito,¿Estás buscando oportunidades para crecer profesionalmente?,1,2025-04-03 05:12:26,Jimena
+358,15,Jimena Gálvez Cabezas,45,femenino,union libre,finanzas,¿Te sientes seguro/a financieramente?,5,2025-04-03 05:12:26,Jimena
+359,15,Jimena Gálvez Cabezas,45,femenino,union libre,finanzas,"¿Estás gestionando tu dinero de manera efectiva (ahorros, inversiones, gastos)?",6,2025-04-03 05:12:26,Jimena
+360,15,Jimena Gálvez Cabezas,45,femenino,union libre,finanzas,¿Tienes un plan financiero a corto y largo plazo?,4,2025-04-03 05:12:26,Jimena
+361,15,Jimena Gálvez Cabezas,45,femenino,union libre,desarrollo_personal_y_crecimiento,¿Te sientes motivado/a para mejorar y crecer como persona?,8,2025-04-03 05:12:26,Jimena
+362,15,Jimena Gálvez Cabezas,45,femenino,union libre,desarrollo_personal_y_crecimiento,¿Estás tomando tiempo para reflexionar y trabajar en tu autoconocimiento?,3,2025-04-03 05:12:26,Jimena
+363,15,Jimena Gálvez Cabezas,45,femenino,union libre,desarrollo_personal_y_crecimiento,¿Tienes metas claras de desarrollo personal?,6,2025-04-03 05:12:26,Jimena
+364,15,Jimena Gálvez Cabezas,45,femenino,union libre,diversion_y_ocio,¿Estás dedicando tiempo a actividades que disfrutas?,2,2025-04-03 05:12:26,Jimena
+365,15,Jimena Gálvez Cabezas,45,femenino,union libre,diversion_y_ocio,¿Tienes hobbies o intereses que te ayudan a desconectar?,9,2025-04-03 05:12:26,Jimena
+366,15,Jimena Gálvez Cabezas,45,femenino,union libre,diversion_y_ocio,¿Te sientes equilibrado/a entre el estudio y el tiempo libre?,6,2025-04-03 05:12:26,Jimena
+367,15,Jimena Gálvez Cabezas,45,femenino,union libre,espiritualidad,¿Sientes que tienes un propósito más grande en la vida?,1,2025-04-03 05:12:26,Jimena
+368,15,Jimena Gálvez Cabezas,45,femenino,union libre,espiritualidad,¿Te sientes en paz con tu vida y tus creencias?,10,2025-04-03 05:12:26,Jimena
+369,15,Jimena Gálvez Cabezas,45,femenino,union libre,espiritualidad,¿Estás tomando tiempo para reflexionar sobre tu vida y tu conexión con el mundo?,5,2025-04-03 05:12:26,Jimena
+370,15,Jimena Gálvez Cabezas,45,femenino,union libre,entorno_fisico_y_hogar,¿Te sientes cómodo/a y organizado/a en tu espacio de vida?,3,2025-04-03 05:12:26,Jimena
+371,15,Jimena Gálvez Cabezas,45,femenino,union libre,entorno_fisico_y_hogar,¿Tu entorno te inspira o te ayuda a relajarte y ser productivo/a?,7,2025-04-03 05:12:26,Jimena
+372,15,Jimena Gálvez Cabezas,45,femenino,union libre,entorno_fisico_y_hogar,¿Tienes un lugar que te permita desconectar y recargar energías?,4,2025-04-03 05:12:26,Jimena
+373,15,Jimena Gálvez Cabezas,45,femenino,union libre,salud_y_bienestar,¿Cómo te sientes físicamente en general?,10,2025-04-03 05:13:05,Jimena
+374,15,Jimena Gálvez Cabezas,45,femenino,union libre,salud_y_bienestar,¿Estás tomando decisiones saludables con respecto a tu alimentación y ejercicio?,9,2025-04-03 05:13:05,Jimena
+375,15,Jimena Gálvez Cabezas,45,femenino,union libre,salud_y_bienestar,¿Estás durmiendo lo suficiente para sentirte descansado?,8,2025-04-03 05:13:05,Jimena
+376,15,Jimena Gálvez Cabezas,45,femenino,union libre,relaciones,"¿Cómo es tu relación con tu familia, amigos y pareja?",6,2025-04-03 05:13:05,Jimena
+377,15,Jimena Gálvez Cabezas,45,femenino,union libre,relaciones,¿Estás comunicándote de manera efectiva con las personas importantes en tu vida?,5,2025-04-03 05:13:05,Jimena
+378,15,Jimena Gálvez Cabezas,45,femenino,union libre,carrera_y_proposito,¿Sientes que estás progresando en tu carrera?,4,2025-04-03 05:13:05,Jimena
+379,15,Jimena Gálvez Cabezas,45,femenino,union libre,carrera_y_proposito,¿Tienes claro tu propósito o lo que te gustaría lograr en tu vida profesional?,2,2025-04-03 05:13:05,Jimena
+380,15,Jimena Gálvez Cabezas,45,femenino,union libre,carrera_y_proposito,¿Estás buscando oportunidades para crecer profesionalmente?,1,2025-04-03 05:13:05,Jimena
+381,15,Jimena Gálvez Cabezas,45,femenino,union libre,finanzas,¿Te sientes seguro/a financieramente?,5,2025-04-03 05:13:05,Jimena
+382,15,Jimena Gálvez Cabezas,45,femenino,union libre,finanzas,"¿Estás gestionando tu dinero de manera efectiva (ahorros, inversiones, gastos)?",6,2025-04-03 05:13:05,Jimena
+383,15,Jimena Gálvez Cabezas,45,femenino,union libre,finanzas,¿Tienes un plan financiero a corto y largo plazo?,4,2025-04-03 05:13:05,Jimena
+384,15,Jimena Gálvez Cabezas,45,femenino,union libre,desarrollo_personal_y_crecimiento,¿Te sientes motivado/a para mejorar y crecer como persona?,8,2025-04-03 05:13:05,Jimena
+385,15,Jimena Gálvez Cabezas,45,femenino,union libre,desarrollo_personal_y_crecimiento,¿Estás tomando tiempo para reflexionar y trabajar en tu autoconocimiento?,3,2025-04-03 05:13:05,Jimena
+386,15,Jimena Gálvez Cabezas,45,femenino,union libre,desarrollo_personal_y_crecimiento,¿Tienes metas claras de desarrollo personal?,6,2025-04-03 05:13:05,Jimena
+387,15,Jimena Gálvez Cabezas,45,femenino,union libre,diversion_y_ocio,¿Estás dedicando tiempo a actividades que disfrutas?,2,2025-04-03 05:13:05,Jimena
+388,15,Jimena Gálvez Cabezas,45,femenino,union libre,diversion_y_ocio,¿Tienes hobbies o intereses que te ayudan a desconectar?,9,2025-04-03 05:13:05,Jimena
+389,15,Jimena Gálvez Cabezas,45,femenino,union libre,diversion_y_ocio,¿Te sientes equilibrado/a entre el estudio y el tiempo libre?,6,2025-04-03 05:13:05,Jimena
+390,15,Jimena Gálvez Cabezas,45,femenino,union libre,espiritualidad,¿Sientes que tienes un propósito más grande en la vida?,1,2025-04-03 05:13:05,Jimena
+391,15,Jimena Gálvez Cabezas,45,femenino,union libre,espiritualidad,¿Te sientes en paz con tu vida y tus creencias?,10,2025-04-03 05:13:05,Jimena
+392,15,Jimena Gálvez Cabezas,45,femenino,union libre,espiritualidad,¿Estás tomando tiempo para reflexionar sobre tu vida y tu conexión con el mundo?,5,2025-04-03 05:13:05,Jimena
+393,15,Jimena Gálvez Cabezas,45,femenino,union libre,entorno_fisico_y_hogar,¿Te sientes cómodo/a y organizado/a en tu espacio de vida?,3,2025-04-03 05:13:05,Jimena
+394,15,Jimena Gálvez Cabezas,45,femenino,union libre,entorno_fisico_y_hogar,¿Tu entorno te inspira o te ayuda a relajarte y ser productivo/a?,7,2025-04-03 05:13:05,Jimena
+395,15,Jimena Gálvez Cabezas,45,femenino,union libre,entorno_fisico_y_hogar,¿Tienes un lugar que te permita desconectar y recargar energías?,4,2025-04-03 05:13:05,Jimena
+396,16,Daniel Domínguez Barriga,37,masculino,union libre,salud_y_bienestar,¿Cómo te sientes físicamente en general?,8,2025-04-03 05:15:06,Daniel
+397,16,Daniel Domínguez Barriga,37,masculino,union libre,salud_y_bienestar,¿Estás tomando decisiones saludables con respecto a tu alimentación y ejercicio?,6,2025-04-03 05:15:06,Daniel
+398,16,Daniel Domínguez Barriga,37,masculino,union libre,salud_y_bienestar,¿Estás durmiendo lo suficiente para sentirte descansado?,5,2025-04-03 05:15:06,Daniel
+399,16,Daniel Domínguez Barriga,37,masculino,union libre,relaciones,"¿Cómo es tu relación con tu familia, amigos y pareja?",3,2025-04-03 05:15:06,Daniel
+400,16,Daniel Domínguez Barriga,37,masculino,union libre,relaciones,¿Estás comunicándote de manera efectiva con las personas importantes en tu vida?,7,2025-04-03 05:15:06,Daniel
+401,16,Daniel Domínguez Barriga,37,masculino,union libre,carrera_y_proposito,¿Sientes que estás progresando en tu carrera?,4,2025-04-03 05:15:06,Daniel
+402,16,Daniel Domínguez Barriga,37,masculino,union libre,carrera_y_proposito,¿Tienes claro tu propósito o lo que te gustaría lograr en tu vida profesional?,9,2025-04-03 05:15:06,Daniel
+403,16,Daniel Domínguez Barriga,37,masculino,union libre,carrera_y_proposito,¿Estás buscando oportunidades para crecer profesionalmente?,6,2025-04-03 05:15:06,Daniel
+404,16,Daniel Domínguez Barriga,37,masculino,union libre,finanzas,¿Te sientes seguro/a financieramente?,2,2025-04-03 05:15:06,Daniel
+405,16,Daniel Domínguez Barriga,37,masculino,union libre,finanzas,"¿Estás gestionando tu dinero de manera efectiva (ahorros, inversiones, gastos)?",10,2025-04-03 05:15:06,Daniel
+406,16,Daniel Domínguez Barriga,37,masculino,union libre,finanzas,¿Tienes un plan financiero a corto y largo plazo?,6,2025-04-03 05:15:06,Daniel
+407,16,Daniel Domínguez Barriga,37,masculino,union libre,desarrollo_personal_y_crecimiento,¿Te sientes motivado/a para mejorar y crecer como persona?,5,2025-04-03 05:15:06,Daniel
+408,16,Daniel Domínguez Barriga,37,masculino,union libre,desarrollo_personal_y_crecimiento,¿Estás tomando tiempo para reflexionar y trabajar en tu autoconocimiento?,3,2025-04-03 05:15:06,Daniel
+409,16,Daniel Domínguez Barriga,37,masculino,union libre,desarrollo_personal_y_crecimiento,¿Tienes metas claras de desarrollo personal?,8,2025-04-03 05:15:06,Daniel
+410,16,Daniel Domínguez Barriga,37,masculino,union libre,diversion_y_ocio,¿Estás dedicando tiempo a actividades que disfrutas?,7,2025-04-03 05:15:06,Daniel
+411,16,Daniel Domínguez Barriga,37,masculino,union libre,diversion_y_ocio,¿Tienes hobbies o intereses que te ayudan a desconectar?,3,2025-04-03 05:15:06,Daniel
+412,16,Daniel Domínguez Barriga,37,masculino,union libre,diversion_y_ocio,¿Te sientes equilibrado/a entre el estudio y el tiempo libre?,5,2025-04-03 05:15:06,Daniel
+413,16,Daniel Domínguez Barriga,37,masculino,union libre,espiritualidad,¿Sientes que tienes un propósito más grande en la vida?,10,2025-04-03 05:15:06,Daniel
+414,16,Daniel Domínguez Barriga,37,masculino,union libre,espiritualidad,¿Te sientes en paz con tu vida y tus creencias?,9,2025-04-03 05:15:06,Daniel
+415,16,Daniel Domínguez Barriga,37,masculino,union libre,espiritualidad,¿Estás tomando tiempo para reflexionar sobre tu vida y tu conexión con el mundo?,7,2025-04-03 05:15:06,Daniel
+416,16,Daniel Domínguez Barriga,37,masculino,union libre,entorno_fisico_y_hogar,¿Te sientes cómodo/a y organizado/a en tu espacio de vida?,6,2025-04-03 05:15:06,Daniel
+417,16,Daniel Domínguez Barriga,37,masculino,union libre,entorno_fisico_y_hogar,¿Tu entorno te inspira o te ayuda a relajarte y ser productivo/a?,7,2025-04-03 05:15:06,Daniel
+418,16,Daniel Domínguez Barriga,37,masculino,union libre,entorno_fisico_y_hogar,¿Tienes un lugar que te permita desconectar y recargar energías?,5,2025-04-03 05:15:06,Daniel
+419,17,Jose Angel Artigas Salcedo,69,masculino,casado,salud_y_bienestar,¿Cómo te sientes físicamente en general?,4,2025-04-03 05:16:58,Jose
+420,17,Jose Angel Artigas Salcedo,69,masculino,casado,salud_y_bienestar,¿Estás tomando decisiones saludables con respecto a tu alimentación y ejercicio?,5,2025-04-03 05:16:58,Jose
+421,17,Jose Angel Artigas Salcedo,69,masculino,casado,salud_y_bienestar,¿Estás durmiendo lo suficiente para sentirte descansado?,6,2025-04-03 05:16:58,Jose
+422,17,Jose Angel Artigas Salcedo,69,masculino,casado,relaciones,"¿Cómo es tu relación con tu familia, amigos y pareja?",9,2025-04-03 05:16:58,Jose
+423,17,Jose Angel Artigas Salcedo,69,masculino,casado,relaciones,¿Estás comunicándote de manera efectiva con las personas importantes en tu vida?,8,2025-04-03 05:16:58,Jose
+424,17,Jose Angel Artigas Salcedo,69,masculino,casado,carrera_y_proposito,¿Sientes que estás progresando en tu carrera?,7,2025-04-03 05:16:58,Jose
+425,17,Jose Angel Artigas Salcedo,69,masculino,casado,carrera_y_proposito,¿Tienes claro tu propósito o lo que te gustaría lograr en tu vida profesional?,2,2025-04-03 05:16:58,Jose
+426,17,Jose Angel Artigas Salcedo,69,masculino,casado,carrera_y_proposito,¿Estás buscando oportunidades para crecer profesionalmente?,3,2025-04-03 05:16:58,Jose
+427,17,Jose Angel Artigas Salcedo,69,masculino,casado,finanzas,¿Te sientes seguro/a financieramente?,4,2025-04-03 05:16:58,Jose
+428,17,Jose Angel Artigas Salcedo,69,masculino,casado,finanzas,"¿Estás gestionando tu dinero de manera efectiva (ahorros, inversiones, gastos)?",5,2025-04-03 05:16:58,Jose
+429,17,Jose Angel Artigas Salcedo,69,masculino,casado,finanzas,¿Tienes un plan financiero a corto y largo plazo?,10,2025-04-03 05:16:58,Jose
+430,17,Jose Angel Artigas Salcedo,69,masculino,casado,desarrollo_personal_y_crecimiento,¿Te sientes motivado/a para mejorar y crecer como persona?,8,2025-04-03 05:16:58,Jose
+431,17,Jose Angel Artigas Salcedo,69,masculino,casado,desarrollo_personal_y_crecimiento,¿Estás tomando tiempo para reflexionar y trabajar en tu autoconocimiento?,7,2025-04-03 05:16:58,Jose
+432,17,Jose Angel Artigas Salcedo,69,masculino,casado,desarrollo_personal_y_crecimiento,¿Tienes metas claras de desarrollo personal?,1,2025-04-03 05:16:58,Jose
+433,17,Jose Angel Artigas Salcedo,69,masculino,casado,diversion_y_ocio,¿Estás dedicando tiempo a actividades que disfrutas?,2,2025-04-03 05:16:58,Jose
+434,17,Jose Angel Artigas Salcedo,69,masculino,casado,diversion_y_ocio,¿Tienes hobbies o intereses que te ayudan a desconectar?,3,2025-04-03 05:16:58,Jose
+435,17,Jose Angel Artigas Salcedo,69,masculino,casado,diversion_y_ocio,¿Te sientes equilibrado/a entre el estudio y el tiempo libre?,5,2025-04-03 05:16:58,Jose
+436,17,Jose Angel Artigas Salcedo,69,masculino,casado,espiritualidad,¿Sientes que tienes un propósito más grande en la vida?,6,2025-04-03 05:16:58,Jose
+437,17,Jose Angel Artigas Salcedo,69,masculino,casado,espiritualidad,¿Te sientes en paz con tu vida y tus creencias?,8,2025-04-03 05:16:58,Jose
+438,17,Jose Angel Artigas Salcedo,69,masculino,casado,espiritualidad,¿Estás tomando tiempo para reflexionar sobre tu vida y tu conexión con el mundo?,4,2025-04-03 05:16:58,Jose
+439,17,Jose Angel Artigas Salcedo,69,masculino,casado,entorno_fisico_y_hogar,¿Te sientes cómodo/a y organizado/a en tu espacio de vida?,3,2025-04-03 05:16:58,Jose
+440,17,Jose Angel Artigas Salcedo,69,masculino,casado,entorno_fisico_y_hogar,¿Tu entorno te inspira o te ayuda a relajarte y ser productivo/a?,8,2025-04-03 05:16:58,Jose
+441,17,Jose Angel Artigas Salcedo,69,masculino,casado,entorno_fisico_y_hogar,¿Tienes un lugar que te permita desconectar y recargar energías?,9,2025-04-03 05:16:58,Jose
