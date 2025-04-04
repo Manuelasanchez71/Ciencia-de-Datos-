@@ -1,0 +1,9 @@
+GRAFICOS POWERBI
+
+1. se sube a la carpeta de Actividad-4-powerbi el archivo de powerbi 
+2. se sube el informe de los gráficos exportado 
+3. el archivo que se trabajo es tipo csv, el que se convirtió de .xlsx a csv y que esta en la carpeta 
+data/processed/respuestas_ruleta_vida.csv 
+4. En la carpeta documentos queda guardado el documento pdf con toda la actividad completa 
+Tarea 4 - Etapa IV Análisis - Reportes y Toma de decisión
+ 
