@@ -12,8 +12,8 @@ El sistema segmenta datos por variables demográficas (sexo, edad, estado civil)
 | ID | Categoría | Requisito | Descripción | Prioridad |
 |----|-----------|-----------|-------------|-----------|
 | RF01 | Gestión de Usuarios | Registro | Los usuarios crean cuentas con nombre, correo, contraseña y teléfono. | Alta |
-| RF02 | Gestión de Usuarios | Autenticación | Sistema de login seguro con opción de recuperación de contraseña. | Alta |
-| RF03 | Gestión de Usuarios | Perfiles | Los usuarios pueden ver y editar su información personal. | Media |
+| RF02 | Gestión de Usuarios | Autenticación | Sistema de login seguro. | Alta |
+| RF03 | Gestión de Usuarios | Perfiles | Los usuarios pueden ver sus respuestas. | Media |
 | RF04 | Gestión de Usuarios | Roles | Distinción entre usuarios normales y administradores. | Alta |
 | RF05 | Evaluación | Cuestionario | Formulario con preguntas sobre 8 áreas de la vida. | Alta |
 | RF06 | Evaluación | Calificación | Escala del 1 al 10 para cada pregunta. | Alta |

@@ -8,7 +8,7 @@ import os
 import argparse
 from datetime import datetime
 
-def excel_to_csv(input_file="data/row/respuestas_ruleta_vida.xlsx", output_file=None, sheet_name=0):
+def excel_to_csv(input_file="data/raw/respuestas_ruleta_vida.xlsx", output_file=None, sheet_name=0):
     """
     Convierte un archivo Excel a CSV.
     

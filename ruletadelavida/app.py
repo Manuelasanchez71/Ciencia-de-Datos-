@@ -5,13 +5,14 @@ import io
 import os
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
+import matplotlib
+matplotlib.use('Agg')  # 👈 Esto es lo que evita el bloqueo de hilos
 import matplotlib.pyplot as plt
 import numpy as np
 import base64
 from datetime import datetime, timedelta
 from flask_mail import Mail, Message
 from dotenv import load_dotenv
-
 
 # Cargar variables de entorno
 load_dotenv()
